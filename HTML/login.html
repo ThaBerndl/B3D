@@ -1,31 +1,24 @@
-<?php include('server.php') ?>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
+
 <head>
-  <title>Registration system PHP and MySQL</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../CSS/stylesheet.css">
+	<script type="text/javascript" src="../Javascript/myscripts.js"></script>
+	<title>B3D Login</title>
 </head>
+
 <body>
-  <div class="header">
-  	<h2>Login</h2>
-  </div>
-	 
-  <form method="post" action="login.php">
-  	<?php include('errors.php'); ?>
-  	<div class="input-group">
-  		<label>Username</label>
-  		<input type="text" name="username" >
-  	</div>
-  	<div class="input-group">
-  		<label>Password</label>
-  		<input type="password" name="password">
-  	</div>
-  	<div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
-  	</div>
-  	<p>
-  		Not yet a member? <a href="register.php">Sign up</a>
-  	</p>
-  </form>
+	<!--Login function steht bereits im login.php, datenbank anbindung muss aber noch implementiert werden evtl. mit XAMPP-->
+	<form method="POST" action="login.php">
+		Ihr Username: <input name="username"><br>
+		Ihr Passwort: <input name="passwort" type=password><br>
+		<input type=submit name=submit value="Einloggen">
+	</form>
+
+	<footer>
+		<p>Copyright B3D™</p>
+	</footer>
 </body>
+
 </html>
