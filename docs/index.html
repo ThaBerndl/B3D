@@ -1,1 +1,32 @@
-<h1>Hello World<h1>
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../CSS/stylesheet.css">
+	<script type="text/javascript" src="../Javascript/myscripts.js"></script>
+	<title>B3D</title>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li>Navigations Menü</li>
+			</ul>
+		</nav>
+	</header>
+	<!--Login function steht bereits im login.php, datenbank anbindung muss aber noch implementiert werden evtl. mit XAMPP-->
+	<form method="POST" action="login.php">
+		Ihr Username: <input name="username"><br>
+		Ihr Passwort: <input name="passwort" type=password><br>
+		<input type=submit name=submit value="Einloggen">
+	</form>
+
+	<footer>
+		<p>Copyright B3D™</p>
+	</footer>
+
+</body>
+
+</html>
