@@ -14,12 +14,14 @@
     //     die("ERROR: Could not connect. " . mysqli_connect_error());
     // }
 
-$servername = "free-tier13.aws-eu-central-1.cockroachlabs.cloud";
-$username = "thaberndl";
-$password = "1wtodMZjBifk2xXrPRIRrw";
+$servername = "localhost";
+$username = "root";
+$password = "raspberry";
+$dbname = "B3D";
+$port = 3306;
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password,$dbname,$port);
 
 // Check connection
 if ($conn->connect_error) {
