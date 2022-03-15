@@ -34,4 +34,13 @@ if($conn->ping()){
 } else {
   printf("Error: %s\n", $mysqli->error);
 }
+
+$tiere = $conn->query("SELECT bez from tier");
+
+echo"Tiere: \n";
+for ($row_no = $tiere->num_rows-1; $row_no >= 0; $row_no--) { 
+  $tiere->data_seek($row_no);
+  $row = $tiere->fetch_assoc();
+  echo"bez = " . $row['bez'] . "\n";
+}
 ?>
