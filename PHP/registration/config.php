@@ -24,8 +24,14 @@ $port = 3306;
 $conn = new mysqli($servername, $username, $password,$dbname,$port);
 
 // Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if ($conn->connect_errno) {
+  printf("Connection failed: " . $conn->connect_error);
+  exit();
 }
-echo "Connected successfully";
+
+if($conn->ping()){
+  printf("Our connection is ok!\n");
+} else {
+  printf("Error: %s\n", $mysqli->error);
+}
 ?>
