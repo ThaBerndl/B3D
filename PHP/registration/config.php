@@ -30,21 +30,17 @@ if ($conn->connect_errno) {
 }
 
 if($conn->ping()){
-  printf("Our connection is ok!\n");
+  printf("Our connection is ok!/n");
 } else {
-  printf("Error: %s\n", $mysqli->error);
+  printf("Error: %s/n", $mysqli->error);
 }
 
 $tiere = $conn->query("SELECT bez from Tier");
 
-echo"Tiere: \n";
+echo"Tiere: /n";
 for ($row_no = $tiere->num_rows-1; $row_no >= 0; $row_no--) { 
   $tiere->data_seek($row_no);
   $row = $tiere->fetch_assoc();
-  echo"bez = " . $row['bez'] . "\n";
-}
-echo "Result set order...\n";
-foreach ($result as $row) {
-    echo " id = " . $row['id'] . "\n";
+  echo"bez = " . $row['bez'] . "/n";
 }
 ?>
