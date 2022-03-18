@@ -25,14 +25,8 @@
     //     die("ERROR: Could not connect. " . mysqli_connect_error());
     // }
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "raspberry";
-  $dbname = "B3D";
-  $port = 3306;
-
   // Create connection
-  $conn = new mysqli($servername, $username, $password,$dbname,$port);
+  $conn = DB_connect();
 
   // Check connection
   if ($conn->connect_errno) {
