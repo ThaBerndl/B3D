@@ -9,4 +9,7 @@
 <body>
     
 </body>
+<?php
+  require conconfig.php;
+?>
 </html>
