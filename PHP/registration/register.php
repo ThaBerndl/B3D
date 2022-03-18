@@ -24,6 +24,6 @@ $pw = $_POST['password'];
 
 $conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vorname','$nachname','$username','$pw')");
 
-header("http://b3d.sytes.net/pages/dashboard.html");
+header("Location: dashboard.html");
 
 ?>
