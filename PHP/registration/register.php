@@ -32,7 +32,7 @@ $nachname = $_POST['nachname'];
 $username = $_POST['username'];
 $pw = $_POST['password'];
 
-$conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vorname','$nachname','$username','$pw')");
+return $conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vorname','$nachname','$username','$pw')");
 
 ?>
 </html>
