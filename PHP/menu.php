@@ -53,7 +53,16 @@
   $nick = 'Leroy';
   $pw = 'pw123';
 
-  $conn->query("INSERT INTO User(vName,nName,nickname,passwort) VALUES ($vName,$nName,$nick,$pw)");
+  $bool = $conn->query("INSERT INTO User(vName,nName,nickname,passwort) VALUES ($vName,$nName,$nick,$pw)");
+
+  if($bool)
+  {
+    echo"ERFOLG!"
+  }
+  else 
+  {
+    echo"MISSERFOLG!"
+  }
 
   $tiere = $conn->query("SELECT * from User");
 
