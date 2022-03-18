@@ -57,11 +57,11 @@
 
   if($bool)
   {
-    echo"ERFOLG!"
+    echo"ERFOLG!";
   }
   else 
   {
-    echo"MISSERFOLG!"
+    echo"MISSERFOLG!";
   }
 
   $tiere = $conn->query("SELECT * from User");
