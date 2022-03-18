@@ -32,7 +32,10 @@ $nachname = $_POST['nachname'];
 $username = $_POST['username'];
 $pw = $_POST['password'];
 
-return $conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vorname','$nachname','$username','$pw')");
+if($conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vorname','$nachname','$username','$pw')"))
+{
+  header(dashboard.html);
+}
 
 ?>
 </html>
