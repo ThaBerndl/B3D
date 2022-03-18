@@ -49,13 +49,13 @@
   }
   
 
-  $conn->query("INSERT INTO User(vName,nName,nickname,passwort) VALUES ('Lena','Wurmsdobler','LenaPopena','pw123')");
+  //$conn->query("INSERT INTO User(vName,nName,nickname,passwort) VALUES ('Lena','Wurmsdobler','LenaPopena','pw123')");
 
-  //$insert = $conn->prepare("INSERT INTO User(vName,nName,nickname,passwort) VALUES (?, ?, ?, ?)");
+  $insert = $conn->prepare("INSERT INTO User(vName,nName,nickname,passwort) VALUES (?, ?, ?, ?)");
 
-  //$insert->bind_param("ssss","Lena","Wurmsdobler","LenaPopena","pw123");
+  $insert->bind_param("ssss",'Leon','Oberndorfer','leroy','pw123');
 
-  //$insert->execute();
+  $insert->execute();
 
   $tiere = $conn->query("SELECT * from User");
 
