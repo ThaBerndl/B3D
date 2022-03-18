@@ -131,7 +131,7 @@
                     </label>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2">Sign up</button>
+                    <a href="dashboard.html"><button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2">Sign up</button></a>
                   </div>
                   <p class="text-sm mt-3 mb-0">Already have an account? <a href="javascript:;" class="text-success font-weight-bolder">Sign in</a></p>
                 </form>
