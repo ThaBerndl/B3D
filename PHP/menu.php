@@ -47,7 +47,7 @@
     printf("Error: %s/n", $mysqli->error);
   }
   
-  DB_addUser("Lena", "Wurmsdobler", "LenaPopena",null);
+  DB_addUser("Lena", "Wurmsdobler", "LenaPopena",null,$conn);
 
   $tiere = $conn->query("SELECT bez from User");
 
