@@ -53,7 +53,7 @@
   $nick = 'Leroy';
   $pw = 'pw123';
 
-  $conn->query("INSERT INTO User(vName,nName,nickname,passwort) VALUES (" . $vName . "," . $nName . "," . $nick . "," . $pw . ")");
+  $conn->query("INSERT INTO User(vName,nName,nickname,passwort) VALUES ($vName,$nName,$nick,$pw)");
 
   $tiere = $conn->query("SELECT * from User");
 
