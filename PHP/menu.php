@@ -47,7 +47,7 @@
   } else {
     printf("Error: %s/n", $mysqli->error);
   }
-  
+  /*
   $insert = $conn->prepare("INSERT INTO User (vName,nName,nickname,passwort) VALUES (?, ?, ?, ?)");
 
   $insert->bind_param("ssss","Lena","Wurmsdobler","LenaPopena","pw123");
@@ -55,7 +55,7 @@
   $insert->execute();
 
   $tiere = $conn->query("SELECT bez from User");
-
+*/
   echo"User: ";
   for ($row_no = $tiere->num_rows-1; $row_no >= 0; $row_no--) { 
     $tiere->data_seek($row_no);
