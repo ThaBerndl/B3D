@@ -33,6 +33,7 @@
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.1" rel="stylesheet" />
+  
 </head>
 
 <body class="">
@@ -108,7 +109,7 @@
                 </p>
               </div>
             </div>
-            <form action="../PHP/registration/register.php" method="post">
+            <form action="sign-up.php" method="post">
               <div class="card-body">
                 <form role="form">
                   <div class="mb-3">
@@ -135,7 +136,34 @@
                   <p class="text-sm mt-3 mb-0">Already have an account? <a href="javascript:;" class="text-success font-weight-bolder">Sign in</a></p>
                 </form>
               </div>
-            </form>            
+            </form>
+            <?php
+              //  require conconfig.php;
+              $servername = "localhost";
+              $username = "root";
+              $password = "raspberry";
+              $dbname = "B3D";
+              $port = 3306;
+
+              // Create connection
+              $conn = new mysqli($servername, $username, $password,$dbname,$port);
+
+              // Check connection
+              if ($conn->connect_errno) {
+                printf("Connection failed: " . $conn->connect_error);
+                exit();
+              }
+
+
+              $vorname = $_POST['vorname'];
+              $nachname = $_POST['nachname'];
+              $username = $_POST['username'];
+              $pw = $_POST['password'];
+
+              $conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vorname','$nachname','$username','$pw')");
+
+              //header("Location: http://www.b3d.sytes.net/pages/dashboard.html");
+            ?>            
           </div>
         </div>
       </div>
