@@ -44,6 +44,7 @@ for ($row_no = $tiere->num_rows-1; $row_no >= 0; $row_no--) {
   echo"bez = " . $row['bez'] . "/n";
 }*/
 
+
 //erstellt eine DB Connection und gibt ein mysqli object zurück
 function DB_connect()
 {

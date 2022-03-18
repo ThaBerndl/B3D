@@ -11,16 +11,5 @@
 </body>
 <?php
   require conconfig.php;
-
-$sql = "INSERT INTO User (vName, nickname)
-VALUES ($user, 'NaluTest')";    
-
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
 ?>
 </html>
