@@ -62,6 +62,7 @@
   else 
   {
     echo"MISSERFOLG!";
+    echo $conn->error;
   }
 
   $tiere = $conn->query("SELECT * from User");
