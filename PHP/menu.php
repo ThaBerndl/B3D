@@ -26,6 +26,7 @@
     // }
 
   // Create connection
+
   $servername = "localhost";
   $username = "root";
   $password = "raspberry";
@@ -47,7 +48,11 @@
     printf("Error: %s/n", $mysqli->error);
   }
   
-  DB_addUser("Lena", "Wurmsdobler", "LenaPopena",null,$conn);
+  $insert = $conn->prepare("INSERT INTO User (vName,nName,nickname,passwort) VALUES (?, ?, ?, ?)");
+
+  $insert->bind_param("ssss","Lena","Wurmsdobler","LenaPopena","pw123");
+
+  $insert->execute();
 
   $tiere = $conn->query("SELECT bez from User");
 
