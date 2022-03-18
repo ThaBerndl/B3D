@@ -48,14 +48,12 @@
     printf("Error: %s/n", $mysqli->error);
   }
   
+  $vName = 'Leon';
+  $nName = 'Oberndorfer';
+  $nick = 'Leroy';
+  $pw = 'pw123';
 
-  //$conn->query("INSERT INTO User(vName,nName,nickname,passwort) VALUES ('Lena','Wurmsdobler','LenaPopena','pw123')");
-
-  $insert = $conn->prepare("INSERT INTO User(vName,nName,nickname,passwort) VALUES (?, ?, ?, ?)");
-
-  $insert->bind_param("ssss",'Leon','Oberndorfer','leroy','pw123');
-
-  $insert->execute();
+  $conn->query("INSERT INTO User(vName,nName,nickname,passwort) VALUES (" . $vName . "," . $nName . "," . $nick . "," . $pw . ")");
 
   $tiere = $conn->query("SELECT * from User");
 
