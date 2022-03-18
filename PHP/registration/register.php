@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 }
 
 $sql = "INSERT INTO User (vName, nickname)
-VALUES ($user, "NaluTest")";    
+VALUES ($user, 'NaluTest')";    
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
