@@ -7,7 +7,7 @@
     <title>test</title>
 </head>
 <body>
-    <?<php>
+    <?php
     $servername = "localhost";
     $username = "root";
     $password = "raspberry";
@@ -22,6 +22,6 @@
       printf("Connection failed: " . $conn->connect_error);
       exit();
     }
-    </php>
+    ?>
 </body>
 </html>
