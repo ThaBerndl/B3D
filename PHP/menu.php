@@ -53,7 +53,7 @@
   $nick = 'Leroy';
   $pw = 'pw123';
 
-  $bool = $conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ($vName,$nName,$nick,$pw)");
+  $bool = $conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vName','$nName','$nick','$pw')");
 
   if($bool)
   {
