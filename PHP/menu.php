@@ -35,8 +35,6 @@
   // Create connection
   $conn = new mysqli($servername, $username, $password,$dbname,$port);
 
-  DB_addUser("Lena", "Wurmsdobler", "LenaPopena",null);
-
   // Check connection
   if ($conn->connect_errno) {
     printf("Connection failed: " . $conn->connect_error);
@@ -48,6 +46,8 @@
   } else {
     printf("Error: %s/n", $mysqli->error);
   }
+  
+  DB_addUser("Lena", "Wurmsdobler", "LenaPopena",null);
 
   $tiere = $conn->query("SELECT bez from User");
 
