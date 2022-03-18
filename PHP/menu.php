@@ -48,12 +48,12 @@
     printf("Error: %s/n", $mysqli->error);
   }
   
-  $vName = "Leon";
-  $nName = "Oberndorfer";
-  $nick = "Leroy";
-  $pw = "pw123";
+  $vName = 'Leon';
+  $nName = 'Oberndorfer';
+  $nick = 'Leroy';
+  $pw = 'pw123';
 
-  $bool = $conn->query("INSERT INTO User(vName,nName,nickname,passwort) VALUES ($vName,$nName,$nick,$pw)");
+  $bool = $conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ($vName,$nName,$nick,$pw)");
 
   if($bool)
   {
