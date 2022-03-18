@@ -14,33 +14,33 @@
     //     die("ERROR: Could not connect. " . mysqli_connect_error());
     // }
 
-$servername = "localhost";
-$username = "root";
-$password = "raspberry";
-$dbname = "B3D";
-$port = 3306;
+  $servername = "localhost";
+  $username = "root";
+  $password = "raspberry";
+  $dbname = "B3D";
+  $port = 3306;
 
-// Create connection
-$conn = new mysqli($servername, $username, $password,$dbname,$port);
+  // Create connection
+  $conn = new mysqli($servername, $username, $password,$dbname,$port);
 
-// Check connection
-if ($conn->connect_errno) {
-  printf("Connection failed: " . $conn->connect_error);
-  exit();
-}
+  // Check connection
+  if ($conn->connect_errno) {
+    printf("Connection failed: " . $conn->connect_error);
+    exit();
+  }
 
-if($conn->ping()){
-  printf("Our connection is ok!/n");
-} else {
-  printf("Error: %s/n", $mysqli->error);
-}
+  if($conn->ping()){
+    printf("Our connection is ok!/n");
+  } else {
+    printf("Error: %s/n", $mysqli->error);
+  }
 
-$tiere = $conn->query("SELECT bez from Tier");
+  $tiere = $conn->query("SELECT bez from Tier");
 
-echo"Tiere: /n";
-for ($row_no = $tiere->num_rows-1; $row_no >= 0; $row_no--) { 
-  $tiere->data_seek($row_no);
-  $row = $tiere->fetch_assoc();
-  echo"bez = " . $row['bez'] . "/n";
-}
+  echo"Tiere: /n";
+  for ($row_no = $tiere->num_rows-1; $row_no >= 0; $row_no--) { 
+    $tiere->data_seek($row_no);
+    $row = $tiere->fetch_assoc();
+    echo"bez = " . $row['bez'] . "/n";
+  }
 ?>
