@@ -7,6 +7,21 @@
     <title>test</title>
 </head>
 <body>
+    <?<php>
+    $servername = "localhost";
+    $username = "root";
+    $password = "raspberry";
+    $dbname = "B3D";
+    $port = 3306;
     
+    // Create connection
+    $conn = new mysqli($servername, $username, $password,$dbname,$port);
+    
+    // Check connection
+    if ($conn->connect_errno) {
+      printf("Connection failed: " . $conn->connect_error);
+      exit();
+    }
+    </php>
 </body>
 </html>
