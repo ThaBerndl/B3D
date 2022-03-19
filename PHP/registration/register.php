@@ -65,7 +65,7 @@ $vname_err = $nname_err = $username_err = $password_err = "";
     if(empty($username_err) && empty($password_err) && empty($vname_err)&& empty($vname_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (vName, nName, nickname, passwort) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO Users (vName, nName, nickname, passwort) VALUES (?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
