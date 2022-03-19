@@ -109,7 +109,7 @@
                 </p>
               </div>
             </div>
-            <form action="sign-up.php" method="post">
+            <form action="/PHP/registration/register.php" method="post">
               <div class="card-body">
                 <form role="form">
                   <div class="mb-3">
