@@ -82,7 +82,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../pages/archer.html">
+                    <a class="nav-link " href="../pages/archer.php">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-favourite-28 text-success text-sm opacity-10"></i>
@@ -155,35 +155,36 @@
         </nav>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
+            <form id="add_friend" action="archer.php">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <h6>Add a Friend</h6>
-                                <button class="btn btn-success btn-md ms-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                    <input type="submit" class="btn btn-success btn-md ms-auto" value="Add Friend"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                  </svg>Add Friend</button>
+                                  </svg></input>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Nickname</label>
-                                        <input class="form-control" type="text" value="lucky.jesse">
+                                        <label for="example-text-input" class="form-control-label">Nickname<input class="form-control" id="nickname" type="text" value="lucky.jesse"></label>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">First name</label>
-                                        <input class="form-control" type="text" value="Jesse">
+                                        <label for="example-text-input" class="form-control-label">First name<input class="form-control" id="fname" type="text" value="Jesse"></label>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Last name</label>
-                                        <input class="form-control" type="text" value="Lucky">
+                                        <label for="example-text-input" class="form-control-label">Last name<input class="form-control" id="lname" type="text" value="Lucky"></label>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -191,6 +192,7 @@
                     </div>
                 </div>
             </div>
+            </form>
             <br>
             <!-- Table content shows friends created in the past-->
             <div class="row">
@@ -469,6 +471,34 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
+    <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "raspberry";
+        $dbname = "B3D";
+        $port = 3306;
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password,$dbname,$port);
+
+        // Check connection
+        if ($conn->connect_errno) 
+        {
+            printf("Connection failed: " . $conn->connect_error);
+            exit();
+        }
+        
+        $nickname = $_POST['nickname'];
+        $firstname = $_POST['vname'];
+        $lastname = $_POST['lname'];
+
+        $sql = "SELECT count(*) from User where upper(nickname) like upper('$nickname')";
+
+        $result = $conn->query($sql);
+
+        0
+        
+    ?>
 </body>
 
 </html>
