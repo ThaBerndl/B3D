@@ -15,12 +15,10 @@
   
     $nickname = $_POST['nickname'];
 
-    if($result = $mysqli->query('select * from User'))
+    if($result = $mysqli->query("SELECT * FROM User"))
     {
         if($result->num_rows) //min 1 eintrag bekommen
         {
-            $rows = $result->fetch_all(MYSQLI_ASSOC);
-
             while($row = $result->fetch_assoc())
             {
                 echo $row['user_id'] . ' ' . $row['vName'] . ' ' . $row['nName'] . '<br>';
