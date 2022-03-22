@@ -1,7 +1,4 @@
 <?php
-
-use LDAP\Result;
-
     echo 'Sart Test <br>';
 
     define('DB_SERVER', 'localhost');
