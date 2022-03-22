@@ -45,12 +45,17 @@
                 echo 'select geglückt!';
                 if($result->num_rows)
                 {
+                    echo 'row_num geglückt!';
                     while($row = $result->fetch_assoc())
                     {
-                        $mysqli->query("INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');"); //TODO: user_id von Login bekommen und hier hinein schreiben
                         echo "INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');";
+                        $mysqli->query("INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');"); //TODO: user_id von Login bekommen und hier hinein schreiben
                         echo $row['user_id'] . '<br>';
                     }
+                }
+                else
+                {
+                    echo 'row_num fehlgeschlagen!';
                 }
             }
         }
