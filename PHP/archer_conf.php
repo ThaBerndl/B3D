@@ -41,29 +41,32 @@ use LDAP\Result;
         {
             echo "num_rows fehlgeschlagen! <br>";
             $sql = "INSERT INTO User ('user_id', 'vName', 'nName', 'nickname', 'passwort') VALUES (NULL, ?, ?, ?, NULL);";
-            $stmt->prepare($sql);
-            $stmt->bind_param('sss',$vname,$nname,$nickname);
+            if($stmt->prepare($sql))
+            {
+                echo "Prepare erfolgreich! <br>";
+                $stmt->bind_param('sss',$vname,$nname,$nickname);
 
-            if($stmt->execute())
-            {
-                echo "insert $nickname <br>";
-                echo "SELECT * FROM User WHERE nickname = '$nickname'";
-                if($result = $mysqli->query("SELECT * FROM User WHERE nickname = '$nickname'"))
+                if($stmt->execute())
                 {
-                    echo 'select geglückt!';
-                    $rows = $result->fetch_assoc();
-                    echo '<pre>' . print_r($rows) . '</pre>';
-                    while($row = $result->fetch_assoc())
+                    echo "insert $nickname <br>";
+                    echo "SELECT * FROM User WHERE nickname = '$nickname'";
+                    if($result = $mysqli->query("SELECT * FROM User WHERE nickname = '$nickname'"))
                     {
-                        echo "INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');";
-                        $mysqli->query("INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');"); //TODO: user_id von Login bekommen und hier hinein schreiben
-                        echo $row['user_id'] . '<br>';
-                    }
+                        echo 'select geglückt!';
+                        $rows = $result->fetch_assoc();
+                        echo '<pre>' . print_r($rows) . '</pre>';
+                        while($row = $result->fetch_assoc())
+                        {
+                            echo "INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');";
+                            $mysqli->query("INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');"); //TODO: user_id von Login bekommen und hier hinein schreiben
+                            echo $row['user_id'] . '<br>';
+                        }
+                    } 
                 } 
-            } 
-            else
-            {
-                echo 'Insert Kaputt';
+                else
+                {
+                    echo 'Insert Kaputt';
+                }
             }
         }
     }
