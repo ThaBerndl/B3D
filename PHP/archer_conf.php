@@ -1,4 +1,7 @@
 <?php
+
+use LDAP\Result;
+
     echo 'Sart Test <br>';
 
     define('DB_SERVER', 'localhost');
@@ -43,6 +46,7 @@
             if($result = $mysqli->query("SELECT * FROM User WHERE nickname = '$nickname'"))
             {
                 echo 'select geglückt!';
+                echo print_r($result);
                 while($row = $result->fetch_assoc())
                 {
                     echo "INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');";
