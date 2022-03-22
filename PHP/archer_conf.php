@@ -43,6 +43,7 @@ use LDAP\Result;
             $mysqli->query("INSERT INTO User ('user_id', 'vName', 'nName', 'nickname', 'passwort') VALUES (NULL, '$vname', '$nname', '$nickname', NULL);");
             
             echo "insert $nickname <br>";
+            echo "SELECT * FROM User WHERE nickname = '$nickname'";
             if($result = $mysqli->query("SELECT * FROM User WHERE nickname = '$nickname'"))
             {
                 echo 'select geglückt!';
