@@ -23,17 +23,20 @@
  
     if($result = $mysqli->query("SELECT * FROM User WHERE nickname = '$nickname'"))
     {
+        echo "Select erfolgreich! <br>";
         if($result->num_rows)
         {
+            echo "num_rows erfolgreich! <br>";
             while($row = $result->fetch_assoc())
             {
-                echo $row['vName'] . ' ' . $row['nName'] . '<br>';
+                echo "while " . $row['vName'] . ' ' . $row['nName'] . '<br>';
                 $vname = $row['vName'];
                 $nname = $row['nName'];
             }
         }
         else
         {
+            echo "num_rows fehlgeschlagen! <br>";
             if($mysqli->query("INSERT INTO User ('user_id', 'vName', 'nName', 'nickname', 'passwort') VALUES (NULL, '$vname', '$nname', '$nickname', NULL);"))
             {
                 echo 'insert <br>';
@@ -51,5 +54,9 @@
                 }
             }
         }
+    }
+    else
+    {
+        echo "Select fehlgeschlagen! <br>";
     }
 ?>
