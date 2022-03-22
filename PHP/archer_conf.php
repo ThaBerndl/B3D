@@ -46,7 +46,7 @@ use LDAP\Result;
             if($result = $mysqli->query("SELECT * FROM User WHERE nickname = '$nickname'"))
             {
                 echo 'select geglückt!';
-                echo print_r($result);
+                echo '<pre>' . print_r($result) . '</pre>';
                 while($row = $result->fetch_assoc())
                 {
                     echo "INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');";
