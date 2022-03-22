@@ -1,5 +1,5 @@
 <?php
-    echo 'Sart Test';
+    echo 'Sart Test <br>';
 
     define('DB_SERVER', 'localhost');
     define('DB_USERNAME', 'root');

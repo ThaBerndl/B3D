@@ -171,19 +171,19 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Nickname<input class="form-control" id="nickname" type="text" value="lucky.jesse"></label>
+                                        <label for="example-text-input" class="form-control-label">Nickname<input class="form-control" name="nickname" type="text" value="lucky.jesse"></label>
                                         
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">First name<input class="form-control" id="fname" type="text" value="Jesse"></label>
+                                        <label for="example-text-input" class="form-control-label">First name<input class="form-control" name="fname" type="text" value="Jesse"></label>
                                         
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Last name<input class="form-control" id="lname" type="text" value="Lucky"></label>
+                                        <label for="example-text-input" class="form-control-label">Last name<input class="form-control" name="lname" type="text" value="Lucky"></label>
                                         
                                     </div>
                                 </div>
