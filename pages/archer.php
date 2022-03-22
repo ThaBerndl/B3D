@@ -155,7 +155,7 @@
         </nav>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
-            <form id="add_friend" action="archer.php">
+            <form id="add_friend" action="../PHP/archer_conf.php" method="POST">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -471,34 +471,6 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
-    <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "raspberry";
-        $dbname = "B3D";
-        $port = 3306;
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password,$dbname,$port);
-
-        // Check connection
-        if ($conn->connect_errno) 
-        {
-            printf("Connection failed: " . $conn->connect_error);
-            exit();
-        }
-        
-        $nickname = $_POST['nickname'];
-        $firstname = $_POST['vname'];
-        $lastname = $_POST['lname'];
-
-        $sql = "SELECT count(*) from User where upper(nickname) like upper('$nickname')";
-
-        $result = $conn->query($sql);
-
-        0
-        
-    ?>
 </body>
 
 </html>
