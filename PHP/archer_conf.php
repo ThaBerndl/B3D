@@ -14,14 +14,33 @@
     }
   
     $nickname = $_POST['nickname'];
+    $vname = $_POST['fname'];
+    $nname = $_POST['lname'];
 
-    if($result = $mysqli->query("SELECT * FROM User"))
+    if($result = $mysqli->query("SELECT * FROM User WHERE nickname = '$nickname'"))
     {
-        if($result->num_rows) //min 1 eintrag bekommen
+        if($result->num_rows)
         {
             while($row = $result->fetch_assoc())
             {
-                echo $row['user_id'] . ' ' . $row['vName'] . ' ' . $row['nName'] . '<br>';
+                $vname = $row['vName'];
+                $nname = $row['nName'];
+            }
+        }
+        else
+        {
+            if($mysqli->query("INSERT INTO User ('user_id', 'vName', 'nName', 'nickname', 'passwort') VALUES (NULL, '$vname', '$nname', '$nickname', NULL);"))
+            {
+                if($result = $mysqli->query("SELECT * FROM User WHERE nickname = '$nickname'"))
+                {
+                    if($result->num_rows)
+                    {
+                        while($row = $result->fetch_assoc())
+                        {
+                            $mysqli->query("INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');"); //TODO: user_id von Login bekommen und hier hinein schreiben
+                        }
+                    }
+                }
             }
         }
     }
