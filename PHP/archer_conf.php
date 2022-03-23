@@ -42,7 +42,7 @@
             echo "Prepare erfolgreich! <br>";
             if($stmt->bind_param('sss',$vname,$nname,$nickname))
             {
-                echo "bind_param erfolg!"
+                echo "bind_param erfolg!";
             }
             else
             {
