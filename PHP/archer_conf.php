@@ -37,15 +37,9 @@
         else
         {
             echo "num_rows fehlgeschlagen! <br>";
-            $stmt = $mysqli->prepare("INSERT INTO User ('vName', 'nName', 'nickname') VALUES (?,?,?);");
-            echo "INSERT INTO User ('vName', 'nName', 'nickname') VALUES (?,?,?); <br>";
+            $stmt = $mysqli->prepare("INSERT INTO User ('vName', 'nName', 'nickname') VALUES ('$vname','$nname','$nickname');");
+            echo "INSERT INTO User ('vName', 'nName', 'nickname') VALUES ('$vname','$nname','$nickname'); <br>";
             echo "Prepare erfolgreich! <br>";
-            $stmt->bind_param(1,$vname);
-            echo "bind1";
-            $stmt->bind_param(2,$nname);
-            echo "bind2";
-            $stmt->bind_param(3,$nickname);
-            echo "bind3";
             
 
             
