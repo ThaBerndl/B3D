@@ -26,7 +26,15 @@
     // }
 
   // Create connection
-  $conn = DB_connect();
+
+  $servername = "localhost";
+  $username = "root";
+  $password = "raspberry";
+  $dbname = "B3D";
+  $port = 3306;
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password,$dbname,$port);
 
   // Check connection
   if ($conn->connect_errno) {
@@ -39,14 +47,34 @@
   } else {
     printf("Error: %s/n", $mysqli->error);
   }
+  
+  $vName = 'Leon';
+  $nName = 'Oberndorfer';
+  $nick = 'Leroy';
+  $pw = 'pw123';
 
-  $tiere = $conn->query("SELECT bez from Tier");
+  $bool = $conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vName','$nName','$nick','$pw')");
 
-  echo"Tiere: /n";
+  if($bool)
+  {
+    echo"ERFOLG!";
+  }
+  else 
+  {
+    echo"MISSERFOLG!";
+    echo $conn->error;
+  }
+
+  $tiere = $conn->query("SELECT * from User");
+
+  echo"User: ";
   for ($row_no = $tiere->num_rows-1; $row_no >= 0; $row_no--) { 
     $tiere->data_seek($row_no);
     $row = $tiere->fetch_assoc();
-    echo"bez = " . $row['bez'] . "/n";
+    echo"Vorname = " . $row['vName'] . "; \n";
+    echo"Nachname = " . $row['nName'] . "; \n";
+    echo"Nickname = " . $row['nickname'] . "; \n";
+    echo"Passwort = " . $row['passwort'] . "; \n";
   }
 ?>
 </html>
