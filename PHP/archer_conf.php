@@ -38,10 +38,17 @@
         {
             echo "num_rows fehlgeschlagen! <br>";
             $stmt = $mysqli->prepare("INSERT INTO User ('vName', 'nName', 'nickname') VALUES (?,?,?);");
-
+            echo "INSERT INTO User ('vName', 'nName', 'nickname') VALUES (?,?,?); <br>";
             echo "Prepare erfolgreich! <br>";
-            $stmt->bind_param('sss',$vname,$nname,$nickname);
-
+            if($stmt->bind_param('sss',$vname,$nname,$nickname))
+            {
+                echo "bind_param erfolg!"
+            }
+            else
+            {
+                echo $stmt->error_log;
+            }
+            
             if($stmt->execute())
             {
                 echo "insert $nickname <br>";
