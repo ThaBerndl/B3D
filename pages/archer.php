@@ -202,8 +202,9 @@
             </form>
             <?php
                 if(isset($_POST['addFriend'])) //verabeitung Forms
-                {  
+                {
                     require_once "./PHP/class/DB.php";
+                    require_once "./PHP/class/Freund.php";
 
                     $user = new User();
 
@@ -212,34 +213,11 @@
                     $user->nName = $_POST['lname'];
 
                  
-                    if($result = $mysqli->query("SELECT * FROM User WHERE nickname = '$nickname'"))
+                    if($user->checkUser())
                     {
-                        if($result->num_rows)
-                        {
-                            while($row = $result->fetch_assoc())
-                            {
-                                $vname = $row['vName'];
-                                $nname = $row['nName'];
-                            }
-                        }
-                        else
-                        {
-                            $stmt = $mysqli->prepare("INSERT INTO User ('vName', 'nName', 'nickname') VALUES ('$vname','$nname','$nickname');");
-                            
-                            if($stmt->execute())
-                            {
-                                if($result = $mysqli->query("SELECT * FROM User WHERE nickname = '$nickname'"))
-                                {
-                                    $rows = $result->fetch_assoc();
-                                    while($row = $result->fetch_assoc())
-                                    {
-                                        echo "INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');";
-                                        $mysqli->query("INSERT INTO Freund ('user_id', 'freund_id') VALUES (1, '" . $row['user_id'] . "');"); //TODO: user_id von Login bekommen und hier hinein schreiben
-                                        echo $row['user_id'] . '<br>';
-                                    }
-                                } 
-                            } 
-                        }
+                        $user->insertUser();
+                        $freund = new Freund(1,$user->id);
+                        $freund->insertFreund();
                     }
                 }
             ?>

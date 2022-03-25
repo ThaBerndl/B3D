@@ -1,6 +1,7 @@
 <?php
 class User extends DB
 {
+    public $id;
     public $vName;
     public $nName;
     public $nickname;
@@ -29,7 +30,17 @@ class User extends DB
             $stmt->bindParam(2, $nName, PDO::PARAM_STR);
             $stmt->bindParam(3, $nickname, PDO::PARAM_STR);
             $stmt->bindParam(4, $passwort, PDO::PARAM_STR);
-            $stmt->execute();
+            if($stmt->execute())
+            {
+                $stmt = $this->pdo->prepare("SELECT * FROM User where nickname = ?");
+                $stmt->bindParam(1, $vName, PDO::PARAM_STR);
+                $stmt->execute();
+                while ($row = $stmt->fetch())
+                {
+                    $this->id = $row['user_id'];
+                    return $this->id;
+                }
+            }
         } catch (Exception $e)
         {
             echo $e;
