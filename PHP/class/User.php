@@ -1,4 +1,5 @@
 <?php
+require_once "DB.php"
 class User extends DB
 {
     public $vName;
@@ -38,10 +39,23 @@ class User extends DB
 
     public function checkUser()
     {
-        try {
-            $stmt = $this->pdo->prepare("select INTO user (vName, nName, nickname, passwort) VALUES (?,?,?,?)");
-            $stmt->bindParam(1, $vName, PDO::PARAM_STR);
+        try
+        {
+            $stmt = $this->pdo->prepare("select count(nickname) as nn from user where nickname = ?");
+            $stmt->bindParam(1, $nickname, PDO::PARAM_STR);
             $stmt->execute();
+
+            while($row = $sql->fetch())
+            {
+                if($row['nn'] == 1)
+                {
+                    retrun false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         } catch (Exception $e)
         {
             echo $e;
