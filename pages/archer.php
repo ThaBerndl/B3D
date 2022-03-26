@@ -226,7 +226,11 @@
                 else
                 {
                     $freund = new Freund(1,$user->id); //TODO: user_id von Login hier übernehmen
-                    if(!$freund->checkFreund())
+                    if($freund->user_id == $freund->freund_id)
+                    {
+                        echo "<p style='color: red'>Can't add yourself as friend</p>";
+                    }
+                    else if(!$freund->checkFreund())
                     {
                         $freund->insertFreund();
                     }
