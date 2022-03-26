@@ -112,7 +112,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../pages/sign-up.html">
+                    <a class="nav-link " href="../pages/sign-up.php">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-collection text-info text-sm opacity-10"></i>
@@ -168,7 +168,7 @@
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <!--TODO-->
-            <form id="add_friend" action="../PHP/archer_conf.php" method="POST">
+            <form id="add_friend" action="archer.php" method="POST">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
