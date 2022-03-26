@@ -93,23 +93,17 @@
                   <div class="mb-3">
                     <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password">
                   </div>
-<<<<<<< HEAD
                   <!--TODO do we need this? do we want it?-->
                   <!-- <div class="form-check form-check-info text-start">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>                    
                     <label class="form-check-label" for="flexCheckDefault">
-=======
-                  <div class="form-check form-check-info text-start">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                    <label class="form-check-label" for="flexCheckDefault" name="checkTerms">
->>>>>>> 99a86ff3829e1444be26d797f6f844834709d490
                       I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
                     </label>
                   </div> -->
                   <div class="text-center">
                     <a href="dashboard.html"><button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2" name="submit">Sign up</button></a>
                   </div>
-                  <p class="text-center-sm mt-3 mb-0">Already have an account? <a href="../pages/sign_in.html" class="text-success font-weight-bolder">Sign in</a></p>
+                  <p class="text-center-sm mt-3 mb-0">Already have an account? <a href="../pages/sign-in.html" class="text-success font-weight-bolder">Sign in</a></p>
                 </form>
               </div>
             </form>
@@ -152,6 +146,8 @@
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
 <<<<<<< HEAD
+=======
+
   <?php
               //  require conconfig.php;
               $servername = "localhost";
@@ -179,8 +175,8 @@
 
               header("Location: http://www.b3d.sytes.net/pages/dashboard.html");
             ?>            
-=======
->>>>>>> 99a86ff3829e1444be26d797f6f844834709d490
+
+>>>>>>> 3a7925ad2584e039d31cdf84d952aa5793fc815e
 
 </body>
 
