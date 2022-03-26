@@ -33,6 +33,7 @@
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <?php session_start();?>
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -65,7 +66,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="../pages/tables.html">
+          <a class="nav-link active" href="tables.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
@@ -92,7 +93,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/sign-in.html">
+          <a class="nav-link " href="sign-in.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
             </div>
@@ -130,7 +131,7 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+              <a href="sign-up.php" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Sign In</span>
               </a>
