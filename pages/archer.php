@@ -163,6 +163,7 @@
         </nav>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
+            <!--TODO-->
             <form id="add_friend" action="../PHP/archer_conf.php" method="POST">
             <div class="row">
                 <div class="col-md-8">
@@ -170,7 +171,7 @@
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <h6>Add a Friend</h6>
-                                    <input type="submit" class="btn btn-success btn-md ms-auto" value="Add Friend"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                    <input type="submit" class="btn btn-success btn-md ms-auto" value="Add Friend"><svg  width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                   </svg></input>
                             </div>
