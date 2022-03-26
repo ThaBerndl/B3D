@@ -93,16 +93,13 @@
                   <div class="mb-3">
                     <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password">
                   </div>
-<<<<<<< HEAD
                   <!--TODO do we need this? do we want it?-->
                   <!-- <div class="form-check form-check-info text-start">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>                    
                     <label class="form-check-label" for="flexCheckDefault">
-=======
                   <div class="form-check form-check-info text-start">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                     <label class="form-check-label" for="flexCheckDefault" name="checkTerms">
->>>>>>> 99a86ff3829e1444be26d797f6f844834709d490
                       I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
                     </label>
                   </div> -->
@@ -151,7 +148,7 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
-<<<<<<< HEAD
+
   <?php
               //  require conconfig.php;
               $servername = "localhost";
@@ -179,8 +176,7 @@
 
               header("Location: http://www.b3d.sytes.net/pages/dashboard.html");
             ?>            
-=======
->>>>>>> 99a86ff3829e1444be26d797f6f844834709d490
+
 
 </body>
 
