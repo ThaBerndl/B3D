@@ -36,6 +36,10 @@
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
+    <?php
+        require_once "../PHP/class/Freund.php";
+        require_once "../PHP/class/User.php";
+    ?>
     <div class="min-height-300 bg-success position-absolute w-100"></div>
     <aside
         class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
@@ -163,6 +167,7 @@
         </nav>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
+<<<<<<< HEAD
             <!--TODO-->
             <form id="add_friend" action="../PHP/archer_conf.php" method="POST">
             <div class="row">
@@ -174,34 +179,83 @@
                                     <input type="submit" class="btn btn-success btn-md ms-auto" value="Add Friend" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                   </svg></input>
+=======
+            <form id="add_friend" action="archer.php" method="POST">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header pb-0">
+                                <div class="d-flex align-items-center">
+                                    <h6>Add a Friend</h6>
+                                        <input type="submit" name="submit" class="btn btn-success btn-md ms-auto" value="Add Friend"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg></input>
+                                </div>
+>>>>>>> 99a86ff3829e1444be26d797f6f844834709d490
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Nickname<input class="form-control" name="nickname" type="text" value="lucky.jesse"></label>
-                                        
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Nickname<input class="form-control" name="nickname" type="text"></label>
+                                            
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">First name<input class="form-control" name="fname" type="text" value="Jesse"></label>
-                                        
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">First name<input class="form-control" name="fname" type="text"></label>
+                                            
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Last name<input class="form-control" name="lname" type="text" value="Lucky"></label>
-                                        
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Last name<input class="form-control" name="lname" type="text"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </form>
+            <?php
+            if(isset($_POST['submit'])) //verarbeitung Forms
+            {
+                $user = new User();
+                $user->nickname = $_POST['nickname'];
+                $user->vName = $_POST['fname'];
+                $user->nName = $_POST['lname'];
+                if(!$user->checkUser())
+                {
+                    if(!isset($_POST['nickname']) || !isset($_POST['fname']) || !isset($_POST['lname']))
+                    {
+                        echo "<p style='color: red'> Nickname not existing: to create please enter first and last name</p>";
+                    }
+                    else {
+                        $user->insertUser();
+                        $freund = new Freund(1, $user->id); //TODO: user_id von Login hier übernehmen
+                        $freund->insertFreund();
+                    }
+                }
+                else
+                {
+                    $freund = new Freund(1,$user->id); //TODO: user_id von Login hier übernehmen
+                    if($freund->user_id == $freund->freund_id)
+                    {
+                        echo "<p style='color: red'>Can't add yourself as friend</p>";
+                    }
+                    else if(!$freund->checkFreund())
+                    {
+                        $freund->insertFreund();
+                    }
+                    else
+                    {
+                        echo "<p style='color: red'>Friend already added!</p>";
+                    }
+                }
+            }
+            ?>
+
             <br>
             <!-- Table content shows friends created in the past-->
             <div class="row">
@@ -222,26 +276,39 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div>
-                                                        <img src="../assets/img/team-2.jpg"
-                                                            class="avatar avatar-sm me-3" alt="user1">
-                                                    </div>
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">John Michael</h6>
-                                                        <p class="text-xs text-secondary mb-0">jonnyBoii69</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-items-start">
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                                    data-toggle="tooltip" data-original-title="Add a friend">
-                                                    Delete
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        <?php
+
+                                            if (isset($_POST['delete']))
+                                            {
+                                                $freund = new Freund($_POST['user'],$_POST['freund']);
+                                                $freund->delFreund();
+                                            }
+
+                                            $freunde = Freund::getAllFreunde(1); //TODO: user_id von Login hier übernehmen
+                                            foreach ($freunde as $freund)
+                                            {
+                                                $user = USER::getUserwithID($freund->freund_id);
+                                                echo   "<form action='archer.php' method='post'>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class=\"d-flex px-2 py-1\">
+                                                                        <div class=\"d-flex flex-column justify-content-center\">
+                                                                            <h6 class=\"mb - 0 text - sm\">$user->vName $user->nName </h6>
+                                                                            <p class=\"text-xs text-secondary mb-0\">$user->nickname</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class=\"align-items-start\">
+                                                                    <input type='submit' class=\"btn btn-success btn-md ms-auto\"
+                                                                        data-toggle=\"tooltip\" data-original-title=\"Add a friend\" name=\"delete\" value='Delete'>
+                                                                    <input type='text' style='display: none' name='user' value='$freund->user_id'>
+                                                                    <input type='text' style='display: none' name='freund' value='$freund->freund_id'>
+                                                               </td>
+                                                            </tr>
+                                                        </form>";
+                                            }
+                                            unset($freund);
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

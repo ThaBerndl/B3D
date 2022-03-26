@@ -12,6 +12,19 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+
+<?php
+    require_once("../PHP/class/User.php");
+
+    $vorname = isset($_POST['vorname']) ? $_POST['vorname'] : '';
+    $nachname = isset($_POST['nachname']) ? $_POST['nachname'] : '';
+    $username = isset($_POST['username']) ? $_POST['username'] : '';
+    $pw = isset($_POST['password']) ? $_POST['password'] : '';
+    $checkTerms = isset($_POST["checkTerms"]) ? $_POST["checkTerms"] : '';
+
+    //$conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vorname','$nachname','$username','$pw')");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +78,7 @@
             <div class="card-header text-center pt-5">
               <h4>Sign up</h4>
             </div>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form action="sign-up.php" method="post">
               <div class="card-body">
                 <form role="form">
                   <div class="mb-3">
@@ -80,15 +93,21 @@
                   <div class="mb-3">
                     <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password">
                   </div>
+<<<<<<< HEAD
                   <!--TODO do we need this? do we want it?-->
                   <!-- <div class="form-check form-check-info text-start">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>                    
                     <label class="form-check-label" for="flexCheckDefault">
+=======
+                  <div class="form-check form-check-info text-start">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                    <label class="form-check-label" for="flexCheckDefault" name="checkTerms">
+>>>>>>> 99a86ff3829e1444be26d797f6f844834709d490
                       I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
                     </label>
                   </div> -->
                   <div class="text-center">
-                    <a href="dashboard.html"><button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2">Sign up</button></a>
+                    <a href="dashboard.html"><button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2" name="submit">Sign up</button></a>
                   </div>
                   <p class="text-center-sm mt-3 mb-0">Already have an account? <a href="../pages/sign_in.html" class="text-success font-weight-bolder">Sign in</a></p>
                 </form>
@@ -132,6 +151,7 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
+<<<<<<< HEAD
   <?php
               //  require conconfig.php;
               $servername = "localhost";
@@ -159,7 +179,24 @@
 
               header("Location: http://www.b3d.sytes.net/pages/dashboard.html");
             ?>            
+=======
+>>>>>>> 99a86ff3829e1444be26d797f6f844834709d490
 
 </body>
 
+<?php
+    $user = new User();
+
+    if($_POST["submit"])
+    {
+        if($checkTerms != null && $checkTerms != '')
+        {
+
+        }
+        else
+        {
+            //Not agreed
+        }
+    }
+?>
 </html>
