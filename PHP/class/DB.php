@@ -15,5 +15,10 @@
               echo $e;
           }
       }
+
+      public function connect()
+      {
+          $this->pdo = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->user, $this->pwd);
+      }
   }
 ?>
