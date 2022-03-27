@@ -261,6 +261,9 @@
       </div>
     </div>
   </div>
+  <?php
+     require_once "../PHP/rightHor_Navbar.php";
+  ?>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
