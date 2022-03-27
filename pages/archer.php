@@ -72,7 +72,7 @@
                         <li class="nav-item d-flex align-items-center">
                             <a href="sign-up.php" class="nav-link text-white font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
-                                <?php echo "<span class=\"d-sm-inline d-none\">".$_SESSION['nickname']."</span>" ?>
+                                <?php echo "<span class=\"d-sm-inline d-none\">".!empty($_SESSION['nickname'])?$_SESSION['nickname']:"Sign in"."</span>" ?>
                             </a>
                         </li>
                         <li class="nav-item d-flex align-items-center">
@@ -229,44 +229,9 @@
                         </div>
                     </div>
                 </div>
-                <footer class="footer pt-3  ">
-                    <div class="container-fluid">
-                        <div class="row align-items-center justify-content-lg-between">
-                            <div class="col-lg-6 mb-lg-0 mb-4">
-                                <div class="copyright text-center text-sm text-muted text-lg-start">
-                                    ©
-                                    <script>
-                                        document.write(new Date().getFullYear())
-                                    </script>,
-                                    made with <i class="fa fa-heart"></i> by
-                                    <a href="https://www.creative-tim.com" class="font-weight-bold"
-                                        target="_blank">B3D</a>
-                                    for a better web.
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com" class="nav-link text-muted"
-                                            target="_blank">B3D</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
-                                            target="_blank">About Us</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com/blog" class="nav-link text-muted"
-                                            target="_blank">Blog</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                                            target="_blank">License</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                <?php
+                 require_once "../PHP/footer.php";
+                ?>
             </div>
         </div>
     </main>
