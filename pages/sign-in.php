@@ -40,13 +40,29 @@
 </head>
 
 <body class="">
+<?php
+    if(isset($_POST['submit'])) //verarbeitung Forms
+    {
+        if (!empty($_POST['nickname']) && !empty($_POST['password']))
+        {
+            $user = new User();
+            $user->nickname = $_POST['nickname'];
+            $user->passwort = $_POST['password'];
+            if ($user->checkLogin()){
+                $_SESSION['nickname'] = $user->nickname;
+                $_SESSION['auth'] = true;
+                header('location: dashboard.php');
+            }
+        }
+    }
+?>
   <div class="container position-sticky z-index-sticky top-0">
     <div class="row">
       <div class="col-12">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
           <div class="container-fluid">
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.html">
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.php">
               B3D - Skillboard
             </a>          
           </div>
@@ -91,33 +107,7 @@
                   </p>
                 </div>
               </div>
-            </div>            <?php
-              if(isset($_POST['submit'])) //verarbeitung Forms
-              {
-                  if (empty($_POST['nickname']))
-                  {
-                      echo "<a style='color: red; margin-left: 3%'> Nickname Required</a>";
-                      return false;
-                  }
-                  if (empty($_POST['password']))
-                  {
-                      echo "<a style='color: red; margin-left: 3%'> Password Required</a>";
-                      return false;
-                  }
-                  $user = new User();
-                  $user->nickname = $_POST['nickname'];
-                  $user->passwort = $_POST['password'];
-                  if (!$user->checkLogin()){
-                      echo "<a style='color: red; margin-left: 3%'> Nickname/Password Wrong, Check Spelling</a>";
-                      return false;
-                  }
-                  else {
-                      $_SESSION['nickname'] = $user->nickname;
-                      $_SESSION['auth'] = true;
-                      header('location: index.php');
-                  }
-              }
-              ?>
+            </div>
 
               <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
               <div class="position-relative bg-gradient-success h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://github.com/ThaBerndl/B3D/blob/main/assets/img/main_theme_forest.jpg?raw=true');
@@ -127,6 +117,28 @@
                 <p class="text-white position-relative">Ob du richtig triffst und nicht, zeigt dir gleich das Licht.</p>
               </div>
             </div>
+              <?php
+                  if(isset($_POST['submit'])) //verarbeitung Forms
+                  {
+                      if (empty($_POST['nickname']))
+                      {
+                          echo "<a style='color: red; margin-left: 3%'> Nickname Required</a>";
+                          return false;
+                      }
+                      if (empty($_POST['password']))
+                      {
+                          echo "<a style='color: red; margin-left: 3%'> Password Required</a>";
+                          return false;
+                      }
+                      $user = new User();
+                      $user->nickname = $_POST['nickname'];
+                      $user->passwort = $_POST['password'];
+                      if (!$user->checkLogin()){
+                          echo "<a style='color: red; margin-left: 3%'> Nickname/Password Wrong, Check Spelling</a>";
+                          return false;
+                      }
+                  }
+              ?>
           </div>
         </div>
       </div>
