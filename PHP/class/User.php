@@ -12,7 +12,7 @@ class User extends DB
     {
         parent::__construct();
 
-        $this->vname = $iVName;
+        $this->vName = $iVName;
         $this->nName = $iNName;
         $this->nickname = $iNickname;
         $this->passwort = $iPasswort;
