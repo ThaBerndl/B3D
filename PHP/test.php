@@ -23,5 +23,5 @@
 
     $myOrtBez = Ort::getOrtwithBez("Linz");
 
-    echo $myOrtBez;
+    echo $myOrtBez->bez;
 ?>
