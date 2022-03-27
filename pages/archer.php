@@ -184,7 +184,7 @@
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <h6>Add a Friend</h6>
-                                    <input type="submit" class="btn btn-success btn-md ms-auto" value="Add Friend"input>
+                                    <input type="submit" class="btn btn-success btn-md ms-auto" name="submit" value="Add Friend"input>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -220,7 +220,7 @@
                 $user->nName = $_POST['lname'];
                 if(!$user->checkUser())
                 {
-                    if(!isset($_POST['nickname']) || !isset($_POST['fname']) || !isset($_POST['lname']))
+                    if(empty($_POST['nickname']) || empty($_POST['fname']) || empty($_POST['lname']))
                     {
                         echo "<p style='color: red'> Nickname not existing: to create please enter first and last name</p>";
                     }
