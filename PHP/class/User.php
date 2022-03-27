@@ -8,7 +8,7 @@ class User extends DB
     public $nickname;
     public $passwort;
 
-    public function __construct($iVName, $iNName, $iNickname, $iPasswort)
+    public function __construct($iNickname=null, $iVName=null, $iNName=null, $iPasswort=null)
     {
         parent::__construct();
 
