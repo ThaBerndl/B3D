@@ -21,8 +21,6 @@
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $pw = isset($_POST['password']) ? $_POST['password'] : '';
     $checkTerms = isset($_POST["checkTerms"]) ? $_POST["checkTerms"] : '';
-
-    //$conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vorname','$nachname','$username','$pw')");
 ?>
 
 <!DOCTYPE html>
@@ -93,15 +91,14 @@
                   <div class="mb-3">
                     <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password">
                   </div>
-                  <!--TODO do we need this? do we want it?-->
-                  <!-- <div class="form-check form-check-info text-start">
+                  <div class="form-check form-check-info text-start">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>                    
                     <label class="form-check-label" for="flexCheckDefault">
                       I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
                     </label>
-                  </div> -->
+                  </div>
                   <div class="text-center">
-                    <a href="dashboard.html"><button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2" name="submit">Sign up</button></a>
+                    <a href="dashboard.html"><button type="submit" name="submit" class="btn bg-gradient-success w-100 my-4 mb-2">Sign up</button></a>
                   </div>
                   <p class="text-center-sm mt-3 mb-0">Already have an account? <a href="../pages/sign-in.php" class="text-success font-weight-bolder">Sign in</a></p>
                 </form>
@@ -145,19 +142,21 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
-  <?php
-      require "../PHP/class/User.php";
-      $user = new User();
+    <?php
+        $user = new User();
 
-      $user->nickname = $username;
-      $user->vName = $vorname;
-      $user->nName = $nachname;
-      $user->passwort = $pw;
+        $user->nickname = $username;
+        $user->vName = $vorname;
+        $user->nName = $nachname;
+        $user->passwort = $pw;
 
-      $user->insertUser();
+        if($username != '' && $vorname != '' && $nachname != '' && $pw != '')
+        {
+            $user->insertUser();
 
-      header("Location: http://www.b3d.sytes.net/pages/dashboard.html");
-  ?>
+            header("Location: http://www.b3d.sytes.net/pages/dashboard.html");
+        }
+    ?>
 </body>
 
 <?php
