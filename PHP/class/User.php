@@ -138,4 +138,21 @@ class User extends DB
             return $user;
         }
     }
+
+    //BEST 26.03 Ein User Objekt mithilfe der User_id bekommen
+    public function getUserwithNick()
+    {
+        $user = new User();
+        $stmt = $user->pdo->prepare("SELECT * FROM User where nickname = ?");
+        $stmt->bindParam(1,$this->nickname,PDO::PARAM_STR);
+        $stmt->execute();
+        while($row = $stmt->fetch())
+        {
+            $user->id = $row['user_id'];
+            $user->vName = $row['vName'];
+            $user->nName = $row['nName'];
+            $user->passwort = $row['passwort'];
+            return $user;
+        }
+    }
 }
