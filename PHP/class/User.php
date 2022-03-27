@@ -36,28 +36,30 @@ class User extends DB
     public function insertUser()
     {
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO User (vName, nName, nickname, passwort) VALUES (?,?,?,?)");
-            $stmt->bindParam(1, $this->vName, PDO::PARAM_STR);
-            $stmt->bindParam(2, $this->nName, PDO::PARAM_STR);
-            $stmt->bindParam(3, $this->nickname, PDO::PARAM_STR);
-            $stmt->bindParam(4, $this->passwort, PDO::PARAM_STR);
-            if($stmt->execute())
+            if(checkUserExists())
             {
-                $stmt = $this->pdo->prepare("SELECT * FROM User where nickname = ?");
-                $stmt->bindParam(1,$this->nickname , PDO::PARAM_STR);
+                $stmt = $this->pdo->prepare("INSERT INTO User (vName, nName, nickname, passwort) VALUES (?,?,?,?)");
+                $stmt->bindParam(1, $this->vName, PDO::PARAM_STR);
+                $stmt->bindParam(2, $this->nName, PDO::PARAM_STR);
+                $stmt->bindParam(3, $this->nickname, PDO::PARAM_STR);
+                $stmt->bindParam(4, $this->passwort, PDO::PARAM_STR);
                 $stmt->execute();
-                while ($row = $stmt->fetch())
-                {
-                    $this->id = $row['user_id'];
-                }
+
+                return true;
             }
+            else
+            {
+                return false;
+            }
+
+
         } catch (Exception $e)
         {
             echo $e;
         }
     }
 
-    public function checkUser()
+    public function checkUserExists()
     {
         try
         {

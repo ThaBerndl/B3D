@@ -218,7 +218,7 @@
                 $user->nickname = $_POST['nickname'];
                 $user->vName = $_POST['fname'];
                 $user->nName = $_POST['lname'];
-                if(!$user->checkUser())
+                if(!$user->checkUserExists())
                 {
                     if(empty($_POST['nickname']) || empty($_POST['fname']) || empty($_POST['lname']))
                     {

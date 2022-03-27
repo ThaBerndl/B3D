@@ -3,7 +3,7 @@
     $user = new User("Tim", "Hofmann", "thistim", "1234");
     $user->insertUser();
 
-    if($user->checkUser())
+    if($user->checkUserExists())
     {
         echo "an Tim gibts";
     }
