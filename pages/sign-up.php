@@ -160,11 +160,39 @@
 </body>
 
 <?php
-    if($_POST["submit"])
+    if(isset($_POST["submit"]))
     {
         if($checkTerms != null && $checkTerms != '')
         {
+            if($username != '')
+            {
+                if($pw != '')
+                {
+                    if($vorname != '')
+                    {
+                        if($nachname != '')
+                        {
 
+                        }
+                        else
+                        {
+                            //No last name
+                        }
+                    }
+                    else
+                    {
+                        //No first name
+                    }
+                }
+                else
+                {
+                    //No password
+                }
+            }
+            else
+            {
+                //No username
+            }
         }
         else
         {
