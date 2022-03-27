@@ -3,9 +3,13 @@
     $user = new User("Tim", "Hofmann", "thistim", "1234");
     $user->insertUser();
 
-    if($user->checkUser())
+    if($user->checkUserExists())
     {
+        $myInt = DB::nextId(user);
+
+
         echo "an Tim gibts";
+        echo $myInt;
     }
     else
     {
