@@ -56,4 +56,27 @@ class Ort extends DB
             echo $e;
         }
     }
+
+    //OBLE 27.03 Gibt ein Ort Obj mit ID und Bez zurück
+    public static function getOrtwithBez($iBez)
+    {
+        try
+        {
+            $myOrt = new Ort();
+            $stmt = $myOrt->pdo->prepare("SELECT * FROM Ort where lower(bez) = lower(?)");
+            $stmt->bindParam(1,$iBez,PDO::PARAM_INT);
+            $stmt->execute();
+            while($row = $stmt->fetch())
+            {
+                $myOrt->id = $row['user_id'];
+                $myOrt->bez = $row['bez'];
+                return $myOrt;
+            }
+
+        }
+        catch (Exception $e)
+        {
+            echo $e;
+        }
+    }
 }

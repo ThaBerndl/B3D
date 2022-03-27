@@ -19,6 +19,9 @@
     }*/
 
     $myOrt = new Ort("Linz");
-    $asdf = $myOrt->insertOrt();
-    echo $asdf;
+    $myOrt->insertOrt();
+
+    $myOrtBez = Ort::getOrtwithBez("Linz");
+
+    echo $myOrtBez;
 ?>
