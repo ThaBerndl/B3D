@@ -18,8 +18,8 @@
         echo "an Tim gibts ned";
     }*/
 
-    $myOrt = new Ort("Linz");
-    $myOrt->insertOrt();
+    /*$myOrt = new Ort("Linz");
+    $myOrt->insertOrt();*/
 
     $myOrtBez = Ort::getOrtwithBez("Linz");
 
