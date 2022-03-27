@@ -8,6 +8,16 @@ class User extends DB
     public $nickname;
     public $passwort;
 
+    public function __construct($iNickname=null, $iVName=null, $iNName=null, $iPasswort=null)
+    {
+        parent::__construct();
+
+        $this->vname = $iVName;
+        $this->nName = $iNName;
+        $this->nickname = $iNickname;
+        $this->passwort = $iPasswort;
+    }
+
     public function getAllArticles()
     {
         try{
