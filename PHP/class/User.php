@@ -55,7 +55,7 @@ class User extends DB
 
         } catch (Exception $e)
         {
-            echo $e;
+            echo "<script>alert('$e');</script>";
         }
     }
 
@@ -67,7 +67,27 @@ class User extends DB
             $stmt->bindParam(1, $this->nickname, PDO::PARAM_STR);
             $stmt->execute();
 
-            //26.03 BEST: wenn etwas gefunden wurde dann Details speichern und True als return wert, wenn nicht dann false zurückgeben
+            //27.03 NALU: Wenn der User gefunden wird, wird true zurückgegeben
+            while($row = $stmt->fetch())
+            {
+                return true;
+            }
+            return false;
+        } catch (Exception $e)
+        {
+            echo $e;
+        }
+    }
+
+    public function getUser()
+    {
+        try
+        {
+            $stmt = $this->pdo->prepare("select * from User where lower(nickname) = lower(?)");
+            $stmt->bindParam(1, $this->nickname, PDO::PARAM_STR);
+            $stmt->execute();
+
+            //27.03 NALU: Wenn der User gefunden wird, werden die daten
             while($row = $stmt->fetch())
             {
                 $this->vName = $row['vName'];

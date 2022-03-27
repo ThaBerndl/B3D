@@ -3,7 +3,7 @@
     $user = new User("Tim", "Hofmann", "thistim", "1234");
     $user->insertUser();
 
-    if($user->checkUserExists())
+    if($user->getUser())
     {
         $myInt = DB::nextId(user);
 

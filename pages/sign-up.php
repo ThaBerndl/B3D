@@ -20,6 +20,57 @@
     $nachname = isset($_POST['nachname']) ? $_POST['nachname'] : '';
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $pw = isset($_POST['password']) ? $_POST['password'] : '';
+    $errormsg = '';
+?>
+<?php
+if(isset($_POST["submit"]))
+{
+    if(isset($_POST["checkTerms"]))
+    {
+        if($username != '')
+        {
+            if($pw != '')
+            {
+                if($vorname != '')
+                {
+                    if($nachname != '')
+                    {
+                        $user = new User($username, $vorname, $nachname, $pw);
+                        //User has been created
+                        if($user->insertUser())
+                        {
+                            //Weiterleiten zur dashboard seite
+                        }
+                        else
+                        {
+                            $errormsg = "The username is already in use!";
+                        }
+                    }
+                    else
+                    {
+                        $errormsg = "please enter your last name!";
+                    }
+                }
+                else
+                {
+                    $errormsg = "please enter your first name!";
+                }
+            }
+            else
+            {
+                $errormsg = "please enter a password!";
+            }
+        }
+        else
+        {
+            $errormsg = "please enter a username!";
+        }
+    }
+    else
+    {
+        $errormsg = "Dont forget to agree to our Terms and Conditions!";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -76,19 +127,20 @@
               <h4>Sign up</h4>
             </div>
             <form action="sign-up.php" method="post">
+                <p style="text-align: center; color: orangered"><?php echo $errormsg ?></p>
               <div class="card-body">
                 <form role="form">
                   <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Vorname" aria-label="Vorname" name="vorname">
+                    <input type="text" class="form-control" placeholder="Vorname" aria-label="Vorname" name="vorname" value="<?php echo isset($_POST['vorname']) ? $_POST['vorname'] : '' ?>">
                   </div>
                   <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Nachname" aria-label="nachname" name="nachname">
+                    <input type="text" class="form-control" placeholder="Nachname" aria-label="nachname" name="nachname" value="<?php echo isset($_POST['nachname']) ? $_POST['nachname'] : '' ?>">
                   </div>
                   <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username">
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>">
                   </div>
                   <div class="mb-3">
-                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password">
+                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password" value="<?php echo isset($_POST['password']) ? $_POST['password'] : '' ?>">
                   </div>
                   <div class="form-check form-check-info text-start">
                     <input class="form-check-input" name="checkTerms" type="checkbox" value="" id="flexCheckDefault">
@@ -142,47 +194,4 @@
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
 </body>
-
-<?php
-    if(isset($_POST["submit"]))
-    {
-        if(isset($_POST["checkTerms"]))
-        {
-            if($username != '')
-            {
-                if($pw != '')
-                {
-                    if($vorname != '')
-                    {
-                        if($nachname != '')
-                        {
-                            $user = new User($username, $vorname, $nachname, $pw);
-                            $user->insertUser();
-                        }
-                        else
-                        {
-                            //No last name
-                        }
-                    }
-                    else
-                    {
-                        //No first name
-                    }
-                }
-                else
-                {
-                    //No password
-                }
-            }
-            else
-            {
-                //No username
-            }
-        }
-        else
-        {
-            //Not agreed
-        }
-    }
-?>
 </html>
