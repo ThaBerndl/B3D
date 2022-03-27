@@ -103,7 +103,7 @@
                   <div class="text-center">
                     <a href="dashboard.html"><button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2" name="submit">Sign up</button></a>
                   </div>
-                  <p class="text-center-sm mt-3 mb-0">Already have an account? <a href="../pages/sign-in.html" class="text-success font-weight-bolder">Sign in</a></p>
+                  <p class="text-center-sm mt-3 mb-0">Already have an account? <a href="../pages/sign-in.php" class="text-success font-weight-bolder">Sign in</a></p>
                 </form>
               </div>
             </form>
