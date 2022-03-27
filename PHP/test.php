@@ -5,7 +5,11 @@
 
     if($user->checkUserExists())
     {
+        $myInt = DB::nextId(user);
+
+
         echo "an Tim gibts";
+        echo $myInt;
     }
     else
     {

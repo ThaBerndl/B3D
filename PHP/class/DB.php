@@ -21,9 +21,11 @@
           $this->pdo = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->user, $this->pwd);
       }
 
-      public function nextId($table)
+      public static function nextId($table)
       {
-          $stmt = $this->pdo->prepare("SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = ? AND table_schema = DATABASE()");
+          $myDb = new DB();
+
+          $stmt = $myDb->pdo->prepare("SELECT AUTO_INCREMENT FROM information_schema.tables WHERE lower(table_name) = lower(?) AND table_schema = DATABASE()");
           $stmt->execute([$table]);
 
           return $stmt->fetch()["AUTO_INCREMENT"];

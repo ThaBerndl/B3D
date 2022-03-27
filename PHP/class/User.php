@@ -36,7 +36,7 @@ class User extends DB
     public function insertUser()
     {
         try {
-            if(checkUserExists())
+            if(!checkUserExists())
             {
                 $stmt = $this->pdo->prepare("INSERT INTO User (vName, nName, nickname, passwort) VALUES (?,?,?,?)");
                 $stmt->bindParam(1, $this->vName, PDO::PARAM_STR);
