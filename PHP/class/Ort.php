@@ -73,6 +73,9 @@ class Ort extends DB
             {
                 $myOrt->id = $row['user_id'];
                 $myOrt->bez = $row['bez'];
+
+                echo "<br>"."Ort->getOrtwithBez->iBez: ".$myOrt->id;
+
                 return $myOrt;
             }
 
