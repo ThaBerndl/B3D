@@ -79,10 +79,9 @@
               </a>
             </li>    
             <li class="nav-item px-3 d-flex align-items-center">
-              <!--TODO insert link to /sign-in.php-->
               <a href="../pages/sign-in.php" class="nav-link text-white p-0">
                 <i class="fa fa-user"></i>
-                <?php echo "<span class=\"d-sm-inline d-none\">".$_SESSION['nickname']."</span>"?>
+                  <?php echo "<span class=\"d-sm-inline d-none\">"; if($_SESSION['auth'] == true){echo $_SESSION['nickname'];} else { echo "Sign in"; } echo "</span>"; ?>
               </a>
             </li>
           </ul>

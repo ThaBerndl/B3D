@@ -1,6 +1,8 @@
 <?php
     require_once "class/User.php";
-    $user = new User("Tim", "Hofmann", "thistim", "1234");
+    require_once "class/Ort.php";
+
+    /*$user = new User("Tim", "Hofmann", "thistim", "1234");
     $user->insertUser();
 
     if($user->getUser())
@@ -14,5 +16,12 @@
     else
     {
         echo "an Tim gibts ned";
-    }
+    }*/
+
+    /*$myOrt = new Ort("Linz");
+    $myOrt->insertOrt();*/
+
+    $myOrtBez = Ort::getOrtwithBez("Linz");
+
+    echo $myOrtBez->bez;
 ?>

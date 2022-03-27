@@ -35,6 +35,10 @@
     <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.1" rel="stylesheet" />
     <?php
        session_start();
+       if (!$_SESSION['auth'])
+       {
+           header("location: sign-in.php");
+       }
      ?>
 </head>
 
@@ -42,11 +46,16 @@
     <?php
         require_once "../PHP/class/Freund.php";
         require_once "../PHP/class/User.php";
+        if (isset($_POST['Logout']))
+        {
+            require_once "../PHP/logout.php";
+            header("location: dashboard.php");
+        }
     ?>
     <div class="min-height-300 bg-success position-absolute w-100"></div>
-  <?php
-    require_once '../PHP/leftHor_Navbar.php'
-  ?>
+    <?php
+        require_once '../PHP/leftHor_Navbar.php';
+    ?>
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
@@ -69,12 +78,15 @@
                         </div>
                     </div>
                     <ul class="navbar-nav  justify-content-end">
-                        <li class="nav-item d-flex align-items-center">
-                            <a href="sign-up.php" class="nav-link text-white font-weight-bold px-0">
-                                <i class="fa fa-user me-sm-1"></i>
-                                <?php echo "<span class=\"d-sm-inline d-none\">".!empty($_SESSION['nickname'])?$_SESSION['nickname']:"Sign in"."</span>" ?>
-                            </a>
-                        </li>
+                        <form action="archer.php" method="post">
+                            <li class="nav-item d-flex align-items-center">
+                                <a class="nav-link text-white font-weight-bold px-0">
+                                    <i class="fa fa-user me-sm-1"></i>
+                                    <?php echo "<span class=\"d-sm-inline d-none\">"; if($_SESSION['auth'] == true){echo $_SESSION['nickname'];} else { echo "Sign in"; } echo "</span>"; ?>
+                                    <input type="submit" name="Logout" value="logout">
+                                </a>
+                            </li>
+                        </form>
                         <li class="nav-item d-flex align-items-center">
                         </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -147,13 +159,13 @@
                     }
                     else {
                         $user->insertUser();
-                        $freund = new Freund(1, $user->id); //TODO: user_id von Login hier übernehmen
+                        $freund = new Freund($_SESSION['user_id'], $user->id);
                         $freund->insertFreund();
                     }
                 }
                 else
                 {
-                    $freund = new Freund(1,$user->id); //TODO: user_id von Login hier übernehmen
+                    $freund = new Freund($_SESSION['user_id'],$user->id);
                     if($freund->user_id == $freund->freund_id)
                     {
                         echo "<p style='color: red'>Can't add yourself as friend</p>";
@@ -198,7 +210,7 @@
                                                 $freund->delFreund();
                                             }
 
-                                            $freunde = Freund::getAllFreunde(1); //TODO: user_id von Login hier übernehmen
+                                            $freunde = Freund::getAllFreunde($_SESSION['user_id']);
                                             foreach ($freunde as $freund)
                                             {
                                                 $user = USER::getUserwithID($freund->freund_id);

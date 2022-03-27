@@ -38,24 +38,24 @@
     session_start();
   ?>
 </head>
-
-<body class="">
 <?php
-    if(isset($_POST['submit'])) //verarbeitung Forms
+if(isset($_POST['submit'])) //verarbeitung Forms
+{
+    if (!empty($_POST['nickname']) && !empty($_POST['password']))
     {
-        if (!empty($_POST['nickname']) && !empty($_POST['password']))
-        {
-            $user = new User();
-            $user->nickname = $_POST['nickname'];
-            $user->passwort = $_POST['password'];
-            if ($user->checkLogin()){
-                $_SESSION['nickname'] = $user->nickname;
-                $_SESSION['auth'] = true;
-                header('location: dashboard.php');
-            }
+        $user = new User();
+        $user->nickname = $_POST['nickname'];
+        $user->passwort = $_POST['password'];
+        if ($user->checkLogin()){
+            $user->getUserwithNick();
+            $_SESSION['nickname'] = $user->nickname;
+            $_SESSION['user_id'] = $user->id;
+            $_SESSION['auth'] = true;
+            header('location: new-game.php');
         }
     }
-?>
+}?>
+<body class="">
   <div class="container position-sticky z-index-sticky top-0">
     <div class="row">
       <div class="col-12">

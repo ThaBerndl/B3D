@@ -82,6 +82,12 @@
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a>
             </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="../pages/sign-in.php" class="nav-link text-white p-0">
+                  <i class="fa fa-user"></i>
+                  <?php echo "<span class=\"d-sm-inline d-none\">"; if($_SESSION['auth'] == true){echo $_SESSION['nickname'];} else { echo "Sign in"; } echo "</span>"; ?>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
