@@ -71,6 +71,24 @@ class User extends DB
         }
     }
 
+    public function checkLogin()
+    {
+        $stmt = $this->pdo->prepare("select * from User where nickname = ? and passwort = ?");
+        $stmt->bindParam(1, $this->nickname, PDO::PARAM_STR);
+        $stmt->bindParam(2, $this->passwort, PDO::PARAM_STR);
+        $stmt->execute();
+
+        //26.03 BEST: wenn etwas gefunden wurde dann Details speichern und True als return wert, wenn nicht dann false zurückgeben
+        while($row = $stmt->fetch())
+        {
+            $this->vName = $row['vName'];
+            $this->nName = $row['nName'];
+            $this->id = $row['user_id'];
+            return true;
+        }
+        return false;
+    }
+
     //BEST 26.03 Ein User Objekt mithilfe der User_id bekommen
     public static function getUserwithID($id)
     {

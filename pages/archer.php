@@ -33,6 +33,9 @@
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.1" rel="stylesheet" />
+    <?php
+       session_start();
+     ?>
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -73,7 +76,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../pages/tables.html">
+                    <a class="nav-link " href="../pages/tables.php">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
@@ -103,7 +106,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/sign-in.html">
+                    <a class="nav-link" href="../pages/sign-in.php">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
@@ -146,6 +149,12 @@
                     </div>
                     <ul class="navbar-nav  justify-content-end">
                         <li class="nav-item d-flex align-items-center">
+                            <a href="sign-up.php" class="nav-link text-white font-weight-bold px-0">
+                                <i class="fa fa-user me-sm-1"></i>
+                                <span class="d-sm-inline d-none">Sign In</span>
+                            </a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
                         </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
@@ -175,7 +184,7 @@
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <h6>Add a Friend</h6>
-                                    <input type="submit" class="btn btn-success btn-md ms-auto" value="Add Friend"input>
+                                    <input type="submit" class="btn btn-success btn-md ms-auto" name="submit" value="Add Friend"input>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -211,7 +220,7 @@
                 $user->nName = $_POST['lname'];
                 if(!$user->checkUser())
                 {
-                    if(!isset($_POST['nickname']) || !isset($_POST['fname']) || !isset($_POST['lname']))
+                    if(empty($_POST['nickname']) || empty($_POST['fname']) || empty($_POST['lname']))
                     {
                         echo "<p style='color: red'> Nickname not existing: to create please enter first and last name</p>";
                     }
