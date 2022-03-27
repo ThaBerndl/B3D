@@ -71,7 +71,7 @@ class Ort extends DB
             $stmt->execute();
             while($row = $stmt->fetch())
             {
-                $myOrt->id = $row['user_id'];
+                $myOrt->id = $row['ort_id'];
                 $myOrt->bez = $row['bez'];
 
                 echo "<br>"."Ort->getOrtwithBez->iBez: ".$myOrt->id;
