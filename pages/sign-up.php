@@ -20,7 +20,6 @@
     $nachname = isset($_POST['nachname']) ? $_POST['nachname'] : '';
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $pw = isset($_POST['password']) ? $_POST['password'] : '';
-    $checkTerms = isset($_POST["checkTerms"]) ? $_POST["checkTerms"] : '';
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +91,7 @@
                     <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password">
                   </div>
                   <div class="form-check form-check-info text-start">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>                    
+                    <input class="form-check-input" name="checkTerms" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                       I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
                     </label>
@@ -142,27 +141,12 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
-    <?php
-        $user = new User();
-
-        $user->nickname = $username;
-        $user->vName = $vorname;
-        $user->nName = $nachname;
-        $user->passwort = $pw;
-
-        if($username != '' && $vorname != '' && $nachname != '' && $pw != '')
-        {
-            $user->insertUser();
-
-            header("Location: http://www.b3d.sytes.net/pages/dashboard.html");
-        }
-    ?>
 </body>
 
 <?php
     if(isset($_POST["submit"]))
     {
-        if($checkTerms != null && $checkTerms != '')
+        if(isset($_POST["checkTerms"]))
         {
             if($username != '')
             {
@@ -172,7 +156,8 @@
                     {
                         if($nachname != '')
                         {
-
+                            $user = new User($username, $vorname, $nachname, $pw);
+                            $user->insertUser();
                         }
                         else
                         {
