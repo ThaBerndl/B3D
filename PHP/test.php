@@ -19,5 +19,5 @@
     }*/
 
     $myOrt = new Ort("Linz");
-    $myOrt->insertOrt()
+    echo $myOrt->insertOrt();
 ?>
