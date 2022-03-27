@@ -50,7 +50,7 @@
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href="../pages/dashboard.html" target="_blank">
+            <a class="navbar-brand m-0" href="../pages/dashboard.php" target="_blank">
                 <img src="../assets/img//branding/circle logo_new.png" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="ms-1 font-weight-bold">B3D - Skillboard</span>
             </a>
@@ -67,7 +67,7 @@
                     </a>
                   </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/dashboard.html">
+                    <a class="nav-link" href="../pages/dashboard.php">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-tv-2 text-success text-sm opacity-10"></i>
@@ -151,7 +151,7 @@
                         <li class="nav-item d-flex align-items-center">
                             <a href="sign-up.php" class="nav-link text-white font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Sign In</span>
+                                <?php echo "<span class=\"d-sm-inline d-none\">".$_SESSION['nickname']."</span>" ?>
                             </a>
                         </li>
                         <li class="nav-item d-flex align-items-center">

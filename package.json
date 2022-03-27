@@ -2,7 +2,7 @@
   "name": "argon-dashboard",
   "version": "2.0.1",
   "description": "Freebie Dashboard for Bootstrap 5",
-  "main": "pages/dashboard.html",
+  "main": "pages/dashboard.php",
   "directories": {
     "example": "root"
   },

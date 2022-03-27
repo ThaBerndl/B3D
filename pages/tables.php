@@ -41,7 +41,7 @@
   <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href="../pages/dashboard.html " target="_blank">
+      <a class="navbar-brand m-0" href="../pages/dashboard.php " target="_blank">
         <img src="../assets/img/branding/circle logo_new.png" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">B3D - Skillboard</span>
       </a>
@@ -58,7 +58,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/dashboard.html">
+          <a class="nav-link " href="../pages/dashboard.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
@@ -590,7 +590,7 @@
             <div class="col-lg-6">
               <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                 <li class="nav-item">
-                  <a href="../pages/dashboard.html" class="nav-link text-muted" target="_blank">B3D</a>
+                  <a href="../pages/dashboard.php" class="nav-link text-muted" target="_blank">B3D</a>
                 </li>
                 <li class="nav-item">
                   <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>

@@ -78,7 +78,7 @@ $vname_err = $nname_err = $username_err = $password_err = "";
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: ../pages/dashboard.html");
+                header("location: ../pages/dashboard.php");
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
