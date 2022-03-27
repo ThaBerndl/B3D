@@ -8,6 +8,16 @@ class User extends DB
     public $nickname;
     public $passwort;
 
+    public function __construct($iNickname=null, $iVName=null, $iNName=null, $iPasswort=null)
+    {
+        parent::__construct();
+
+        $this->vName = $iVName;
+        $this->nName = $iNName;
+        $this->nickname = $iNickname;
+        $this->passwort = $iPasswort;
+    }
+
     public function getAllArticles()
     {
         try{
@@ -26,28 +36,30 @@ class User extends DB
     public function insertUser()
     {
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO User (vName, nName, nickname, passwort) VALUES (?,?,?,?)");
-            $stmt->bindParam(1, $this->vName, PDO::PARAM_STR);
-            $stmt->bindParam(2, $this->nName, PDO::PARAM_STR);
-            $stmt->bindParam(3, $this->nickname, PDO::PARAM_STR);
-            $stmt->bindParam(4, $this->passwort, PDO::PARAM_STR);
-            if($stmt->execute())
+            if(!$this->checkUserExists())
             {
-                $stmt = $this->pdo->prepare("SELECT * FROM User where nickname = ?");
-                $stmt->bindParam(1,$this->nickname , PDO::PARAM_STR);
+                $stmt = $this->pdo->prepare("INSERT INTO User (vName, nName, nickname, passwort) VALUES (?,?,?,?)");
+                $stmt->bindParam(1, $this->vName, PDO::PARAM_STR);
+                $stmt->bindParam(2, $this->nName, PDO::PARAM_STR);
+                $stmt->bindParam(3, $this->nickname, PDO::PARAM_STR);
+                $stmt->bindParam(4, $this->passwort, PDO::PARAM_STR);
                 $stmt->execute();
-                while ($row = $stmt->fetch())
-                {
-                    $this->id = $row['user_id'];
-                }
+
+                return true;
             }
+            else
+            {
+                return false;
+            }
+
+
         } catch (Exception $e)
         {
-            echo $e;
+            echo "<script>alert('$e');</script>";
         }
     }
 
-    public function checkUser()
+    public function checkUserExists()
     {
         try
         {
@@ -55,7 +67,27 @@ class User extends DB
             $stmt->bindParam(1, $this->nickname, PDO::PARAM_STR);
             $stmt->execute();
 
-            //26.03 BEST: wenn etwas gefunden wurde dann Details speichern und True als return wert, wenn nicht dann false zurückgeben
+            //27.03 NALU: Wenn der User gefunden wird, wird true zurückgegeben
+            while($row = $stmt->fetch())
+            {
+                return true;
+            }
+            return false;
+        } catch (Exception $e)
+        {
+            echo $e;
+        }
+    }
+
+    public function getUser()
+    {
+        try
+        {
+            $stmt = $this->pdo->prepare("select * from User where lower(nickname) = lower(?)");
+            $stmt->bindParam(1, $this->nickname, PDO::PARAM_STR);
+            $stmt->execute();
+
+            //27.03 NALU: Wenn der User gefunden wird, werden die daten
             while($row = $stmt->fetch())
             {
                 $this->vName = $row['vName'];
@@ -69,6 +101,24 @@ class User extends DB
         {
             echo $e;
         }
+    }
+
+    public function checkLogin()
+    {
+        $stmt = $this->pdo->prepare("select * from User where nickname = ? and passwort = ?");
+        $stmt->bindParam(1, $this->nickname, PDO::PARAM_STR);
+        $stmt->bindParam(2, $this->passwort, PDO::PARAM_STR);
+        $stmt->execute();
+
+        //26.03 BEST: wenn etwas gefunden wurde dann Details speichern und True als return wert, wenn nicht dann false zurückgeben
+        while($row = $stmt->fetch())
+        {
+            $this->vName = $row['vName'];
+            $this->nName = $row['nName'];
+            $this->id = $row['user_id'];
+            return true;
+        }
+        return false;
     }
 
     //BEST 26.03 Ein User Objekt mithilfe der User_id bekommen
