@@ -145,44 +145,22 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
-<<<<<<< HEAD
-=======
-
   <?php
-              //  require conconfig.php;
-              $servername = "localhost";
-              $username = "root";
-              $password = "raspberry";
-              $dbname = "B3D";
-              $port = 3306;
+      require "../PHP/class/User.php";
+      $user = new User();
 
-              // Create connection
-              $conn = new mysqli($servername, $username, $password, $dbname, $port);
+      $user->nickname = $username;
+      $user->vName = $vorname;
+      $user->nName = $nachname;
+      $user->passwort = $pw;
 
-              // Check connection
-              if ($conn->connect_errno) {
-                printf("Connection failed: " . $conn->connect_error);
-                exit();
-              }
+      $user->insertUser();
 
-
-              $vorname = $_POST['vorname'];
-              $nachname = $_POST['nachname'];
-              $username = $_POST['username'];
-              $pw = $_POST['password'];
-
-              $conn->query("INSERT INTO User (vName,nName,nickname,passwort) values ('$vorname','$nachname','$username','$pw')");
-
-              header("Location: http://www.b3d.sytes.net/pages/dashboard.html");
-            ?>            
-
->>>>>>> 3a7925ad2584e039d31cdf84d952aa5793fc815e
-
+      header("Location: http://www.b3d.sytes.net/pages/dashboard.html");
+  ?>
 </body>
 
 <?php
-    $user = new User();
-
     if($_POST["submit"])
     {
         if($checkTerms != null && $checkTerms != '')
