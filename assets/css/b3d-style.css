@@ -1,3 +1,4 @@
+/*Tables.php*/
 .box {
     float: left;
     width: 30%;
@@ -5,4 +6,18 @@
     padding: 20px;
     background: #eee;
     box-sizing: border-box;
+}
+
+#tables-hr{
+    border-top: 1px solid #2dce89;
+    color:#2dce89;
+    border-color: #2dce89;
+}
+
+#tables-save-hr{
+    border-top: 1px solid #343a40;
+}
+
+.animalNr{
+    font-size: small;
 }
