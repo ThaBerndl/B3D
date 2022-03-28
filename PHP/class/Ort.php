@@ -62,14 +62,20 @@ class Ort extends DB
     {
         try
         {
+
+            echo "<br>"."Ort->getOrtwithBez->iBez: ".$iBez;
+
             $myOrt = new Ort();
             $stmt = $myOrt->pdo->prepare("SELECT * FROM Ort where lower(bez) = lower(?)");
             $stmt->bindParam(1,$iBez,PDO::PARAM_INT);
             $stmt->execute();
             while($row = $stmt->fetch())
             {
-                $myOrt->id = $row['user_id'];
+                $myOrt->id = $row['ort_id'];
                 $myOrt->bez = $row['bez'];
+
+                echo "<br>"."Ort->getOrtwithBez->myort id: ".$myOrt->id;
+
                 return $myOrt;
             }
 
