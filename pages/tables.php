@@ -43,7 +43,8 @@
 <body class="g-sidenav-show   bg-gray-100">
     <div class="min-height-300 bg-success position-absolute w-100"></div>
     <?php
-    require_once '../PHP/leftHor_Navbar.php'
+    require_once '../PHP/leftHor_Navbar.php';
+    require_once '../PHP/getClasses.php';
   ?>
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
@@ -98,11 +99,11 @@
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <h6>Create Parcour</h6>
-                            <!-- wule: either text input or select option is required in order to submit the form -->
-                            <form id="add_parcour" action="tables.php" method="post">
-                                <div class="table-responsive">
-                                    <table class="table align-items-center justify-content-center mb-0">
-                                        <tbody>
+                            <div class="table-responsive">
+                                <table class="table align-items-center justify-content-center mb-0">
+                                    <tbody>
+                                        <!-- wule: either text input or select option is required in order to submit the form -->
+                                        <form id="choose_parcour" action="tables.php" method="post">
                                             <tr scope="row">
                                                 <td colspan="4">
                                                     <label for="example-text-input" class="form-control-label">New
@@ -115,16 +116,46 @@
                                                 <td colspan="4">
                                                     <label for="example-text-input" class="form-control-label">Or chose
                                                         Parcour</label>
-                                                    <select class="form-select" aria-label="Default select example">
+                                                    <select class="form-select" aria-label="Default select example" onchange="reload()" id="Orte">
                                                         <option selected>- chose -</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                        <option value="4">Four</option>
-                                                    </select 
+                                                        <?php
+                                                        $parcours = Ort::getAllOrte();
+                                                        $cnt = 0;
+                                                        while ($parcour = $parcours->fetch()) {
+                                                            $cnt++;
+                                                            if (isset($_GET['ort']) && $_GET['ort'] == $parcour['ort_id']){
+                                                                echo "<option value = $cnt selected='selected'> ".$parcour['bez']."</option >";
+                                                            } else{
+                                                                echo "<option value = $cnt > ".$parcour['bez']."</option >";
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select><select class="form-select" aria-label="Default select example">
+                                                        <option selected>- chose -</option>
+                                                        <?php
+                                                        if (isset($_GET['ort'])){
+                                                            $parcours = Parcour::getAllParcoursWithOrt($_GET['ort']);
+                                                        }else{
+                                                            $parcours = Parcour::getAllParcours();
+                                                        }
+                                                        $cnt = 0;
+                                                        while ($parcour = $parcours->fetch()) {
+                                                            $cnt++;
+                                                            echo "<option value = $cnt> ".$parcour['bez']."</option >";
+                                                        }
+                                                        ?>
+                                                    </select
                                                   </td>
                                                     <hr id="tables-hr">
+                                            <tr>
+                                                <td id=addAnimalBtn>
+                                                    <button type="submit"
+                                                            class="btn btn-outline-success align-right">Add/Edit Parcour</button>
+                                                </td>
                                             </tr>
+                                            </tr>
+                                        </form>
+                                        <form id="edit_parcour" action="tables.php" method="post">
                                             <tr>
                                                 <table class="table-responsive">
                                                     <table class="table align-items-center justify-content-center mb-0">
@@ -134,14 +165,15 @@
                                                                 <th scope="row" class="animalNr">Tier 1</th>
                                                                 </td>
                                                                 <td>
-                                                                    <select class="form-control" id="animalList"
-                                                                        required>
-                                                                        <option>Einhorn</option>
-                                                                        <option>Blobfisch</option>
-                                                                        <option>Mücke</option>
-                                                                        <option>Regenwurm</option>
-                                                                        <option>Niffler</option>
-                                                                    </select>
+                                                                    <?php
+                                                                    echo "<select class=\"form-control\" id=\"animalList\" required>";
+                                                                    $tiere = Tier::getAllTiere();
+                                                                    while($tier = $tiere->fetch())
+                                                                    {
+                                                                        echo "<option>".$tier['bez']."</option>";
+                                                                    }
+                                                                    echo "</select>"
+                                                                    ?>
                                                                 </td>
                                                             </tr>
                                                             <!-- <tr>
@@ -178,7 +210,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </form>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -297,6 +328,13 @@
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+    </script>
+    <script>
+        function reload()
+        {
+            var v1 = document.getElementById('Orte');
+            self.location='tables.php?ort=' + v1.value;
+        }
     </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
