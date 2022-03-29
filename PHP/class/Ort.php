@@ -85,4 +85,13 @@ class Ort extends DB
             echo $e;
         }
     }
+
+    public static function getAllOrte()
+    {
+        $db = new DB();
+        $stmt = $db->pdo->prepare("SELECT * FROM Ort");
+        $stmt->execute();
+        return $stmt;
+    }
+
 }
