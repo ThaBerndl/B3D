@@ -130,7 +130,8 @@
                                                             }
                                                         }
                                                         ?>
-                                                    </select><select class="form-select" aria-label="Default select example">
+                                                    </select>
+                                                    <select class="form-select" aria-label="Default select example" onchange="">
                                                         <option selected>- chose -</option>
                                                         <?php
                                                         if (isset($_GET['ort'])){
@@ -332,8 +333,8 @@
     <script>
         function reload()
         {
-            var v1 = document.getElementById('Orte');
-            self.location='tables.php?ort=' + v1.value;
+            var ort = document.getElementById('Orte');
+            self.location='tables.php?ort=' + ort.value;
         }
     </script>
     <!-- Github buttons -->
