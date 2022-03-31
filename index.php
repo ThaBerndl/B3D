@@ -1,38 +1,35 @@
-<!--
-=========================================================
-* Argon Dashboard 2 - v2.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
+<?php
+session_start();
+if ($_SESSION['auth'])
+{
+    header("location: pages/new-game.php");
+}
+else
+{
+    header("location: pages/sign-in.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/branding/circle logo_new.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="assets/img/branding/circle logo_new.png">
   <title>
     B3D - Skillboard
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
-  <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="./assets/css/argon-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <link id="pagestyle" href="assets/css/argon-dashboard.css?v=2.0.1" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -53,7 +50,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="./pages/dashboard.php">
+          <a class="nav-link active" href="pages/dashboard.php">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -62,7 +59,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/tables.php">
+          <a class="nav-link " href="pages/tables.php">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
@@ -74,7 +71,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/profile.php">
+          <a class="nav-link " href="pages/profile.php">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
@@ -92,7 +89,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/sign-up.php">
+          <a class="nav-link " href="pages/sign-up.php">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-collection text-info text-sm opacity-10"></i>
@@ -155,7 +152,7 @@
                   <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="./assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                        <img src="assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
@@ -173,7 +170,7 @@
                   <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="./assets/img/small-logos/logo-spotify.svg"
+                        <img src="assets/img/small-logos/logo-spotify.svg"
                           class="avatar avatar-sm bg-gradient-dark  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
@@ -316,11 +313,11 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="./assets/js/core/popper.min.js"></script>
-  <script src="./assets/js/core/bootstrap.min.js"></script>
-  <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="./assets/js/plugins/chartjs.min.js"></script>
+  <script src="assets/js/core/popper.min.js"></script>
+  <script src="assets/js/core/bootstrap.min.js"></script>
+  <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="assets/js/plugins/chartjs.min.js"></script>
   <script>
     var ctx1 = document.getElementById("chart-line").getContext("2d");
 
@@ -414,11 +411,11 @@
     }
   </script>
   <!-- B3D -->
-    <script type="text/javascript" src="../Javascript/myscripts.js"></script>
+    <script type="text/javascript" src="Javascript/myscripts.js"></script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/argon-dashboard.min.js?v=2.0.1"></script>
+  <script src="assets/js/argon-dashboard.min.js?v=2.0.1"></script>
 </body>
 
 </html>
