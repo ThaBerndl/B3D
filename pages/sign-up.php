@@ -1,19 +1,10 @@
-<!--
-=========================================================
-* Argon Dashboard 2 - v2.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-
 <?php
+
+    session_start();
+    if (!$_SESSION['auth']) {
+        header("location: sign-in.php");
+    }
+
     require_once("../PHP/class/User.php");
 
     $vorname = isset($_POST['vorname']) ? $_POST['vorname'] : '';
@@ -21,56 +12,58 @@
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $pw = isset($_POST['password']) ? $_POST['password'] : '';
     $errormsg = '';
-?>
-<?php
-if(isset($_POST["submit"]))
-{
-    if(isset($_POST["checkTerms"]))
+
+    if(isset($_POST["submit"]))
     {
-        if($username != '')
+        if(isset($_POST["checkTerms"]))
         {
-            if($pw != '')
+            if($username != '')
             {
-                if($vorname != '')
+                if($pw != '')
                 {
-                    if($nachname != '')
+                    if($vorname != '')
                     {
-                        $user = new User($username, $vorname, $nachname, $pw);
-                        //User has been created
-                        if($user->insertUser())
+                        if($nachname != '')
                         {
-                            //Weiterleiten zur dashboard seite
+                            $user = new User($username, $vorname, $nachname, $pw);
+                            //User has been created
+                            if($user->insertUser())
+                            {
+                                $_SESSION['nickname'] = $user->nickname;
+                                $_SESSION['user_id'] = $user->id;
+                                $_SESSION['auth'] = true;
+                                header('location: new-game.php');
+                            }
+                            else
+                            {
+                                $errormsg = "The username is already in use!";
+                            }
                         }
                         else
                         {
-                            $errormsg = "The username is already in use!";
+                            $errormsg = "please enter your last name!";
                         }
                     }
                     else
                     {
-                        $errormsg = "please enter your last name!";
+                        $errormsg = "please enter your first name!";
                     }
                 }
                 else
                 {
-                    $errormsg = "please enter your first name!";
+                    $errormsg = "please enter a password!";
                 }
             }
             else
             {
-                $errormsg = "please enter a password!";
+                $errormsg = "please enter a username!";
             }
         }
         else
         {
-            $errormsg = "please enter a username!";
+            $errormsg = "Dont forget to agree to our Terms and Conditions!";
         }
     }
-    else
-    {
-        $errormsg = "Dont forget to agree to our Terms and Conditions!";
-    }
-}
 ?>
 
 <!DOCTYPE html>

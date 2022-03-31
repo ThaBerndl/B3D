@@ -7,6 +7,7 @@ class User extends DB
     public $nName;
     public $nickname;
     public $passwort;
+    public $newPasswort;
 
     public function __construct($iNickname=null, $iVName=null, $iNName=null, $iPasswort=null)
     {
@@ -36,7 +37,8 @@ class User extends DB
     public function insertUser()
     {
         try {
-            if(!$this->checkUserExists())
+            $this->newPasswort = $this->passwort;
+            if(!$this->getUser())
             {
                 $stmt = $this->pdo->prepare("INSERT INTO User (vName, nName, nickname, passwort) VALUES (?,?,?,?)");
                 $stmt->bindParam(1, $this->vName, PDO::PARAM_STR);
@@ -49,33 +51,24 @@ class User extends DB
             }
             else
             {
-                return false;
+                if($this->passwort == null || $this->passwort == '')
+                {
+                    $stmt = $this->pdo->prepare("update User Set passwort = ? Where nickname = ?");
+                    $stmt->bindParam(1, $this->newPasswort, PDO::PARAM_STR);
+                    $stmt->bindParam(2, $this->nickname, PDO::PARAM_STR);
+                    $stmt->execute();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
 
 
         } catch (Exception $e)
         {
             echo "<script>alert('$e');</script>";
-        }
-    }
-
-    public function checkUserExists()
-    {
-        try
-        {
-            $stmt = $this->pdo->prepare("select * from User where lower(nickname) = lower(?)");
-            $stmt->bindParam(1, $this->nickname, PDO::PARAM_STR);
-            $stmt->execute();
-
-            //27.03 NALU: Wenn der User gefunden wird, wird true zurückgegeben
-            while($row = $stmt->fetch())
-            {
-                return true;
-            }
-            return false;
-        } catch (Exception $e)
-        {
-            echo $e;
         }
     }
 
