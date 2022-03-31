@@ -167,13 +167,14 @@
                                                                 </td>
                                                                 <td>
                                                                     <?php
-                                                                    echo "<select class=\"form-control\" id=\"animalList\" required>";
+                                                                    echo "<input type='text' list='tiere' class=\"form-control\" id=\"animalList\" required>";
+                                                                    echo "<datalist id=\"tiere\">";
                                                                     $tiere = Tier::getAllTiere();
                                                                     while($tier = $tiere->fetch())
                                                                     {
                                                                         echo "<option>".$tier['bez']."</option>";
                                                                     }
-                                                                    echo "</select>"
+                                                                    echo "</datalist>";
                                                                     ?>
                                                                 </td>
                                                             </tr>
