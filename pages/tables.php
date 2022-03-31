@@ -1,17 +1,10 @@
-<!--
-=========================================================
-* Argon Dashboard 2 - v2.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
+<?php
+    session_start();
+    if (!$_SESSION['auth'])
+    {
+        header("location: sign-in.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +30,6 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.1" rel="stylesheet" />
     <link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet" />
-    <?php session_start();?>
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
