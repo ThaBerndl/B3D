@@ -37,6 +37,15 @@
     <?php
     require_once '../PHP/leftHor_Navbar.php';
     require_once '../PHP/getClasses.php';
+
+    if (isset($_GET['addAnimal'])){
+        $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
+        $tierzuord = new Tierzuord();
+        $tierzuord->parcour_id = $parcour_ID;
+        $tierzuord->getnextPos();
+        $tierzuord->insertTierZuord();
+        echo "BESTTEST";
+    }
   ?>
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
@@ -94,8 +103,7 @@
                             <div class="table-responsive">
                                 <table class="table align-items-center justify-content-center mb-0">
                                     <tbody>
-                                        <!-- wule: either text input or select option is required in order to submit the form -->
-                                        <form id="choose_parcour" action="tables.php" method="post">
+                                        <form id="choose_parcour" action="tables.php" method="get">
                                             <tr scope="row">
                                                 <td colspan="4">
                                                     <label for="example-text-input" class="form-control-label">New
@@ -108,22 +116,20 @@
                                                 <td colspan="4">
                                                     <label for="example-text-input" class="form-control-label">Or chose
                                                         Parcour</label>
-                                                    <select class="form-select" aria-label="Default select example" onchange="reload()" id="Orte">
+                                                    <select class="form-select" aria-label="Default select example" onchange="reload()" id="Orte" name="ort">
                                                         <option selected>- chose -</option>
                                                         <?php
                                                         $parcours = Ort::getAllOrte();
-                                                        $cnt = 0;
                                                         while ($parcour = $parcours->fetch()) {
-                                                            $cnt++;
-                                                            if (isset($_GET['ort']) && $_GET['ort'] == $parcour['ort_id']){
-                                                                echo "<option value = $cnt selected='selected'> ".$parcour['bez']."</option >";
+                                                            if (isset($_GET['ort']) && $_GET['ort'] == $parcour['bez']){
+                                                                echo "<option value = ".$parcour['bez']." selected='selected'> ".$parcour['bez']."</option >";
                                                             } else{
-                                                                echo "<option value = $cnt > ".$parcour['bez']."</option >";
+                                                                echo "<option value = ".$parcour['bez']." > ".$parcour['bez']."</option >";
                                                             }
                                                         }
                                                         ?>
                                                     </select>
-                                                    <select class="form-select" aria-label="Default select example" onchange="">
+                                                    <select class="form-select" aria-label="Default select example" onchange="" name="parcour">
                                                         <option selected>- chose -</option>
                                                         <?php
                                                         if (isset($_GET['ort'])){
@@ -131,59 +137,54 @@
                                                         }else{
                                                             $parcours = Parcour::getAllParcours();
                                                         }
-                                                        $cnt = 0;
                                                         while ($parcour = $parcours->fetch()) {
-                                                            $cnt++;
-                                                            echo "<option value = $cnt> ".$parcour['bez']."</option >";
+                                                            if (isset($_GET['parcour']) && $_GET['parcour'] == $parcour['bez']) {
+                                                                echo "<option value = " . $parcour['bez'] . " selected='selected'> " . $parcour['bez'] . "</option >";
+                                                            } else{
+                                                                echo "<option value = " . $parcour['bez'] . "> " . $parcour['bez'] . "</option >";
+                                                            }
                                                         }
                                                         ?>
                                                     </select
                                                   </td>
                                                     <hr id="tables-hr">
-                                            <tr>
-                                                <td id=addAnimalBtn>
-                                                    <button type="submit"
-                                                            class="btn btn-outline-success align-right">Add/Edit Parcour</button>
-                                                </td>
+                                                <tr>
+                                                    <td id=addParcourBtn>
+                                                        <button type="submit"
+                                                                class="btn btn-outline-success align-right">Add/Edit Parcour</button>
+                                                    </td>
+                                                </tr>
                                             </tr>
-                                            </tr>
-                                        </form>
-                                        <form id="edit_parcour" action="tables.php" method="post">
                                             <tr>
                                                 <table class="table-responsive">
                                                     <table class="table align-items-center justify-content-center mb-0">
                                                         <tbody>
+
+                                                            <?php
+                                                            if (isset($_GET['parcour'])){
+                                                                $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
+                                                                $stmt = Tierzuord::getAllTiereFromParcour($parcour_ID);
+                                                                while ($data = $stmt->fetch()) {?>
                                                             <tr>
                                                                 <td>
-                                                                <th scope="row" class="animalNr">Tier 1</th>
+                                                                <th scope="row" class="animalNr">#<?=$data['pos']?></th>
                                                                 </td>
                                                                 <td>
-                                                                    <?php
-                                                                    echo "<input type='text' list='tiere' class=\"form-control\" id=\"animalList\" required>";
-                                                                    echo "<datalist id=\"tiere\">";
-                                                                    $tiere = Tier::getAllTiere();
-                                                                    while($tier = $tiere->fetch())
-                                                                    {
-                                                                        echo "<option>".$tier['bez']."</option>";
+                                                                <input type='text' list='tiere' class="form-control" id="animalList" value='<?=$data['tier']?>' required>
+                                                                <datalist id="tiere">
+                                                                <?php
+                                                                $tiere = Tier::getAllTiere();
+                                                                while ($tier = $tiere->fetch()) {
+                                                                    echo "<option>" . $tier['bez'] . "</option>";
+                                                                }
+                                                                echo "</datalist>";
                                                                     }
-                                                                    echo "</datalist>";
-                                                                    ?>
+                                                                ?>
                                                                 </td>
+                                                                <?php
+                                                                }
+                                                                ?>
                                                             </tr>
-                                                            <!-- <tr>
-                                                                <td>
-                                                                <th scope="row" class="animalNr">Tier 2</th>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-control" id="animalList">
-                                                                        <option>Einhorn</option>
-                                                                        <option>Blobfisch</option>
-                                                                        <option>Mücke</option>
-                                                                        <option>Regenwurm</option>
-                                                                        <option>Niffler</option>
-                                                                    </select>
-                                                                </td>
-                                                            </tr> -->
                                                         </tbody>
                                                     </table>
                                                 </table>
@@ -191,8 +192,8 @@
                                             <hr id="tables-hr">
                                             <tr>
                                                 <td id=addAnimalBtn>
-                                                    <button type="button"
-                                                        class="btn btn-outline-success align-right">Add Animal</button>
+                                                    <button type="submit"
+                                                        class="btn btn-outline-success align-right" name="addAnimal">Add Animal</button>
                                                 </td>
                                             </tr>
                                             <hr id="tables-save-hr">
@@ -201,9 +202,10 @@
                                                     <button id="saveParcour" type="button" class="btn bg-gradient-success">Save</button>
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        </form>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">

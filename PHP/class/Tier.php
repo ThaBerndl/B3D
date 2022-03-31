@@ -19,4 +19,15 @@ class Tier extends DB{
         $stmt->execute();
         return $stmt;
     }
+
+    public static function getTierfromBez($bez){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("SELECT * FROM Tier where bez = ?");
+        $stmt->bindParam(1,$bez,PDO::PARAM_STR);
+        $stmt->execute();
+        while($data = $stmt->fetch())
+        {
+            return new Tier($data['tier_id'],$data['bez']);
+        }
+    }
 }
