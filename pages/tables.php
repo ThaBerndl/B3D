@@ -103,16 +103,16 @@
                                         <form id="choose_parcour" action="tables.php" method="get">
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Add new location and parcour</label>
+                                                    <label for="example-text-input" class="form-control-label">Parcour and Location</label>
                                                     <input class="form-control" type="text" value="enter location.."
-                                                        id="example-text-input">
+                                                        id="loc-parc-input">
                                                         <input class="form-control" type="text" value="enter parcour.."
                                                         id="example-text-input">
                                                 </td>
                                             </tr>
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Chose
+                                                    <label for="example-text-input" class="form-control-label">Or chose
                                                         location and parcour</label>
                                                     <select class="form-select" aria-label="Default select example" onchange="reload()" id="Orte" name="ort">
                                                         <option selected>- chose -</option>
@@ -126,6 +126,7 @@
                                                             }
                                                         }
                                                         ?>
+                                                        <br>
                                                     </select>
                                                     <select class="form-select" aria-label="Default select example" onchange="" name="parcour">
                                                         <option selected>- chose -</option>
