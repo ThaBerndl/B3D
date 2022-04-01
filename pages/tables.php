@@ -44,7 +44,21 @@
         $tierzuord->parcour_id = $parcour_ID;
         $tierzuord->getnextPos();
         $tierzuord->insertTierZuord();
-        echo "BESTTEST";
+    }
+    if(isset($_GET['saveParcour'])){
+        $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
+        $keys = array_keys($_GET);
+        foreach ($keys as $key) {
+            if(substr($key,0,4) == 'Tier'){
+                $stringArr = explode("_",$_GET[$key]);
+                $tier = Tier::getTierfromBez($stringArr[0]);
+                $tierzuord = new Tierzuord();
+                $tierzuord->parcour_id = $parcour_ID;
+                $tierzuord->pos = $stringArr[1];
+                $tierzuord->updateTier();
+            }
+        }
+        //header("location: dashboard.php");
     }
   ?>
     <main class="main-content position-relative border-radius-lg ">
@@ -170,7 +184,7 @@
                                                                 <th scope="row" class="animalNr">#<?=$data['pos']?></th>
                                                                 </td>
                                                                 <td>
-                                                                <input type='text' list='tiere' class="form-control" id="animalList" value='<?=$data['tier']?>' required>
+                                                                <input type='text' list='tiere' class="form-control" name="Tier_<?=$data['pos']?>" value='<?=$data['tier']?>_<?=$data['pos']?>'>
                                                                 <datalist id="tiere">
                                                                 <?php
                                                                 $tiere = Tier::getAllTiere();
@@ -199,7 +213,7 @@
                                             <hr id="tables-save-hr">
                                             <tr>
                                                 <td>
-                                                    <button id="saveParcour" type="button" class="btn bg-gradient-success">Save</button>
+                                                    <button id="saveParcour" type="submit" name="saveParcour" class="btn bg-gradient-success">Save</button>
                                                 </td>
                                             </tr>
                                         </form>

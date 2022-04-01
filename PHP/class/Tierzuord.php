@@ -38,17 +38,15 @@ class Tierzuord extends DB{
     }
 
     public function getnextPos(){
-        $stmt = $this->pdo->prepare("select max(tz.pos) as pos
-                                    from Tierzuord tz,
-                                         parcour p,
-                                         tier t
-                                   where tz.parcour_id = p.parcour_id
-                                     and tz.tier_id = t.tier_id
-                                     and p.bez = ?");
+        $stmt = $this->pdo->prepare("select max(pos) as pos 
+                                                  from Tierzuord tz
+                                                  left join Tier t on t.tier_id = tz.tier_id
+                                                  left join Parcour p on p.parcour_id = tz.parcour_id
+                                                   and p.parcour_id = ?;");
         $stmt->bindParam(1,$this->parcour_id, PDO::PARAM_INT);
         $stmt->execute();
         while($data = $stmt->fetch()){
-            $this->pos = $data['pos']+1;
+            $this->pos = ($data['pos']+1);
             return;
         }
     }
@@ -56,7 +54,14 @@ class Tierzuord extends DB{
     public function insertTierZuord(){
         $stmt = $this->pdo->prepare("insert into Tierzuord(parcour_id,pos) values (?,?)");
         $stmt->bindParam(1,$this->parcour_id,PDO::PARAM_INT);
-        $stmt->bindParam(1,$this->pos,PDO::PARAM_INT);
+        $stmt->bindParam(2,$this->pos,PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function updateTier(){
+        $stmt = $this->pdo->prepare("update tierzuord set tier_id = 1 where parcour_id = ? and pos = ?");
+        $stmt->bindParam(1,$this->parcour_id,PDO::PARAM_INT);
+        $stmt->bindParam(2,$this->pos,PDO::PARAM_INT);
         $stmt->execute();
     }
 }
