@@ -173,7 +173,7 @@
                                                                 <th scope="row" class="animalNr">#<?=$data['pos']?></th>
                                                                 </td>
                                                                 <td>
-                                                                <input type='text' list='tiere' class="form-control" name="Tier_<?=$data['pos']?>" value='<?=$data['tier']?>_<?=$data['pos']?>'>
+                                                                <input type='text' list='tiere' class="form-control" name="Tier_<?=$data['pos']?>" value='<?=$data['tier']?>?>'>
                                                                 <datalist id="tiere">
                                                                 <?php
                                                                 $tiere = Tier::getAllTiere();
