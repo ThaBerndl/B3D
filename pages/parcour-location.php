@@ -100,7 +100,7 @@
                             <div class="table-responsive">
                                 <table class="table align-items-center justify-content-center mb-0">
                                     <tbody>
-                                        <form id="choose_parcour" action="tables.php" method="get">
+                                        <form id="choose_parcour" action="parcour-location.php" method="get">
                                             <tr scope="row">
                                                 <td colspan="4">
                                                     <label for="example-text-input" class="form-control-label">Parcour and Location</label>
@@ -325,7 +325,7 @@
         function reload()
         {
             var ort = document.getElementById('Orte');
-            self.location='tables.php?ort=' + ort.value;
+            self.location='parcour-location.php?ort=' + ort.value;
         }
     </script>
     <!-- Github buttons -->
