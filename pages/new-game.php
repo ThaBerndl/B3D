@@ -1,9 +1,9 @@
 <?php
-    /*session_start();
+    session_start();
     if (!$_SESSION['auth'])
     {
         header("location: sign-in.php");
-    }*/
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
