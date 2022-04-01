@@ -134,7 +134,7 @@
                   <div class="form-check form-check-info text-start">
                     <input class="form-check-input" name="checkTerms" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
-                      I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
+                      I agree the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="text-dark font-weight-bolder">Terms and Conditions</a>
                     </label>
                   </div>
                   <div class="text-center">
