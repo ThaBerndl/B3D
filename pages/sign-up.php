@@ -1,9 +1,5 @@
 <?php
-
     session_start();
-    if (!$_SESSION['auth']) {
-        header("location: sign-in.php");
-    }
 
     require_once("../PHP/class/User.php");
 
