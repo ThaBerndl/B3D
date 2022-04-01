@@ -7,7 +7,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,13 +30,11 @@
     <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.1" rel="stylesheet" />
     <link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet" />
 </head>
-
 <body class="g-sidenav-show   bg-gray-100">
     <div class="min-height-300 bg-success position-absolute w-100"></div>
     <?php
     require_once '../PHP/leftHor_Navbar.php';
     require_once '../PHP/getClasses.php';
-
     if (isset($_GET['addAnimal'])){
         $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
         $tierzuord = new Tierzuord();
@@ -106,15 +103,17 @@
                                         <form id="choose_parcour" action="tables.php" method="get">
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Chose or enter location</label>
-                                                    <input class="form-control" type="text" value="enter parcour.."
+                                                    <label for="example-text-input" class="form-control-label">Add new location and parcour</label>
+                                                    <input class="form-control" type="text" value="enter location.."
+                                                        id="example-text-input">
+                                                        <input class="form-control" type="text" value="enter parcour.."
                                                         id="example-text-input">
                                                 </td>
                                             </tr>
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Chose or enter
-                                                        Parcour</label>
+                                                    <label for="example-text-input" class="form-control-label">Chose
+                                                        location and parcour</label>
                                                     <select class="form-select" aria-label="Default select example" onchange="reload()" id="Orte" name="ort">
                                                         <option selected>- chose -</option>
                                                         <?php
@@ -158,7 +157,6 @@
                                                 <table class="table-responsive">
                                                     <table class="table align-items-center justify-content-center mb-0">
                                                         <tbody>
-
                                                             <?php
                                                             if (isset($_GET['parcour'])){
                                                                 $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
@@ -334,5 +332,4 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
 </body>
-
 </html>
