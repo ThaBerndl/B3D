@@ -21,13 +21,13 @@ echo "    <aside
                       <span class=\"nav-link-text ms-1\">New Game</span>
                     </a>
                   </li>
-                <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"../pages/dashboard.php\">
+                  <li class=\"nav-item\">
+                    <a class=\"nav-link \" href=\"../pages/enter-point-score.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-tv-2 text-success text-sm opacity-10\"></i>
+                            <i class=\"ni ni-calendar-grid-58 text-warning text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Dashboard</span>
+                        <span class=\"nav-link-text ms-1\">Point Score</span>
                     </a>
                 </li>
                 <li class=\"nav-item\">
@@ -40,12 +40,12 @@ echo "    <aside
                     </a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"../pages/enter-point-score.php\">
+                    <a class=\"nav-link \" href=\"../pages/parcour-favourites.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-calendar-grid-58 text-warning text-sm opacity-10\"></i>
+                            <i class=\"ni ni-favourite-28 text-warning text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Pointsystem</span>
+                        <span class=\"nav-link-text ms-1\">Parcour Favourites</span>
                     </a>
                 </li>
                 <li class=\"nav-item\">
@@ -94,6 +94,27 @@ echo "    <aside
                             <i class=\"ni ni-collection text-info text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Sign Up</span>
+                    </a>
+                </li>
+                <li class=\"nav-item mt-3\">
+                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Testing</h6>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"../pages/dashboard.php\">
+                        <div
+                            class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                            <i class=\"ni ni-tv-2 text-success text-sm opacity-10\"></i>
+                        </div>
+                        <span class=\"nav-link-text ms-1\">Dashboard/Dummy Page</span>
+                    </a>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"../pages/scoreboard.php\">
+                        <div
+                            class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                            <i class=\"ni ni-tv-2 text-success text-sm opacity-10\"></i>
+                        </div>
+                        <span class=\"nav-link-text ms-1\">Scoreboard</span>
                     </a>
                 </li>
             </ul>
