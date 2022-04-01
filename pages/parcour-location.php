@@ -44,9 +44,9 @@
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white"
                                 href="javascript:;">Pages</a></li>
-                        <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables</li>
+                        <li class="breadcrumb-item text-sm text-white active" aria-current="page">Parcour & Location</li>
                     </ol>
-                    <h6 class="font-weight-bolder text-white mb-0">Tables</h6>
+                    <h6 class="font-weight-bolder text-white mb-0">Parcour & Location</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -87,14 +87,14 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Create Parcour</h6>
+                            <h6>Parcour & Location</h6>
                             <div class="table-responsive">
                                 <table class="table align-items-center justify-content-center mb-0">
                                     <tbody>
                                         <form id="choose_parcour" action="parcour-location.php" method="get">
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Parcour and Location</label>
+                                                    <label for="example-text-input" class="form-control-label">Add new parcour & location</label>
                                                     <input class="form-control" type="text" value="enter location.."
                                                         id="loc-parc-input">
                                                         <input class="form-control" type="text" value="enter parcour.."
@@ -104,7 +104,7 @@
                                             <tr scope="row">
                                                 <td colspan="4">
                                                     <label for="example-text-input" class="form-control-label">Or chose
-                                                        location and parcour</label>
+                                                        location & parcour</label>
                                                     <select class="form-select" aria-label="Default select example" onchange="reload()" id="Orte" name="ort">
                                                         <option selected>- chose -</option>
                                                         <?php
