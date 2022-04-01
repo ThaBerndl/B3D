@@ -98,15 +98,14 @@
                                         <form id="choose_parcour" action="tables.php" method="post">
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">New
-                                                        Parcour</label>
+                                                    <label for="example-text-input" class="form-control-label">Chose or enter location</label>
                                                     <input class="form-control" type="text" value="enter parcour.."
                                                         id="example-text-input">
                                                 </td>
                                             </tr>
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Or chose
+                                                    <label for="example-text-input" class="form-control-label">Chose or enter
                                                         Parcour</label>
                                                     <select class="form-select" aria-label="Default select example" onchange="reload()" id="Orte">
                                                         <option selected>- chose -</option>
@@ -170,20 +169,6 @@
                                                                     ?>
                                                                 </td>
                                                             </tr>
-                                                            <!-- <tr>
-                                                                <td>
-                                                                <th scope="row" class="animalNr">Tier 2</th>
-                                                                </td>
-                                                                <td>
-                                                                    <select class="form-control" id="animalList">
-                                                                        <option>Einhorn</option>
-                                                                        <option>Blobfisch</option>
-                                                                        <option>Mücke</option>
-                                                                        <option>Regenwurm</option>
-                                                                        <option>Niffler</option>
-                                                                    </select>
-                                                                </td>
-                                                            </tr> -->
                                                         </tbody>
                                                     </table>
                                                 </table>
