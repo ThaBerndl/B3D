@@ -1,9 +1,9 @@
 <?php
-    session_start();
+    /*session_start();
     if (!$_SESSION['auth'])
     {
         header("location: sign-in.php");
-    }
+    }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,83 +72,90 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
       <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                    <h5 class="font-weight-bolder">
-                      $53,000
-                    </h5>
-                    <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+55%</span>
-                      since yesterday
-                    </p>
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+              <div class="card">
+                  <div class="card-body p-3">
+                      <div class="row">
+                          <div class="col-8">
+                              <div class="numbers">
+                                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Spieler 1</p>
+                                  <h3 class="font-weight-bolder">
+                                      10 Punkte
+                                  </h3>
+                                  <h6>
+                                      15/30 Treffer
+                                  </h6>
+                                  <h6 class="text-success">
+                                      23%
+                                  </h6>
+                              </div>
+                          </div>
+                          <div class="col-4 text-end">
+                              <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                                  <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
               </div>
-            </div>
           </div>
-        </div>
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+              <div class="card">
+                  <div class="card-body p-3">
+                      <div class="row">
+                          <div class="col-8">
+                              <div class="numbers">
+                                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Spieler 1</p>
+                                  <h3 class="font-weight-bolder">
+                                      10 Punkte
+                                  </h3>
+                                  <h6>
+                                      15/30 Treffer
+                                  </h6>
+                                  <h6 class="text-success">
+                                      23%
+                                  </h6>
+                              </div>
+                          </div>
+                          <div class="col-4 text-end">
+                              <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                                  <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+              <div class="card">
+                  <div class="card-body p-3">
+                      <div class="row">
+                          <div class="col-8">
+                              <div class="numbers">
+                                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Spieler 1</p>
+                                  <h3 class="font-weight-bolder">
+                                      10 Punkte
+                                  </h3>
+                                  <h6>
+                                      15/30 Treffer
+                                  </h6>
+                                  <h6 class="text-success">
+                                      23%
+                                  </h6>
+                              </div>
+                          </div>
+                          <div class="col-4 text-end">
+                              <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                                  <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
         
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
-                    <h5 class="font-weight-bolder">
-                      +3,462
-                    </h5>
-                    <p class="mb-0">
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                      since last quarter
-                    </p>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-                    <h5 class="font-weight-bolder">
-                      $103,430
-                    </h5>
-                    <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                    </p>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
+
       <div class="row mt-4">
         <div class="col-lg-7 mb-lg-0 mb-4">
           <div class="card z-index-2 h-100">
@@ -218,7 +225,7 @@
           <div class="card ">
             <div class="card-header pb-0 p-3">
               <div class="d-flex justify-content-between">
-                <h6 class="mb-2">Sales by Country</h6>
+                <h6 class="mb-2">Daten pro Spieler</h6>
               </div>
             </div>
             <div class="table-responsive">
@@ -231,14 +238,14 @@
                           <img src="../assets/img/icons/flags/US.png" alt="Country flag">
                         </div>
                         <div class="ms-4">
-                          <p class="text-xs font-weight-bold mb-0">Country:</p>
+                          <p class="text-xs font-weight-bold mb-0">Tier:</p>
                           <h6 class="text-sm mb-0">United States</h6>
                         </div>
                       </div>
                     </td>
                     <td>
                       <div class="text-center">
-                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
+                        <p class="text-xs font-weight-bold mb-0">Punkte:</p>
                         <h6 class="text-sm mb-0">2500</h6>
                       </div>
                     </td>
