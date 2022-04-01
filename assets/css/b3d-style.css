@@ -21,3 +21,7 @@
 .animalNr{
     font-size: small;
 }
+#loc-parc-input, #Orte
+{
+    margin-bottom: 10px;
+}
