@@ -22,12 +22,29 @@ class Parcour extends DB{
         return $stmt;
     }
 
-    public static function getAllParcoursWithOrt($ort_id)
+    public static function getAllParcoursWithOrt($ortbez)
     {
         $db = new DB();
-        $stmt = $db->pdo->prepare("Select * from Parcour where ort_id = ?");
-        $stmt->bindParam(1,$ort_id, PDO::PARAM_INT);
+        $stmt = $db->pdo->prepare("Select p.* from Parcour p, Ort o where o.ort_id = p.ort_id and o.bez = ?");
+        $stmt->bindParam(1,$ortbez, PDO::PARAM_STR);
         $stmt->execute();
         return $stmt;
+    }
+
+    public static function getIDWithNames($parcourbez, $ortbez){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("select p.* 
+                                              from Parcour p, 
+                                                   Ort o
+                                             where p.ort_id = o.ort_id
+                                               and p.bez = ?
+                                               and o.bez = ?");
+        $stmt->bindParam(1,$parcourbez, PDO::PARAM_STR);
+        $stmt->bindParam(2,$ortbez, PDO::PARAM_STR);
+        $stmt->execute();
+        while($data = $stmt->fetch())
+        {
+            return $data['parcour_id'];
+        }
     }
 }
