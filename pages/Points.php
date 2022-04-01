@@ -2,63 +2,37 @@
     session_start();
     if (!$_SESSION['auth'])
     {
-        header("location: sign-in.php");
+        //header("location: sign-in.php");
     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/branding/circle logo_new.png">
     <title>
         B3D - Skillboard | Tables
     </title>
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <!-- Nucleo Icons -->
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- CSS Files -->
-    <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.1" rel="stylesheet" />
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet" />
+    <?php
+        include "../PHP/header.php";
+    ?>
 </head>
-
 <body class="g-sidenav-show   bg-gray-100">
     <div class="min-height-300 bg-success position-absolute w-100"></div>
     <?php
     require_once '../PHP/leftHor_Navbar.php';
     require_once '../PHP/getClasses.php';
-
     if (isset($_GET['addAnimal'])){
         $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
         $tierzuord = new Tierzuord();
         $tierzuord->parcour_id = $parcour_ID;
         $tierzuord->getnextPos();
         $tierzuord->insertTierZuord();
-    }
-    if(isset($_GET['saveParcour'])){
-        $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
-        $keys = array_keys($_GET);
-        foreach ($keys as $key) {
-            if(substr($key,0,4) == 'Tier'){
-                $stringArr = explode("_",$_GET[$key]);
-                $tier = Tier::getTierfromBez($stringArr[0]);
-                $tierzuord = new Tierzuord();
-                $tierzuord->parcour_id = $parcour_ID;
-                $tierzuord->pos = $stringArr[1];
-                $tierzuord->updateTier();
-            }
-        }
-        //header("location: dashboard.php");
+        echo "BESTTEST";
     }
   ?>
     <main class="main-content position-relative border-radius-lg ">
@@ -113,67 +87,42 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Create Parcour</h6>
+                            <h5 class="text-center">Treffer</h5>
                             <div class="table-responsive">
                                 <table class="table align-items-center justify-content-center mb-0">
                                     <tbody>
-                                        <form id="choose_parcour" action="tables.php" method="get">
+                                        <form id="choose_parcour" action="parcour-location.php" method="get">
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">New
-                                                        Parcour</label>
-                                                    <input class="form-control" type="text" value="enter parcour.."
-                                                        id="example-text-input">
+                                                    <h6 class="text-center">
+                                                        <button type="button" class="btn btn-outline-success align-right" name="addAnimal">< - - </button>
+                                                            Tier X
+                                                        <button type="button" class="btn btn-outline-success align-right" name="addAnimal"> - - ></button>
+                                                    </h6>
+                                                    <div>
+                                                        <label class="col-sm-4">
+                                                            <label class="btn btn-dark disabled">Schnatotea</label>
+                                                        </label>
+                                                        <label class="btn btn-youtube disabled">Over 9000</label>
+                                                    </div>
+                                                    <div>
+                                                        <label class="col-sm-4">
+                                                            <label class="btn btn-dark disabled">Wurmsdabber</label>
+                                                        </label>
+                                                        <label class="btn btn-github disabled">144</label>
+                                                    </div>
+                                                    <div>
+                                                        <label class="col-sm-4">
+                                                            <label class="btn btn-dark disabled">Fresh Berndl</label>
+                                                        </label>
+                                                        <label class="btn btn-github disabled">132</label>
+                                                    </div>
                                                 </td>
-                                            </tr>
-                                            <tr scope="row">
-                                                <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Or chose
-                                                        Parcour</label>
-                                                    <select class="form-select" aria-label="Default select example" onchange="reload()" id="Orte" name="ort">
-                                                        <option selected>- chose -</option>
-                                                        <?php
-                                                        $parcours = Ort::getAllOrte();
-                                                        while ($parcour = $parcours->fetch()) {
-                                                            if (isset($_GET['ort']) && $_GET['ort'] == $parcour['bez']){
-                                                                echo "<option value = ".$parcour['bez']." selected='selected'> ".$parcour['bez']."</option >";
-                                                            } else{
-                                                                echo "<option value = ".$parcour['bez']." > ".$parcour['bez']."</option >";
-                                                            }
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                    <select class="form-select" aria-label="Default select example" onchange="" name="parcour">
-                                                        <option selected>- chose -</option>
-                                                        <?php
-                                                        if (isset($_GET['ort'])){
-                                                            $parcours = Parcour::getAllParcoursWithOrt($_GET['ort']);
-                                                        }else{
-                                                            $parcours = Parcour::getAllParcours();
-                                                        }
-                                                        while ($parcour = $parcours->fetch()) {
-                                                            if (isset($_GET['parcour']) && $_GET['parcour'] == $parcour['bez']) {
-                                                                echo "<option value = " . $parcour['bez'] . " selected='selected'> " . $parcour['bez'] . "</option >";
-                                                            } else{
-                                                                echo "<option value = " . $parcour['bez'] . "> " . $parcour['bez'] . "</option >";
-                                                            }
-                                                        }
-                                                        ?>
-                                                    </select
-                                                  </td>
-                                                    <hr id="tables-hr">
-                                                <tr>
-                                                    <td id=addParcourBtn>
-                                                        <button type="submit"
-                                                                class="btn btn-outline-success align-right">Add/Edit Parcour</button>
-                                                    </td>
-                                                </tr>
                                             </tr>
                                             <tr>
                                                 <table class="table-responsive">
                                                     <table class="table align-items-center justify-content-center mb-0">
                                                         <tbody>
-
                                                             <?php
                                                             if (isset($_GET['parcour'])){
                                                                 $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
@@ -181,10 +130,10 @@
                                                                 while ($data = $stmt->fetch()) {?>
                                                             <tr>
                                                                 <td>
-                                                                <th scope="row" class="animalNr">#<?=$data['pos']?></th>
+                                                                    <th scope="row" class="animalNr">#<?=$data['pos']?></th>
                                                                 </td>
                                                                 <td>
-                                                                <input type='text' list='tiere' class="form-control" name="Tier_<?=$data['pos']?>" value='<?=$data['tier']?>_<?=$data['pos']?>'>
+                                                                <input type='text' list='tiere' class="form-control" id="animalList" value='<?=$data['tier']?>' required>
                                                                 <datalist id="tiere">
                                                                 <?php
                                                                 $tiere = Tier::getAllTiere();
@@ -205,15 +154,35 @@
                                             </tr>
                                             <hr id="tables-hr">
                                             <tr>
-                                                <td id=addAnimalBtn>
-                                                    <button type="submit"
-                                                        class="btn btn-outline-success align-right" name="addAnimal">Add Animal</button>
+                                                <td id=hitCount>
+                                                    <input type="button" class="btn btn-outline-success align-right" name="addAnimal" value="1">
+                                                </td>
+                                                <td id=hitCount>
+                                                    <input type="button" class="btn btn-outline-success align-right" name="addAnimal" value="2">
+                                                </td>
+                                                <td id=hitCount>
+                                                    <input type="button" class="btn btn-outline-success align-right" name="addAnimal" value="3">
+                                                </td>
+                                                <td id=hitCount>
+                                                    <input type="button" class="btn btn-outline-success btn-outline-danger on- align-right" name="addAnimal" value="Miss">
                                                 </td>
                                             </tr>
                                             <hr id="tables-save-hr">
                                             <tr>
                                                 <td>
-                                                    <button id="saveParcour" type="submit" name="saveParcour" class="btn bg-gradient-success">Save</button>
+                                                    <input type="button" class="btn btn-outline-success align-right" name="centerHit" value="Center">
+                                                </td><br>
+                                                <td id=hitButton>
+                                                    <input type="button" class="btn btn-outline-success align-right" name="killHit" value="Kill">
+                                                </td><br>
+                                                <td id=hitButton>
+                                                    <input type="button" class="btn btn-outline-success align-right" name="bodyHit" value="Body">
+                                                </td>
+                                            </tr>
+                                            <hr id="tables-save-hr">
+                                            <tr>
+                                                <td>
+                                                    <button id="saveParcour" type="button" class="btn bg-gradient-success">Save</button>
                                                 </td>
                                             </tr>
                                         </form>
@@ -325,31 +294,22 @@
             </div>
         </div>
     </div>
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <?php
+      require "../PHP/body_end.php";
+    ?>
     <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-    </script>
-    <script>
         function reload()
         {
             var ort = document.getElementById('Orte');
-            self.location='tables.php?ort=' + ort.value;
+            self.location='parcour-location.php?ort=' + ort.value;
         }
     </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
 </body>
-
 </html>

@@ -1,4 +1,4 @@
-/*Tables.php*/
+/*parcour-location.php*/
 .box {
     float: left;
     width: 30%;
@@ -20,4 +20,8 @@
 
 .animalNr{
     font-size: small;
+}
+#loc-parc-input, #Orte
+{
+    margin-bottom: 10px;
 }

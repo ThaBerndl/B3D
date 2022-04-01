@@ -1,9 +1,5 @@
 <?php
-
     session_start();
-    if (!$_SESSION['auth']) {
-        header("location: sign-in.php");
-    }
 
     require_once("../PHP/class/User.php");
 
@@ -72,22 +68,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/branding/circle logo_new.png">
   <title>
     B3D -Skillboard | Sign Up
   </title>
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <!-- Nucleo Icons -->
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.1" rel="stylesheet" />
-  
+  <?php
+    include "../PHP/header.php";
+  ?>
 </head>
 
 <body class="">
@@ -138,7 +124,7 @@
                   <div class="form-check form-check-info text-start">
                     <input class="form-check-input" name="checkTerms" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
-                      I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
+                      I agree the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="text-dark font-weight-bolder">Terms and Conditions</a>
                     </label>
                   </div>
                   <div class="text-center">
@@ -168,11 +154,10 @@
     </div>
   </footer>
   <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+
+  <?php
+    require "../PHP/body_end.php";
+  ?>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -182,9 +167,5 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/argon-dashboard.min.js?v=2.0.1"></script>
 </body>
 </html>
