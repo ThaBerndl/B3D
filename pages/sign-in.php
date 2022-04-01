@@ -89,7 +89,7 @@ if(isset($_POST['submit'])) //verarbeitung Forms
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     Don't have an account?
-                    <a href="sign-up.php" class="text-success text-gradient font-weight-bold">Sign up</a>
+                    <a href="./sign-up.php" class="text-success text-gradient font-weight-bold">Sign up</a>
                   </p>
                 </div>
               </div>
