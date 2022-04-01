@@ -1,4 +1,5 @@
 <?php
+    phpinfo();
     session_start();
     if (!$_SESSION['auth'])
     {
@@ -103,16 +104,17 @@
                                         <form id="choose_parcour" action="tables.php" method="get">
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">New
-                                                        Parcour</label>
-                                                    <input class="form-control" type="text" value="enter parcour.."
+                                                    <label for="example-text-input" class="form-control-label">Add new location and parcour</label>
+                                                    <input class="form-control" type="text" value="enter location.."
+                                                        id="example-text-input">
+                                                        <input class="form-control" type="text" value="enter parcour.."
                                                         id="example-text-input">
                                                 </td>
                                             </tr>
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Or chose
-                                                        Parcour</label>
+                                                    <label for="example-text-input" class="form-control-label">Chose
+                                                        location and parcour</label>
                                                     <select class="form-select" aria-label="Default select example" onchange="reload()" id="Orte" name="ort">
                                                         <option selected>- chose -</option>
                                                         <?php
