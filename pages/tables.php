@@ -1,5 +1,4 @@
 <?php
-    phpinfo();
     session_start();
     if (!$_SESSION['auth'])
     {
