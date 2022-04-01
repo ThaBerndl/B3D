@@ -27,9 +27,36 @@ class Tierzuord extends DB{
     public static function getAllTiereFromParcour($parcour_id)
     {
         $db = new DB();
-        $stmt = $db->pdo->prepare("Select * from Tierzuord where parcour_id = ?");
+        $stmt = $db->pdo->prepare("select tz.tierzuord_id,p.bez parcour,t.bez tier,pos
+                                             from Tierzuord tz 
+                                             left outer join Parcour p on p.parcour_id = tz.parcour_id
+                                             left outer join Tier t on t.tier_id = tz.tier_id
+                                            where p.parcour_id = ?");
         $stmt->bindParam(1,$parcour_id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt;
+    }
+
+    public function getnextPos(){
+        $stmt = $this->pdo->prepare("select max(tz.pos) as pos
+                                    from Tierzuord tz,
+                                         parcour p,
+                                         tier t
+                                   where tz.parcour_id = p.parcour_id
+                                     and tz.tier_id = t.tier_id
+                                     and p.bez = ?");
+        $stmt->bindParam(1,$this->parcour_id, PDO::PARAM_INT);
+        $stmt->execute();
+        while($data = $stmt->fetch()){
+            $this->pos = $data['pos']+1;
+            return;
+        }
+    }
+
+    public function insertTierZuord(){
+        $stmt = $this->pdo->prepare("insert into Tierzuord(parcour_id,pos) values (?,?)");
+        $stmt->bindParam(1,$this->parcour_id,PDO::PARAM_INT);
+        $stmt->bindParam(1,$this->pos,PDO::PARAM_INT);
+        $stmt->execute();
     }
 }
