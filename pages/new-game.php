@@ -56,25 +56,25 @@ require_once '../PHP/leftHor_Navbar.php'
                         <div class="table-responsive">
                             <table class="table align-items-center justify-content-center mb-0">
                                 <tbody>
-                                    <!--form-->
-                                    <form id="new_game_form" action="new-game.php" method="get">
-                                        <tr scope="row">
-                                            <!--Friendlist - select participating archers-->
-                                            <table class="table-responsive">
-                                                <table class="table align-items-center justify-content-center mb-0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="row" class="archerNr">Friend</th>
-                                                            <th scope="row"></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <h6 class="mb-0 text-xs" name="archerName">Stephan
-                                                                    Berndl</h6>
-                                                                <p class="text-xs text-secondary mb-0"
-                                                                   name="archerNickname">@thaberndl</p>
+                                <!--form-->
+                                <form id="new_game_form" action="new-game.php" method="get">
+                                    <tr scope="row">
+                                        <!--Friendlist - select participating archers-->
+                                        <table class="table-responsive">
+                                            <table class="table align-items-center justify-content-center mb-0">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="row">Friend</th>
+                                                    <th scope="row"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <h6 class="mb-0 text-xs" name="archerName">Stephan
+                                                            Berndl</h6>
+                                                        <p class="text-xs text-secondary mb-0"
+                                                           name="archerNickname">@thaberndl</p>
                                                             </td>
                                                             <td>
                                                                 <div class="form-check centerCheckBox">

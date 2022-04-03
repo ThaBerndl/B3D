@@ -123,59 +123,66 @@
                                                         }
                                                         ?>
                                                     </select
-                                                  </td>
-                                                    <hr id="tables-hr">
-                                                <tr>
-                                                    <td id=addParcourBtn>
-                                                        <button type="submit"
-                                                                class="btn btn-outline-success align-right">Add/Edit Parcour</button>
-                                                    </td>
-                                                </tr>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <hr id="tables-hr">
+                                                <td id=addParcourBtn>
+                                                    <button type="submit"
+                                                            class="btn btn-outline-success align-right">Add/Edit Parcour
+                                                    </button>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <table class="table-responsive">
                                                     <table class="table align-items-center justify-content-center mb-0">
                                                         <tbody>
-                                                            <?php
+                                                        <?php
                                                             if (isset($_GET['parcour'])){
                                                                 $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
                                                                 $stmt = Tierzuord::getAllTiereFromParcour($parcour_ID);
-                                                                while ($data = $stmt->fetch()) {?>
-                                                            <tr>
-                                                                <td>
-                                                                <th scope="row" class="animalNr">#<?=$data['pos']?></th>
-                                                                </td>
-                                                                <td>
-                                                                <input type='text' list='tiere' class="form-control" name="Tier_<?=$data['pos']?>" value='<?=$data['tier']?>?>'>
+                                                                while ($data = $stmt->fetch()) { ?>
+                                                        <tr>
+                                                            <td>
+                                                            <th scope="row">#<?= $data['pos'] ?></th>
+                                                            </td>
+                                                            <td>
+                                                                <input type='text' list='tiere' class="form-control"
+                                                                       name="Tier_<?= $data['pos'] ?>"
+                                                                       value='<?= $data['tier'] ?>?>'>
                                                                 <datalist id="tiere">
-                                                                <?php
-                                                                $tiere = Tier::getAllTiere();
-                                                                while ($tier = $tiere->fetch()) {
-                                                                    echo "<option>" . $tier['bez'] . "</option>";
-                                                                }
-                                                                echo "</datalist>";
+                                                                    <?php
+                                                                    $tiere = Tier::getAllTiere();
+                                                                    while ($tier = $tiere->fetch()) {
+                                                                        echo "<option>" . $tier['bez'] . "</option>";
+                                                                    }
+                                                                    echo "</datalist>";
                                                                     }
                                                                 ?>
                                                                 </td>
                                                                 <?php
                                                                 }
                                                                 ?>
-                                                            </tr>
+                                                        </tr>
                                                         </tbody>
                                                     </table>
                                                 </table>
                                             </tr>
-                                            <hr id="tables-hr">
+                                            <hr id="invisible-hr">
                                             <tr>
                                                 <td id=addAnimalBtn>
                                                     <button type="submit"
-                                                        class="btn btn-outline-success align-right" name="addAnimal">Add Animal</button>
+                                                            class="btn btn-outline-success align-right"
+                                                            name="addAnimal">Add Animal
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <hr id="tables-save-hr">
                                             <tr>
                                                 <td>
-                                                    <button id="saveParcour" type="submit" name="saveParcour" class="btn bg-gradient-success">Save</button>
+                                                    <button id="saveParcour" type="submit" name="saveParcour"
+                                                            class="btn bg-gradient-success">Save
+                                                    </button>
                                                 </td>
                                             </tr>
                                         </form>
