@@ -17,6 +17,45 @@ th {
     clear: both;
     visibility: hidden
 }
+
+/*leftHor_Navbar.php
+*/
+.text-indigo {
+    color: #596CFF !important;
+}
+
+.text-purple {
+    color: #6f42c1 !important;
+}
+
+.text-pink {
+    color: #d63384 !important;
+}
+
+.text-red {
+    color: #F56565 !important;
+}
+
+.text-orange {
+    color: #fd7e14 !important;
+}
+
+.text-yellow {
+    color: #FBD38D !important;
+}
+
+.text-green {
+    color: #81E6D9 !important;
+}
+
+.text-teal {
+    color: #20c997 !important;
+}
+
+.text-cyan {
+    color: #0dcaf0 !important;
+}
+
 /*parcour-location.php*/
 .box {
     float: left;
