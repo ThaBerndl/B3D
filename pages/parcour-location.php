@@ -16,6 +16,7 @@
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--CSS B3D-->
     <link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet" />
     <?php
         include "../PHP/header.php";
@@ -189,13 +190,13 @@
                 </div>
             </div>
             <?php
-      require_once "../PHP/footer.php";
-    ?>
+            require_once "../PHP/footer.php";
+            ?>
         </div>
     </main>
     <?php
     require_once "../PHP/rightHor_Navbar.php";
-  ?>
+    ?>
     <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
             <i class="fa fa-cog py-2"> </i>
@@ -286,6 +287,7 @@
         </div>
     </div>
     <?php
+      require_once "../PHP/rightHor_Navbar.php";
       require "../PHP/body_end.php";
     ?>
     <script>
