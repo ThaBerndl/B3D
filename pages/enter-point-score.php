@@ -92,10 +92,9 @@ require_once '../PHP/leftHor_Navbar.php'
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs" name="archerName">Stephan
-                                                        Berndl</h6>
+                                                    <h6 class="mb-0 text-xs" name="archerName">Sponga</h6>
                                                     <p class="text-xs text-secondary mb-0"
-                                                       name="archerNickname">@thaberndl</p>
+                                                       name="archerNickname">@feufeu</p>
                                                 </div>
                                             </div>
                                         </td>
