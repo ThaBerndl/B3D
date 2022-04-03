@@ -1,14 +1,22 @@
 /*general*/
-#tables-hr{
+th {
+    font-size: small;
+}
+
+#tables-hr {
     border-top: 1px solid #2dce89;
-    color:#2dce89;
+    color: #2dce89;
     border-color: #2dce89;
 }
 
-#tables-save-hr{
+#tables-save-hr {
     border-top: 1px solid #343a40;
 }
 
+#invisible-hr {
+    clear: both;
+    visibility: hidden
+}
 /*parcour-location.php*/
 .box {
     float: left;
@@ -19,19 +27,14 @@
     box-sizing: border-box;
 }
 
-.animalNr{
-    font-size: small;
-}
-#loc-parc-input, #Orte
-{
+
+#loc-parc-input, #Orte {
     margin-bottom: 10px;
 }
 
-/*new-game.php*/
-.archerNr, .checkArcher{
-    font-size: small;
+
+/*parcour-favourites.php*/
+#deleteBtn {
+
 }
-
-
-
 
