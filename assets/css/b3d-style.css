@@ -1,13 +1,4 @@
-/*parcour-location.php*/
-.box {
-    float: left;
-    width: 30%;
-    margin-right: 3.33333%;
-    padding: 20px;
-    background: #eee;
-    box-sizing: border-box;
-}
-
+/*general*/
 #tables-hr{
     border-top: 1px solid #2dce89;
     color:#2dce89;
@@ -18,6 +9,16 @@
     border-top: 1px solid #343a40;
 }
 
+/*parcour-location.php*/
+.box {
+    float: left;
+    width: 30%;
+    margin-right: 3.33333%;
+    padding: 20px;
+    background: #eee;
+    box-sizing: border-box;
+}
+
 .animalNr{
     font-size: small;
 }
@@ -25,3 +26,12 @@
 {
     margin-bottom: 10px;
 }
+
+/*new-game.php*/
+.archerNr, .checkArcher{
+    font-size: small;
+}
+
+
+
+
