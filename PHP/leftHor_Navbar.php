@@ -1,3 +1,5 @@
+<!--CSS B3D-->
+<link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet"/>
 <?php
 echo "    <aside
         class=\"sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 \"
@@ -16,7 +18,7 @@ echo "    <aside
                 <li class=\"nav-item\">
                     <a class=\"nav-link \" href=\"../pages/new-game.php\">
                       <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                        <i class=\"ni ni-controller text-primary text-sm opacity-10\"></i>
+                        <i class=\"ni ni-controller text-indigo text-sm opacity-10\"></i>
                       </div>
                       <span class=\"nav-link-text ms-1\">New Game</span>
                     </a>
@@ -25,7 +27,7 @@ echo "    <aside
                     <a class=\"nav-link \" href=\"../pages/enter-point-score.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-calendar-grid-58 text-warning text-sm opacity-10\"></i>
+                            <i class=\"ni ni-ruler-pencil text-purple text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Point Score</span>
                     </a>
@@ -34,7 +36,7 @@ echo "    <aside
                     <a class=\"nav-link \" href=\"../pages/parcour-location.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-calendar-grid-58 text-warning text-sm opacity-10\"></i>
+                            <i class=\"ni ni-pin-3 text-pink text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Parcour</span>
                     </a>
@@ -43,7 +45,7 @@ echo "    <aside
                     <a class=\"nav-link \" href=\"../pages/parcour-favourites.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-favourite-28 text-warning text-sm opacity-10\"></i>
+                            <i class=\"ni ni-favourite-28 text-red text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Parcour Favourites</span>
                     </a>
@@ -52,7 +54,7 @@ echo "    <aside
                     <a class=\"nav-link \" href=\"../pages/result.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-calendar-grid-58 text-warning text-sm opacity-10\"></i>
+                            <i class=\"ni ni-chart-bar-32 text-orange text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Results</span>
                     </a>
@@ -64,7 +66,7 @@ echo "    <aside
                     <a class=\"nav-link \" href=\"../pages/profile.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
+                            <i class=\"ni ni-single-02 text-yellow text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Profile</span>
                     </a>
@@ -73,7 +75,7 @@ echo "    <aside
                     <a class=\"nav-link\" href=\"../pages/archer.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-favourite-28 text-success text-sm opacity-10\"></i>
+                            <i class=\"ni ni-satisfied text-green text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Archer</span>
                     </a>
@@ -82,7 +84,7 @@ echo "    <aside
                     <a class=\"nav-link\" href=\"../pages/sign-in.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-single-copy-04 text-warning text-sm opacity-10\"></i>
+                            <i class=\"ni ni-key-25 text-teal text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Sign In</span>
                     </a>
@@ -91,7 +93,7 @@ echo "    <aside
                     <a class=\"nav-link \" href=\"../pages/sign-up.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-collection text-info text-sm opacity-10\"></i>
+                            <i class=\"ni ni-air-baloon text-cyan text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Sign Up</span>
                     </a>
