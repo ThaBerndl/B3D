@@ -71,35 +71,33 @@ require_once '../PHP/leftHor_Navbar.php'
                                                 <tbody>
                                                 <tr>
                                                     <td>
-                                                        <h6 class="mb-0 text-xs" name="archerName">Stephan
-                                                            Berndl</h6>
+                                                        <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
                                                         <p class="text-xs text-secondary mb-0"
-                                                           name="archerNickname">@thaberndl</p>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-check centerCheckBox">
-                                                                    <input class="form-check-input" type="checkbox" value=""
-                                                                           name="checkArcher" checked="">
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <!--placeholder - might delete later-->
-                                                        <tr>
-                                                            <td>
-                                                                <h6 class="mb-0 text-xs" name="archerName">Lukas
-                                                                    Natotea</h6>
-                                                                <p class="text-xs text-secondary mb-0"
-                                                                   name="archerNickname">@lukiwuki</p>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-check centerCheckBox">
-                                                                    <input class="form-check-input" type="checkbox" value=""
-                                                                           name="checkArcher" checked="">
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <!--End placeholder-->
-                                                    </tbody>
+                                                           name="archerNickname">@pata</p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-check centerCheckBox">
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                   name="checkArcher" checked="">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <!--placeholder - might delete later-->
+                                                <tr>
+                                                    <td>
+                                                        <h6 class="mb-0 text-xs" name="archerName">Sponga</h6>
+                                                        <p class="text-xs text-secondary mb-0"
+                                                           name="archerNickname">@feufeu</p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-check centerCheckBox">
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                   name="checkArcher" checked="">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <!--End placeholder-->
+                                                </tbody>
                                                 </table>
                                             </table>
                                             <hr id="tables-hr">
