@@ -2,13 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
         B3D - Skillboard | Results
     </title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+    <!--CSS B3D-->
+    <link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet"/>
     <?php
     session_start();
     include "../PHP/header.php";
@@ -23,11 +28,13 @@ require_once '../PHP/leftHor_Navbar.php'
 ?>
 <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+         data-scroll="false">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a>
+                    </li>
                     <li class="breadcrumb-item text-sm text-white active" aria-current="page">Results</li>
                 </ol>
                 <h6 class="font-weight-bolder text-white mb-0">Results</h6>
@@ -40,22 +47,67 @@ require_once '../PHP/leftHor_Navbar.php'
     <!-- End Navbar -->
     <div class="container-fluid py-4">
         <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
+            <div class="col-12">
+                <div class="card mb-4">
                     <div class="card-body p-3">
                         <h6>Results</h6>
-                        <div class="table-responsive">
-                            <table class="table align-items-center justify-content-center mb-0">
-                                <tbody>
-                                <form id="choose_parcour" action="results.php" method="get">
-                                    <!--form-->
-                                </form>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0"></div>
+                        <!--form-->
+                        <form id="choose_parcour" action="results.php" method="get">
+                            <div class="table-responsive">
+                                <!--Table contains game history and links to scoreboard.php-->
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Game
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Date
+                                        </th>
+                                        <th class="text-secondary opacity-7"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-xs">#123456789</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-xs font-weight-bold mb-0">28/02/22</span>
+                                        </td>
+                                        <td>
+                                            <!--Links to scoreboard.php-->
+                                            <span class="badge bg-gradient-success">Scoreboard&nbsp;<i
+                                                        class="ni ni-bold-right"></i></span>
+                                        </td>
+                                    </tr>
+                                    <!--Placeholder - might delete later-->
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-xs">#987654321</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-xs font-weight-bold mb-0">27/02/22</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-gradient-success">Scoreboard&nbsp;<i
+                                                        class="ni ni-bold-right"></i></span>
+                                        </td>
+                                    </tr>
+                                    <!--End placeholder-->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                        <!--End form-->
                     </div>
                 </div>
             </div>
