@@ -36,18 +36,19 @@
     }
     if(isset($_GET['saveParcour'])){
         $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
-        $keys = array_keys($_GET);
-        foreach ($keys as $key) {
-            if(substr($key,0,4) == 'Tier'){
-                $stringArr = explode("_",$_GET[$key]);
-                $tier = Tier::getTierfromBez($stringArr[0]);
-                $tierzuord = new Tierzuord();
-                $tierzuord->parcour_id = $parcour_ID;
-                $tierzuord->pos = $stringArr[1];
-                $tierzuord->updateTier();
+        $tierArr = $_GET['Tiere'];
+        for ($i = 0; $i <= count($tierArr); $i++)
+        {
+            $tier = Tier::getTierfromBez($tierArr[$i]);
+            if ($tier == null){
+                Tier::createTier($tierArr[$i]);
             }
+            $tierzuord = new Tierzuord();
+            $tierzuord->tier_id = $tier->tier_id;
+            $tierzuord->parcour_id = $parcour_ID;
+            $tierzuord->pos = ($i+1);
+            $tierzuord->updateTier();
         }
-        //header("location: dashboard.php");
     }
   ?>
     <main class="main-content position-relative border-radius-lg ">
@@ -81,48 +82,42 @@
                                         <form id="choose_parcour" action="parcour-location.php" method="get">
                                             <tr scope="row">
                                                 <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Add new parcour & location</label>
-                                                    <input class="form-control" type="text" value="enter location.."
-                                                        id="loc-parc-input">
-                                                        <input class="form-control" type="text" value="enter parcour.."
-                                                        id="example-text-input">
-                                                </td>
-                                            </tr>
-                                            <tr scope="row">
-                                                <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Or chose
-                                                        location & parcour</label>
-                                                    <select class="form-select" aria-label="Default select example" onchange="reload()" id="Orte" name="ort">
-                                                        <option selected>- chose -</option>
-                                                        <?php
-                                                        $parcours = Ort::getAllOrte();
-                                                        while ($parcour = $parcours->fetch()) {
-                                                            if (isset($_GET['ort']) && $_GET['ort'] == $parcour['bez']){
-                                                                echo "<option value = ".$parcour['bez']." selected='selected'> ".$parcour['bez']."</option >";
-                                                            } else{
-                                                                echo "<option value = ".$parcour['bez']." > ".$parcour['bez']."</option >";
+                                                    <label for="example-text-input" class="form-control-label">Create or Choose Parcour</label>
+                                                    <input  class="form-control"
+                                                            type="text"
+                                                            placeholder="enter location.."
+                                                            name="ort"
+                                                            list='orte' class="form-control"
+                                                            id="loc-parc-input"
+                                                            onchange="reload()"
+                                                            value="<?php echo isset($_GET['ort'])? $_GET['ort'] : "" ?>">
+                                                    <datalist id="orte">
+                                                            <?php
+                                                            $orte = Ort::getAllOrte();
+                                                            while ($ort = $orte->fetch()) {
+                                                                echo "<option>" . $ort['bez'] . "</option>";
                                                             }
-                                                        }
-                                                        ?>
-                                                        <br>
-                                                    </select>
-                                                    <select class="form-select" aria-label="Default select example" onchange="" name="parcour">
-                                                        <option selected>- chose -</option>
-                                                        <?php
-                                                        if (isset($_GET['ort'])){
-                                                            $parcours = Parcour::getAllParcoursWithOrt($_GET['ort']);
-                                                        }else{
-                                                            $parcours = Parcour::getAllParcours();
-                                                        }
-                                                        while ($parcour = $parcours->fetch()) {
-                                                            if (isset($_GET['parcour']) && $_GET['parcour'] == $parcour['bez']) {
-                                                                echo "<option value = " . $parcour['bez'] . " selected='selected'> " . $parcour['bez'] . "</option >";
-                                                            } else{
-                                                                echo "<option value = " . $parcour['bez'] . "> " . $parcour['bez'] . "</option >";
+                                                            echo "</datalist>";
+                                                            ?>
+                                                        <input class="form-control"
+                                                               type="text"
+                                                               placeholder="enter parcour.."
+                                                               id="example-text-input"
+                                                               list="parcours"
+                                                               name="parcour"
+                                                               value="<?php echo isset($_GET['parcour'])? $_GET['parcour'] : "" ?>">
+                                                        <datalist id="parcours">
+                                                            <?php
+                                                            if (isset($_GET['ort'])){
+                                                                $parcours = Parcour::getAllParcoursWithOrt($_GET['ort']);
+                                                            }else{
+                                                                $parcours = Parcour::getAllParcours();
                                                             }
-                                                        }
-                                                        ?>
-                                                    </select
+                                                            while ($parcour = $parcours->fetch()) {
+                                                                echo "<option>" . $parcour['bez'] . "</option>";
+                                                            }
+                                                            echo "</datalist>";
+                                                            ?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -148,8 +143,9 @@
                                                             </td>
                                                             <td>
                                                                 <input type='text' list='tiere' class="form-control"
-                                                                       name="Tier_<?= $data['pos'] ?>"
-                                                                       value='<?= $data['tier'] ?>?>'>
+                                                                       name="Tiere[]"
+                                                                       value='<?= $data['tier']?>'
+                                                                       required>
                                                                 <datalist id="tiere">
                                                                     <?php
                                                                     $tiere = Tier::getAllTiere();
@@ -307,7 +303,7 @@
         }
         function reload()
         {
-            var ort = document.getElementById('Orte');
+            var ort = document.getElementById('loc-parc-input');
             self.location='parcour-location.php?ort=' + ort.value;
         }
     </script>
