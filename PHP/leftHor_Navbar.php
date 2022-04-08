@@ -1,7 +1,7 @@
 <!--CSS B3D-->
 <link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet"/>
 <?php
-echo "    <aside
+echo "   <aside
         class=\"sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 \"
         id=\"sidenav-main\">
         <div class=\"sidenav-header\">
