@@ -47,6 +47,7 @@ class Tier extends DB{
         $stmt = $db->pdo->prepare("Insert into tier (bez) values (?)");
         $stmt->bindParam(1,$bez,PDO::PARAM_STR);
         $stmt->execute();
+        $error = $db->pdo->errorInfo();
         return Tier::getTierfromID($db->pdo->lastInsertId());
     }
 }

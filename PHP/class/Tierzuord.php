@@ -38,11 +38,9 @@ class Tierzuord extends DB{
     }
 
     public function getnextPos(){
-        $stmt = $this->pdo->prepare("select max(pos) as pos 
-                                                  from Tierzuord tz
-                                                  left join Tier t on t.tier_id = tz.tier_id
-                                                  left join Parcour p on p.parcour_id = tz.parcour_id
-                                                   and p.parcour_id = ?;");
+        $stmt = $this->pdo->prepare("select max(pos) as pos
+                                                from Tierzuord tz
+                                               where parcour_id = ?;");
         $stmt->bindParam(1,$this->parcour_id, PDO::PARAM_INT);
         $stmt->execute();
         while($data = $stmt->fetch()){

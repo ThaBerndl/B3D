@@ -2,7 +2,7 @@
 session_start();
 if (!$_SESSION['auth']) {
     header("location: sign-in.php");
-}
+} //Notice: Trying to get property 'tier_id' of non-object in C:\Users\Stifi\OneDrive - Berufsschule Linz 2\Year 3\B3D\pages\parcour-location.php on line 211
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,12 +22,32 @@ if (!$_SESSION['auth']) {
     ?>
 </head>
 <body class="g-sidenav-show   bg-gray-100">
-<div class="min-height-300 bg-success position-absolute w-100"></div>
+<div class="min-height-100 bg-success position-absolute w-100"></div>
 <?php
 require_once '../PHP/leftHor_Navbar.php';
 require_once '../PHP/getClasses.php';
+if (isset($_GET['addParcour'])){
+    $ort = Ort::getOrtwithBez($_GET['ort']);
+    if (empty($ort)){
+        $ort = new Ort($_GET['ort']);
+        $ort->insertOrt();
+    }
+    $parcour = Parcour::getIDWithNames($_GET['parcour'],$ort->bez);
+    if (empty($parcour)){
+        $parcour = new Parcour(null,$_GET['parcour'],$ort->id);
+        $parcour->create();
+        $tierzuord = new Tierzuord();
+        $tierzuord->parcour_id = $parcour->parcour_id;
+        $tierzuord->getnextPos();
+        $tierzuord->insertTierZuord();
+    }
+}
+
 if (isset($_GET['addAnimal'])) {
     $parcour_ID = Parcour::getIDWithNames($_GET['parcour'], $_GET['ort']);
+    if (!empty($_GET['Tiere'])){
+        saveParcour($parcour_ID);
+    }
     $tierzuord = new Tierzuord();
     $tierzuord->parcour_id = $parcour_ID;
     $tierzuord->getnextPos();
@@ -35,18 +55,7 @@ if (isset($_GET['addAnimal'])) {
 }
 if (isset($_GET['saveParcour'])) {
     $parcour_ID = Parcour::getIDWithNames($_GET['parcour'], $_GET['ort']);
-    $tierArr = $_GET['Tiere'];
-    for ($i = 0; $i <= count($tierArr); $i++) {
-        $tier = Tier::getTierfromBez($tierArr[$i]);
-        if ($tier == null) {
-            Tier::createTier($tierArr[$i]);
-        }
-        $tierzuord = new Tierzuord();
-        $tierzuord->tier_id = $tier->tier_id;
-        $tierzuord->parcour_id = $parcour_ID;
-        $tierzuord->pos = ($i + 1);
-        $tierzuord->updateTier();
-    }
+    saveParcour($parcour_ID);
 }
 ?>
 <main class="main-content position-relative border-radius-lg ">
@@ -102,22 +111,26 @@ if (isset($_GET['saveParcour'])) {
                                        name="parcour"
                                        value="<?php echo isset($_GET['parcour']) ? $_GET['parcour'] : "" ?>">
                                 <datalist id="parcours">
-                                    <?php
-                                    if (isset($_GET['ort'])) {
-                                        $parcours = Parcour::getAllParcoursWithOrt($_GET['ort']);
-                                    } else {
-                                        $parcours = Parcour::getAllParcours();
-                                    }
-                                    while ($parcour = $parcours->fetch()) {
-                                        echo "<option>" . $parcour['bez'] . "</option>";
-                                    }
-                                    echo "</datalist>";
-                                    ?>
+                                        <?php
+                                        if (isset($_GET['ort'])) {
+                                            $parcours = Parcour::getAllParcoursWithOrt($_GET['ort']);
+                                        } else {
+                                            $parcours = Parcour::getAllParcours();
+                                        }
+                                        while ($parcour = $parcours->fetch()) {
+                                            echo "<option>" . $parcour['bez'] . "</option>";
+                                        }
+                                        echo "</datalist>";
+                                        ?>
                                     <hr id="tables-hr">
-                                    <button type="submit"
+                                    <button type="submit" name="addParcour"
                                             class="btn btn-outline-success align-right" id=addParcourBtn>Add/Edit
                                         Parcour
                                     </button>
+                        </form>
+                        <form action="parcour-location.php" method="get">
+                            <input type="hidden" name="ort" value="<?=$_GET['ort']?>">
+                            <input type="hidden" name="parcour" value="<?=$_GET['parcour']?>">
                                     <div class="table-responsive">
                                         <table class="table align-items-center justify-content-center mb-0">
                                             <tbody>
@@ -189,6 +202,23 @@ require "../PHP/body_end.php";
         var ort = document.getElementById('loc-parc-input');
         self.location = 'parcour-location.php?ort=' + ort.value;
     }
+    <?php
+            function saveParcour($parcour_ID)
+            {
+                $tierArr = $_GET['Tiere'];
+                for ($i = 0; $i < count($tierArr); $i++) {
+                    $tier = Tier::getTierfromBez($tierArr[$i]);
+                    if ($tier == null) {
+                        $tier = Tier::createTier($tierArr[$i]);
+                    }
+                    $tierzuord = new Tierzuord();
+                    $tierzuord->tier_id = $tier->tier_id;
+                    $tierzuord->parcour_id = $parcour_ID;
+                    $tierzuord->pos = ($i + 1);
+                    $tierzuord->updateTier();
+                }
+            }
+    ?>
 </script>
 </body>
 </html>

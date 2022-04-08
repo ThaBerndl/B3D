@@ -48,6 +48,12 @@ class Parcour extends DB{
         }
     }
     public function create(){
-        //$this->pdo->prepare("Insert into Parcour values (bez, )")
+        $stmt = $this->pdo->prepare("Insert into Parcour (bez, ort_id) values(?,?)");
+        $stmt->bindParam(1,$this->bez,PDO::PARAM_STR);
+        $stmt->bindParam(2,$this->ort_id,PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        $this->parcour_id = $this->pdo->lastInsertId();
+
     }
 }
