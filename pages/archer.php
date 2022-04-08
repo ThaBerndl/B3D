@@ -51,42 +51,34 @@
         </nav>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
-            <!--TODO-->
-            <form id="add_friend" action="archer.php" method="POST">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header pb-0">
-                            <div class="d-flex align-items-center">
-                                <h6>Add a Friend</h6>
-                                    <input type="submit" class="btn btn-success btn-md ms-auto" name="submit" value="Add Friend"input>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Nickname<input class="form-control" name="nickname" type="text"></label>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">First name<input class="form-control" name="fname" type="text"></label>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Last name<input class="form-control" name="lname" type="text"></label>
-                                        </div>
-                                    </div>
+                <div class="col-12">
+                    <div class="card mb-4">
+                        <div class="card-body pb-3">
+                            <h6>Edit Profile</h6>
+                            <!--form-->
+                            <form id="add_friend" action="archer.php" method="POST">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label"
+                                           name="fname">Surname</label>
+                                    <input class="form-control" type="text" value="">
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <?php
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label"
+                                           name="lname">Lastname</label>
+                                    <input class="form-control" type="text" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label"
+                                           name="nickname">Nickname</label>
+                                    <input class="form-control" type="text" value="">
+                                </div>
+                                <hr id="tables-hr">
+                                <button type="submit" class="btn bg-gradient-success align-right" name="submit">
+                                    Save
+                                </button>
+                            </form>
+                            <?php
             if(isset($_POST['submit'])) //verarbeitung Forms
             {
                 $user = new User();
@@ -115,86 +107,75 @@
                     else if(!$freund->checkFreund())
                     {
                         $freund->insertFreund();
-                    }
-                    else
-                    {
+                    } else {
                         echo "<p style='color: red'>Friend already added!</p>";
                     }
                 }
             }
-            ?>
-
-            <br>
-            <!-- Table content shows friends created in the past-->
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header pb-0">
-                            <h6>My Friends</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
+                            ?>
+                            <br>
+                            <!-- Table content shows friends created in the past-->
+                            <div class="card-header pb-0">
+                                <h6>Friendslist</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive p-0">
+                                    <table class="table align-items-center mb-0">
+                                        <thead>
                                         <tr>
                                             <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Friend</th>
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Friend
+                                            </th>
                                             <th class="text-secondary opacity-7"></th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                        </thead>
+                                        <tbody>
                                         <?php
 
-                                            if (isset($_POST['delete']))
-                                            {
-                                                $freund = new Freund($_POST['user'],$_POST['freund']);
-                                                $freund->delFreund();
-                                            }
+                                        if (isset($_POST['delete'])) {
+                                            $freund = new Freund($_POST['user'], $_POST['freund']);
+                                            $freund->delFreund();
+                                        }
 
-                                            $freunde = Freund::getAllFreunde($_SESSION['user_id']);
-                                            foreach ($freunde as $freund)
-                                            {
-                                                $user = USER::getUserwithID($freund->freund_id);
-                                                echo   "<form action='archer.php' method='post'>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class=\"d-flex px-2 py-1\">
-                                                                        <div class=\"d-flex flex-column justify-content-center\">
-                                                                            <h6 class=\"mb - 0 text - sm\">$user->vName $user->nName </h6>
-                                                                            <p class=\"text-xs text-secondary mb-0\">$user->nickname</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td class=\"align-items-start\">
-                                                                    <input type='submit' class=\"btn btn-success btn-md ms-auto\"
-                                                                        data-toggle=\"tooltip\" data-original-title=\"Add a friend\" name=\"delete\" value='Delete'>
-                                                                    <input type='text' style='display: none' name='user' value='$freund->user_id'>
-                                                                    <input type='text' style='display: none' name='freund' value='$freund->freund_id'>
-                                                               </td>
-                                                            </tr>
-                                                        </form>";
-                                            }
-                                            unset($freund);
+                                        $freunde = Freund::getAllFreunde($_SESSION['user_id']);
+                                        foreach ($freunde as $freund) {
+                                            $user = USER::getUserwithID($freund->freund_id);
+                                            echo "<form action='archer.php' method='post'>
+                                                <tr>
+                                                    <td>
+                                                        <div class=\"d-flex px-2 py-1\">
+                                                            <div class=\"d-flex flex-column justify-content-center\">
+                                                                <h6 class=\"mb - 0 text - sm\">$user->vName $user->nName </h6>
+                                                                <p class=\"text-xs text-secondary mb-0\">$user->nickname</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class=\"align-items-start\">
+                                                        <span class=\"badge bg-gradient-success\" name=\"delete\">Delete&nbsp;<i
+                                                                class=\"ni ni-fat-remove\"></i></span>
+                                                        <input type='text' style='display: none' name='user' value='$freund->user_id'>
+                                                        <input type='text' style='display: none' name='freund' value='$freund->freund_id'>
+                                                   </td>
+                                                </tr>
+                                            </form>";
+                                        }
+                                        unset($freund);
                                         ?>
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
+                            <?php
+                            require_once "../PHP/footer.php";
+                            ?>
                         </div>
                     </div>
-                </div>
-                <?php
-                 require_once "../PHP/footer.php";
-                ?>
-            </div>
-        </div>
     </main>
     <?php
-        require_once "../PHP/rightHor_Navbar.php";
-        require "../PHP/body_end.php";
-     ?>
-
-
+    require_once "../PHP/rightHor_Navbar.php";
+    require "../PHP/body_end.php";
+    ?>
     <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
 
@@ -288,5 +269,4 @@
         }
     </script>
 </body>
-
 </html>
