@@ -18,6 +18,7 @@ if (!$_SESSION['auth']) {
     <link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet"/>
     <?php
     include "../PHP/header.php";
+    include "../PHP/getClasses.php";
     ?>
 </head>
 
