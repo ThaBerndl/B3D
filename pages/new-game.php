@@ -110,6 +110,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                         $parcours = Parcour::getAllParcours();
                                         while($parcour = $parcours->fetch())
                                         {
+                                            echo 999;
                                             echo "<option>" . $parcour['bez'] . "</option>";
                                         }
                                         ?>
