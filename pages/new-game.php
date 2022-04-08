@@ -17,7 +17,6 @@ if (!$_SESSION['auth']) {
     <!--CSS B3D-->
     <link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet"/>
     <?php
-    session_start();
     include "../PHP/header.php";
     ?>
 </head>
@@ -53,99 +52,96 @@ require_once '../PHP/leftHor_Navbar.php'
                 <div class="card mb-4">
                     <div class="card-body p-3">
                         <h6>Start a new game</h6>
-                        <div class="table-responsive">
-                            <table class="table align-items-center justify-content-center mb-0">
-                                <tbody>
-                                <!--form-->
-                                <form id="new_game_form" action="new-game.php" method="get">
-                                    <tr scope="row">
-                                        <!--Friendlist - select participating archers-->
-                                        <table class="table-responsive">
-                                            <table class="table align-items-center justify-content-center mb-0">
-                                                <thead>
-                                                <tr>
-                                                    <th scope="row">Friend</th>
-                                                    <th scope="row"></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
-                                                        <p class="text-xs text-secondary mb-0"
-                                                           name="archerNickname">@pata</p>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-check centerCheckBox">
-                                                            <input class="form-check-input" type="checkbox" value=""
-                                                                   name="checkArcher" checked="">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <!--placeholder - might delete later-->
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="mb-0 text-xs" name="archerName">Sponga</h6>
-                                                        <p class="text-xs text-secondary mb-0"
-                                                           name="archerNickname">@feufeu</p>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-check centerCheckBox">
-                                                            <input class="form-check-input" type="checkbox" value=""
-                                                                   name="checkArcher" checked="">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <!--End placeholder-->
-                                                </tbody>
-                                                </table>
-                                            </table>
-                                            <hr id="tables-hr">
-                                        </tr>
-                                        <!--End Friendslist-->
-                                        <tr scope="row">
-                                            <td colspan="4">
-                                                <label for="example-text-input" class="form-control-label">Parcour</label>
-                                                <select class="form-select" aria-label=".form-select-sm example">
-                                                    <option selected>-choose parcour-</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select
-                                            </td>
-                                        </tr>
-                                        <hr id="tables-hr">
-                                        <tr scope="row">
-                                            <td colspan="4">
-                                                <label for="example-text-input" class="form-control-label">Scoring
-                                                    System</label>
-                                                <select class="form-select" aria-label=".form-select-sm example">
-                                                    <option selected>-choose scoring system-</option>
-                                                    <option value="Three arrow scoring">One</option>
-                                                    <option value="Two arrow scoring">Two</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <hr id="tables-save-hr">
-                                        <tr>
-                                            <td>
-                                                <button type="submit" class="btn bg-gradient-success align-right" name="newGame">
-                                                    Start
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </form>
-                                </tbody>
+                        <!--form-->
+                        <form id="new_game_form" action="new-game.php" method="get">
+                            <button type="submit"
+                                    class="btn btn-outline-success align-right" name="saved_parcours">Saved parcours&nbsp;&nbsp;<i
+                                        class="ni ni-bold-down"></i></button>
+                            <!--Friendlist - select participating archers-->
+                            <table class="table-responsive">
+                                <table class="table align-items-center justify-content-center mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th scope="row">Friend</th>
+                                        <th scope="row"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
+                                            <p class="text-xs text-secondary mb-0"
+                                               name="archerNickname">@pata</p>
+                                        </td>
+                                        <td>
+                                            <div class="form-check centerCheckBox">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       name="checkArcher" checked="">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!--placeholder - might delete later-->
+                                    <tr>
+                                        <td>
+                                            <h6 class="mb-0 text-xs" name="archerName">Sponga</h6>
+                                            <p class="text-xs text-secondary mb-0"
+                                               name="archerNickname">@feufeu</p>
+                                        </td>
+                                        <td>
+                                            <div class="form-check centerCheckBox">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       name="checkArcher" checked="">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!--End placeholder-->
+                                    </tbody>
+                                </table>
                             </table>
-                        </div>
+                            <hr id="tables-hr">
+                            </tr>
+                            <!--End Friendslist-->
+                            <tr scope="row">
+                                <td colspan="4">
+                                    <label for="example-text-input" class="form-control-label">Parcour</label>
+                                    <select class="form-select" aria-label=".form-select-sm example">
+                                        <option selected>-choose parcour-</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select
+                                </td>
+                            </tr>
+                            <hr id="tables-hr">
+                            <tr scope="row">
+                                <td colspan="4">
+                                    <label for="example-text-input" class="form-control-label">Scoring
+                                        System</label>
+                                    <select class="form-select" aria-label=".form-select-sm example">
+                                        <option selected>-choose scoring system-</option>
+                                        <option value="Three arrow scoring">One</option>
+                                        <option value="Two arrow scoring">Two</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <hr id="tables-save-hr">
+                            <tr>
+                                <td>
+                                    <button type="submit" class="btn bg-gradient-success align-right" name="newGame">
+                                        Start
+                                    </button>
+                                </td>
+                            </tr>
+                        </form>
                     </div>
-                    <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0"></div>
-                    </div>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0"></div>
                 </div>
             </div>
         </div>
-        <?php
+    </div>
+    <?php
         require_once "../PHP/footer.php";
         ?>
     </div>
