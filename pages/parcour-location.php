@@ -76,124 +76,120 @@
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <h6>Parcour & Location</h6>
-                            <div class="table-responsive">
-                                <table class="table align-items-center justify-content-center mb-0">
-                                    <tbody>
-                                        <form id="choose_parcour" action="parcour-location.php" method="get">
-                                            <tr scope="row">
-                                                <td colspan="4">
-                                                    <label for="example-text-input" class="form-control-label">Create or Choose Parcour</label>
-                                                    <input  class="form-control"
-                                                            type="text"
-                                                            placeholder="enter location.."
-                                                            name="ort"
-                                                            list='orte' class="form-control"
-                                                            id="loc-parc-input"
-                                                            onchange="reload()"
-                                                            value="<?php echo isset($_GET['ort'])? $_GET['ort'] : "" ?>">
-                                                    <datalist id="orte">
-                                                            <?php
-                                                            $orte = Ort::getAllOrte();
-                                                            while ($ort = $orte->fetch()) {
-                                                                echo "<option>" . $ort['bez'] . "</option>";
-                                                            }
-                                                            echo "</datalist>";
-                                                            ?>
-                                                        <input class="form-control"
-                                                               type="text"
-                                                               placeholder="enter parcour.."
-                                                               id="example-text-input"
-                                                               list="parcours"
-                                                               name="parcour"
-                                                               value="<?php echo isset($_GET['parcour'])? $_GET['parcour'] : "" ?>">
-                                                        <datalist id="parcours">
-                                                            <?php
-                                                            if (isset($_GET['ort'])){
-                                                                $parcours = Parcour::getAllParcoursWithOrt($_GET['ort']);
-                                                            }else{
-                                                                $parcours = Parcour::getAllParcours();
-                                                            }
-                                                            while ($parcour = $parcours->fetch()) {
-                                                                echo "<option>" . $parcour['bez'] . "</option>";
-                                                            }
-                                                            echo "</datalist>";
-                                                            ?>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <hr id="tables-hr">
-                                                <td id=addParcourBtn>
-                                                    <button type="submit"
-                                                            class="btn btn-outline-success align-right">Add/Edit Parcour
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <table class="table-responsive">
-                                                    <table class="table align-items-center justify-content-center mb-0">
-                                                        <tbody>
-                                                        <?php
-                                                            if (isset($_GET['parcour'])){
-                                                                $parcour_ID = Parcour::getIDWithNames($_GET['parcour'],$_GET['ort']);
-                                                                $stmt = Tierzuord::getAllTiereFromParcour($parcour_ID);
-                                                                while ($data = $stmt->fetch()) { ?>
-                                                        <tr>
-                                                            <td>
-                                                            <th scope="row">#<?= $data['pos'] ?></th>
-                                                            </td>
-                                                            <td>
-                                                                <input type='text' list='tiere' class="form-control"
-                                                                       name="Tiere[]"
-                                                                       value='<?= $data['tier']?>'
-                                                                       required>
-                                                                <datalist id="tiere">
-                                                                    <?php
-                                                                    $tiere = Tier::getAllTiere();
-                                                                    while ($tier = $tiere->fetch()) {
-                                                                        echo "<option>" . $tier['bez'] . "</option>";
-                                                                    }
-                                                                    echo "</datalist>";
-                                                                    }
-                                                                ?>
-                                                                </td>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </table>
-                                            </tr>
-                                            <hr id="invisible-hr">
-                                            <tr>
-                                                <td id=addAnimalBtn>
-                                                    <button type="submit"
-                                                            class="btn btn-outline-success align-right"
-                                                            name="addAnimal">Add Animal
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <hr id="tables-save-hr">
+                            <form id="choose_parcour" action="parcour-location.php" method="get">
+                                <tr scope="row">
+                                    <td colspan="4">
+                                        <label for="example-text-input" class="form-control-label">Create or Choose
+                                            Parcour</label>
+                                        <input class="form-control"
+                                               type="text"
+                                               placeholder="enter location.."
+                                               name="ort"
+                                               list='orte' class="form-control"
+                                               id="loc-parc-input"
+                                               onchange="reload()"
+                                               value="<?php echo isset($_GET['ort']) ? $_GET['ort'] : "" ?>">
+                                        <datalist id="orte">
+                                            <?php
+                                            $orte = Ort::getAllOrte();
+                                            while ($ort = $orte->fetch()) {
+                                                echo "<option>" . $ort['bez'] . "</option>";
+                                            }
+                                            echo "</datalist>";
+                                            ?>
+                                            <input class="form-control"
+                                                   type="text"
+                                                   placeholder="enter parcour.."
+                                                   id="example-text-input"
+                                                   list="parcours"
+                                                   name="parcour"
+                                                   value="<?php echo isset($_GET['parcour']) ? $_GET['parcour'] : "" ?>">
+                                            <datalist id="parcours">
+                                                <?php
+                                                if (isset($_GET['ort'])) {
+                                                    $parcours = Parcour::getAllParcoursWithOrt($_GET['ort']);
+                                                } else {
+                                                    $parcours = Parcour::getAllParcours();
+                                                }
+                                                while ($parcour = $parcours->fetch()) {
+                                                    echo "<option>" . $parcour['bez'] . "</option>";
+                                                }
+                                                echo "</datalist>";
+                                                ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <hr id="tables-hr">
+                                    <td id=addParcourBtn>
+                                        <button type="submit"
+                                                class="btn btn-outline-success align-right">Add/Edit Parcour
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <table class="table-responsive">
+                                        <table class="table align-items-center justify-content-center mb-0">
+                                            <tbody>
+                                            <?php
+                                            if (isset($_GET['parcour'])){
+                                            $parcour_ID = Parcour::getIDWithNames($_GET['parcour'], $_GET['ort']);
+                                            $stmt = Tierzuord::getAllTiereFromParcour($parcour_ID);
+                                            while ($data = $stmt->fetch()) { ?>
                                             <tr>
                                                 <td>
-                                                    <button id="saveParcour" type="submit" name="saveParcour"
-                                                            class="btn bg-gradient-success">Save
-                                                    </button>
+                                                <th scope="row">#<?= $data['pos'] ?></th>
                                                 </td>
+                                                <td>
+                                                    <input type='text' list='tiere' class="form-control"
+                                                           name="Tiere[]"
+                                                           value='<?= $data['tier'] ?>'
+                                                           required>
+                                                    <datalist id="tiere">
+                                                        <?php
+                                                        $tiere = Tier::getAllTiere();
+                                                        while ($tier = $tiere->fetch()) {
+                                                            echo "<option>" . $tier['bez'] . "</option>";
+                                                        }
+                                                        echo "</datalist>";
+                                                        }
+                                                        ?>
+                                                </td>
+                                                <?php
+                                                }
+                                                ?>
                                             </tr>
-                                        </form>
-                                    </tbody>
-                                </table>
-                            </div>
+                                            </tbody>
+                                        </table>
+                                    </table>
+                                </tr>
+                                <hr id="invisible-hr">
+                                <tr>
+                                    <td id=addAnimalBtn>
+                                        <button type="submit"
+                                                class="btn btn-outline-success align-right"
+                                                name="addAnimal">Add Animal
+                                        </button>
+                                    </td>
+                                </tr>
+                                <hr id="tables-save-hr">
+                                <tr>
+                                    <td>
+                                        <button id="saveParcour" type="submit" name="saveParcour"
+                                                class="btn bg-gradient-success">Save
+                                        </button>
+                                    </td>
+                                </tr>
+                            </form>
                         </div>
-                        <div class="card-body px-0 pt-0 pb-2">
-                            <div class="table-responsive p-0"></div>
-                        </div>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0"></div>
                     </div>
                 </div>
             </div>
-            <?php
-            require_once "../PHP/footer.php";
+        </div>
+        <?php
+        require_once "../PHP/footer.php";
             ?>
         </div>
     </main>
