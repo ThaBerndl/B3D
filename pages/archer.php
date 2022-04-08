@@ -104,8 +104,7 @@
                     {
                         echo "<p style='color: red'>Can't add yourself as friend</p>";
                     }
-                    else if(!$freund->checkFreund())
-                    {
+                    else if(!$freund->checkFreund()) {
                         $freund->insertFreund();
                     } else {
                         echo "<p style='color: red'>Friend already added!</p>";
@@ -115,62 +114,60 @@
                             ?>
                             <br>
                             <!-- Table content shows friends created in the past-->
-                            <div class="card-header pb-0">
-                                <h6>Friendslist</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive p-0">
-                                    <table class="table align-items-center mb-0">
-                                        <thead>
-                                        <tr>
-                                            <th
-                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Friend
-                                            </th>
-                                            <th class="text-secondary opacity-7"></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php
+                            <h6>Friendslist</h6>
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Friend
+                                        </th>
+                                        <th class="text-secondary opacity-7"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
 
-                                        if (isset($_POST['delete'])) {
-                                            $freund = new Freund($_POST['user'], $_POST['freund']);
-                                            $freund->delFreund();
-                                        }
+                                    if (isset($_POST['delete'])) {
+                                        $freund = new Freund($_POST['user'], $_POST['freund']);
+                                        $freund->delFreund();
+                                    }
 
-                                        $freunde = Freund::getAllFreunde($_SESSION['user_id']);
-                                        foreach ($freunde as $freund) {
-                                            $user = USER::getUserwithID($freund->freund_id);
-                                            echo "<form action='archer.php' method='post'>
-                                                <tr>
-                                                    <td>
-                                                        <div class=\"d-flex px-2 py-1\">
-                                                            <div class=\"d-flex flex-column justify-content-center\">
-                                                                <h6 class=\"mb - 0 text - sm\">$user->vName $user->nName </h6>
-                                                                <p class=\"text-xs text-secondary mb-0\">$user->nickname</p>
-                                                            </div>
+                                    $freunde = Freund::getAllFreunde($_SESSION['user_id']);
+                                    foreach ($freunde as $freund) {
+                                        $user = USER::getUserwithID($freund->freund_id);
+                                        echo "<form action='archer.php' method='post'>
+                                            <tr>
+                                                <td>
+                                                    <div class=\"d-flex px-2 py-1\">
+                                                        <div class=\"d-flex flex-column justify-content-center\">
+                                                            <h6 class=\"mb - 0 text - sm\">$user->vName $user->nName </h6>
+                                                            <p class=\"text-xs text-secondary mb-0\">$user->nickname</p>
                                                         </div>
-                                                    </td>
-                                                    <td class=\"align-items-start\">
-                                                        <span class=\"badge bg-gradient-success\" name=\"delete\">Delete&nbsp;<i
-                                                                class=\"ni ni-fat-remove\"></i></span>
-                                                        <input type='text' style='display: none' name='user' value='$freund->user_id'>
-                                                        <input type='text' style='display: none' name='freund' value='$freund->freund_id'>
-                                                   </td>
-                                                </tr>
-                                            </form>";
-                                        }
-                                        unset($freund);
-                                        ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                    </div>
+                                                </td>
+                                                <td class=\"align-items-start\">
+                                                    <span class=\"badge bg-gradient-success\" name=\"delete\">Delete&nbsp;<i
+                                                            class=\"ni ni-fat-remove\"></i></span>
+                                                    <input type='text' style='display: none' name='user' value='$freund->user_id'>
+                                                    <input type='text' style='display: none' name='freund' value='$freund->freund_id'>
+                                               </td>
+                                            </tr>
+                                        </form>";
+                                    }
+                                    unset($freund);
+                                    ?>
+                                    </tbody>
+                                </table>
                             </div>
-                            <?php
-                            require_once "../PHP/footer.php";
-                            ?>
                         </div>
                     </div>
+                </div>
+            </div>
+            <?php
+            require_once "../PHP/footer.php";
+            ?>
+        </div>
     </main>
     <?php
     require_once "../PHP/rightHor_Navbar.php";
