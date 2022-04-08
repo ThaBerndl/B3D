@@ -121,92 +121,68 @@ require_once '../PHP/leftHor_Navbar.php'
                                                     <h3 class="font-weight-bolder text-success text-gradient">Hase</h3>
                                                     <p class="mb-0">Enter your arrow number and scoring zone</p>
                                                 </div>
-                                                <hr id="tables-hr">
                                                 <div class="card-body">
                                                     <form role="form text-left">
                                                         <div class="table-responsive">
                                                             <table class="table align-items-center mb-0">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                                        Arrow
-                                                                    </th>
-                                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                                        Scoring Zone
-                                                                    </th>
-                                                                </tr>
-                                                                </thead>
                                                                 <tbody>
                                                                 <tr>
-                                                                    <td>
-                                                                        <div class="d-flex px-2 py-1">
-                                                                            <div class="d-flex flex-column justify-content-center">
-                                                                                <div class="form-check">
-                                                                                    <input class="form-check-input"
-                                                                                           type="radio"
-                                                                                           name="flexRadioDefault"
-                                                                                           id="customRadio1">
-                                                                                    <label class="custom-control-label"
-                                                                                           for="customRadio1">Arrow
-                                                                                        1</label>
-                                                                                </div>
-                                                                                <div class="form-check">
-                                                                                    <input class="form-check-input"
-                                                                                           type="radio"
-                                                                                           name="flexRadioDefault"
-                                                                                           id="customRadio2">
-                                                                                    <label class="custom-control-label"
-                                                                                           for="customRadio2">Arrow
-                                                                                        2</label>
-                                                                                </div>
-                                                                                <div class="form-check">
-                                                                                    <input class="form-check-input"
-                                                                                           type="radio"
-                                                                                           name="flexRadioDefault"
-                                                                                           id="customRadio3">
-                                                                                    <label class="custom-control-label"
-                                                                                           for="customRadio2">Arrow
-                                                                                        3</label>
-                                                                                </div>
-                                                                                <div class="form-check">
-                                                                                    <input class="form-check-input"
-                                                                                           type="radio"
-                                                                                           name="flexRadioDefault"
-                                                                                           id="customRadio4">
-                                                                                    <label class="custom-control-label"
-                                                                                           for="customRadio2">Miss</label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                    <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                        Arrow
                                                                     </td>
                                                                     <td>
-                                                                        <div class="d-flex px-2 py-1">
-                                                                            <div class="d-flex flex-column justify-content-center">
-                                                                                <div class="form-check">
-                                                                                    <input class="form-check-input"
-                                                                                           type="radio"
-                                                                                           name="flexRadioDefault"
-                                                                                           id="customRadio5">
-                                                                                    <label class="custom-control-label"
-                                                                                           for="customRadio1">Center</label>
-                                                                                </div>
-                                                                                <div class="form-check">
-                                                                                    <input class="form-check-input"
-                                                                                           type="radio"
-                                                                                           name="flexRadioDefault"
-                                                                                           id="customRadio6">
-                                                                                    <label class="custom-control-label"
-                                                                                           for="customRadio2">Kill</label>
-                                                                                </div>
-                                                                                <div class="form-check">
-                                                                                    <input class="form-check-input"
-                                                                                           type="radio"
-                                                                                           name="flexRadioDefault"
-                                                                                           id="customRadio7">
-                                                                                    <label class="custom-control-label"
-                                                                                           for="customRadio2">Body</label>
-                                                                                </div>
-                                                                            </div>
+                                                                        <div class="btn-group" role="group"
+                                                                             aria-label="Basic radio toggle button group">
+                                                                            <input type="radio" class="btn-check"
+                                                                                   name="btnradioArrow" id="btnradio1"
+                                                                                   autocomplete="off">
+                                                                            <label class="btn btn-outline-success"
+                                                                                   for="btnradio1"> 1</label>
+
+                                                                            <input type="radio" class="btn-check"
+                                                                                   name="btnradioArrow" id="btnradio2"
+                                                                                   autocomplete="off">
+                                                                            <label class="btn btn-outline-success"
+                                                                                   for="btnradio2">2</label>
+
+                                                                            <input type="radio" class="btn-check"
+                                                                                   name="btnradioArrow" id="btnradio3"
+                                                                                   autocomplete="off">
+                                                                            <label class="btn btn-outline-success"
+                                                                                   for="btnradio3">3</label>
+
+                                                                            <input type="radio" class="btn-check"
+                                                                                   name="btnradioArrow" id="btnradio4"
+                                                                                   autocomplete="off">
+                                                                            <label class="btn btn-outline-success"
+                                                                                   for="btnradio4">Miss</label>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                        Scoring Zone
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="btn-group" role="group"
+                                                                             aria-label="Basic radio toggle button group">
+                                                                            <input type="radio" class="btn-check"
+                                                                                   name="btnradioZone" id="btnradio5"
+                                                                                   autocomplete="off">
+                                                                            <label class="btn btn-outline-success"
+                                                                                   for="btnradio5">Center</label>
+
+                                                                            <input type="radio" class="btn-check"
+                                                                                   name="btnradioZone" id="btnradio6"
+                                                                                   autocomplete="off">
+                                                                            <label class="btn btn-outline-success"
+                                                                                   for="btnradio6">Kill</label>
+
+                                                                            <input type="radio" class="btn-check"
+                                                                                   name="btnradioZone" id="btnradio7"
+                                                                                   autocomplete="off">
+                                                                            <label class="btn btn-outline-success"
+                                                                                   for="btnradio7">Body</label>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
