@@ -55,7 +55,7 @@ require_once '../PHP/leftHor_Navbar.php'
                         <!--form-->
                         <form id="new_game_form" action="new-game.php" method="get">
                             <button type="submit"
-                                    class="btn btn-outline-success align-right" name="saved_parcours">Saved parcours&nbsp;&nbsp;<i
+                                    class="btn btn-outline-success align-right" name="saved_parcours">Add Friend&nbsp;&nbsp;<i
                                         class="ni ni-bold-down"></i></button>
                             <!--Friendlist - select participating archers-->
                             <table class="table-responsive">
