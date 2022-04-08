@@ -106,12 +106,6 @@ require_once '../PHP/leftHor_Navbar.php'
                                     <label for="example-text-input" class="form-control-label">Parcour</label>
                                     <select class="form-select" aria-label=".form-select-sm example">
                                         <option selected>-choose parcour-</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select
-                                    <select class="form-select" aria-label=".form-select-sm example">
-                                        <option selected>-choose parcour-</option>
                                         <?php
                                         $parcours = Parcour::getAllParcours();
                                         while($parcour = $parcours->fetch())
