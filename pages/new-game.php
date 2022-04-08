@@ -105,13 +105,12 @@ require_once '../PHP/leftHor_Navbar.php'
                                 <td colspan="4">
                                     <label for="example-text-input" class="form-control-label">Parcour</label>
                                     <select class="form-select" aria-label=".form-select-sm example">
-                                        <option value="2">test</option>
+                                        <option selected>-choose parcour-</option>
                                         <?php
                                         $parcours = Parcour::getAllParcours();
                                         while($parcour = $parcours->fetch())
                                         {
-                                            echo 999;
-                                            echo "<option>" . $parcour['bez'] . "</option>";
+                                            echo "<option value='".$parcour['parcour_id']."'>" . $parcour['bez'] . "</option>";
                                         }
                                         ?>
                                         <option value="1">One</option>
