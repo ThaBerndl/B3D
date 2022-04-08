@@ -110,6 +110,18 @@ require_once '../PHP/leftHor_Navbar.php'
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
                                     </select
+                                    <select class="form-select" aria-label=".form-select-sm example">
+                                        <option selected>-choose parcour-</option>
+                                        <?php
+                                        $orte = Ort::getAllOrte();
+                                        $parcours = Parcour::getAllParcours();
+                                        while($parcour = $parcours->fetch())
+                                        {
+                                            echo "<option value=".$parcour['parcour_id'].">" . $parcour['bez'] . "</option>";
+                                        }
+                                        ?>
+                                        <option value="1">One</option>
+                                    </select
                                 </td>
                             </tr>
                             <hr id="tables-hr">
