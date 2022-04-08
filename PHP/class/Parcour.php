@@ -47,4 +47,7 @@ class Parcour extends DB{
             return $data['parcour_id'];
         }
     }
+    public function create(){
+        //$this->pdo->prepare("Insert into Parcour values (bez, )")
+    }
 }

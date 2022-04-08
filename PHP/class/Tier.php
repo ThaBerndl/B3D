@@ -31,10 +31,22 @@ class Tier extends DB{
         }
     }
 
+    public static function getTierfromID($id){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("SELECT * FROM Tier where tier_id = ?");
+        $stmt->bindParam(1,$id,PDO::PARAM_INT);
+        $stmt->execute();
+        while($data = $stmt->fetch())
+        {
+            return new Tier($data['tier_id'],$data['bez']);
+        }
+    }
+
     public static function createTier($bez){
         $db = new DB();
         $stmt = $db->pdo->prepare("Insert into tier (bez) values (?)");
         $stmt->bindParam(1,$bez,PDO::PARAM_STR);
         $stmt->execute();
+        return Tier::getTierfromID($db->pdo->lastInsertId());
     }
 }

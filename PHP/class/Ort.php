@@ -22,7 +22,7 @@ class Ort extends DB
                 $stmt = $this->pdo->prepare("INSERT INTO Ort (bez) VALUES (?)");
                 $stmt->bindParam(1, $this->bez, PDO::PARAM_STR);
                 $stmt->execute();
-
+                $this->id = $this->pdo->lastInsertId();
                 return true;
             }
             else
@@ -62,23 +62,16 @@ class Ort extends DB
     {
         try
         {
-
-            echo "<br>"."Ort->getOrtwithBez->iBez: ".$iBez;
-
             $myOrt = new Ort();
             $stmt = $myOrt->pdo->prepare("SELECT * FROM Ort where lower(bez) = lower(?)");
-            $stmt->bindParam(1,$iBez,PDO::PARAM_INT);
+            $stmt->bindParam(1,$iBez,PDO::PARAM_STR);
             $stmt->execute();
             while($row = $stmt->fetch())
             {
                 $myOrt->id = $row['ort_id'];
                 $myOrt->bez = $row['bez'];
-
-                echo "<br>"."Ort->getOrtwithBez->myort id: ".$myOrt->id;
-
                 return $myOrt;
             }
-
         }
         catch (Exception $e)
         {
