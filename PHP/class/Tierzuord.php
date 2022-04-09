@@ -57,7 +57,7 @@ class Tierzuord extends DB{
     }
 
     public function updateTier(){
-        $stmt = $this->pdo->prepare("update tierzuord set tier_id = ? where parcour_id = ? and pos = ?");
+        $stmt = $this->pdo->prepare("update Tierzuord set tier_id = ? where parcour_id = ? and pos = ?");
         $stmt->bindParam(1,$this->tier_id,PDO::PARAM_INT);
         $stmt->bindParam(2,$this->parcour_id,PDO::PARAM_INT);
         $stmt->bindParam(3,$this->pos,PDO::PARAM_INT);
