@@ -44,7 +44,7 @@ class Tier extends DB{
 
     public static function createTier($bez){
         $db = new DB();
-        $stmt = $db->pdo->prepare("Insert into tier (bez) values (?)");
+        $stmt = $db->pdo->prepare("Insert into Tier (bez) values (?)");
         $stmt->bindParam(1,$bez,PDO::PARAM_STR);
         $stmt->execute();
         $error = $db->pdo->errorInfo();
