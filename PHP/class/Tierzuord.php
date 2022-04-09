@@ -38,13 +38,18 @@ class Tierzuord extends DB{
     }
 
     public function getnextPos(){
+        $this->getAktPos();
+        $this->pos = $this->pos+1;
+    }
+
+    public function getAktPos(){
         $stmt = $this->pdo->prepare("select max(pos) as pos
                                                 from Tierzuord tz
                                                where parcour_id = ?;");
         $stmt->bindParam(1,$this->parcour_id, PDO::PARAM_INT);
         $stmt->execute();
         while($data = $stmt->fetch()){
-            $this->pos = ($data['pos']+1);
+            $this->pos = ($data['pos']);
             return;
         }
     }

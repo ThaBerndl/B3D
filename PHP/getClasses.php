@@ -6,3 +6,4 @@ require_once "../PHP/class/Parcour.php";
 require_once "../PHP/class/Ort.php";
 require_once "../PHP/class/Tier.php";
 require_once "../PHP/class/Tierzuord.php";
+require_once "../PHP/class/Parcour_fav.php";

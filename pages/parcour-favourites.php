@@ -17,6 +17,7 @@
     <?php
     session_start();
     include "../PHP/header.php";
+    include "../PHP/getClasses.php";
     ?>
 </head>
 
@@ -24,8 +25,31 @@
 <div class="min-height-300 bg-success position-absolute w-100"></div>
 <!--Left Side Nav Bar -->
 <?php
-require_once '../PHP/leftHor_Navbar.php'
-?>
+require_once '../PHP/leftHor_Navbar.php';
+if (isset($_POST['saveParcour'])){
+    $fav = new Parcour_fav();
+    $fav->user_id = $_SESSION['user_id'];
+    $fav->parcour_id = $_POST['parcour_id'];
+    $fav->insert();
+}
+if(isset($_POST['deleteParcour'])){
+    $fav = new Parcour_fav($_SESSION['user_id'],$_POST['parcour_id']);
+    $fav->delete();
+}
+if (isset($_POST['showFavs'])){
+    if (isset($_SESSION['showFavs'])){
+        unset($_SESSION['showFavs']);
+    }else{
+        $_SESSION['showFavs'] = true;
+    }
+}
+if (isset($_POST['showParcs'])){
+    if (isset($_SESSION['showParcs'])){
+        unset($_SESSION['showParcs']);
+    }else{
+        $_SESSION['showParcs'] = true;
+    }
+}?>
 <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
@@ -53,104 +77,119 @@ require_once '../PHP/leftHor_Navbar.php'
                         <h6>Favourites</h6>
                         <br>
                         <!--form-->
-                        <form id="choose_parcour" action="parcour-favourites.php" method="get">
-                            <button type="submit"
-                                    class="btn btn-success align-right" name="add_parcour">Create Parcour&nbsp;&nbsp;<i
+                        <form action="parcour-location.php" method="post">
+                            <button type="submit" class="btn btn-success align-right" name="add_parcour">Create Parcour&nbsp;&nbsp;<i
                                         class="ni ni-fat-add"></i></button>
-                            <hr id="tables-hr">
-                            <button type="submit"
-                                    class="btn btn-outline-success align-right" name="saved_parcours">Saved parcours&nbsp;&nbsp;<i
-                                        class="ni ni-bold-down"></i></button>
-                            <table class="responsive">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Parcour
-                                        </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Animals
-                                        </th>
-                                        <th class="text-secondary opacity-7"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs">Parcour 1</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs">42</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                               data-toggle="tooltip" data-original-title="Delete parcour">
-                                                Delete
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </table>
-                            <hr id="tables-hr">
-                            <button type="submit"
-                                    class="btn btn-outline-success align-right" name="available_parcours">Available
-                                parcours&nbsp;&nbsp;<i class="ni ni-bold-down"></i></button>
-                            <table class="responsive">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Parcour
-                                        </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Animals
-                                        </th>
-                                        <th class="text-secondary opacity-7"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs">Parcour 2</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs">69</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                               data-toggle="tooltip" data-original-title="Add parcour">
-                                                Add
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </table>
-                            <hr id="tables-save-hr">
-                            <button id="saveParcourFavs" type="submit" name="saveParcourFavs"
-                                    class="btn bg-gradient-success">Save
-                            </button>
                         </form>
-                        <!--End form-->
+
+                            <hr id="tables-hr">
+                        <form action="parcour-favourites.php" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-success align-right"
+                                    name="showFavs">Favorites&nbsp;&nbsp;<i class="<?= !isset($_SESSION['showFavs'])?"ni ni-bold-down":"ni ni-bold-up"; ?>"></i></button>
+                        </form>
+                            <table class="table align-items-center mb-0 responsive" <?= isset($_SESSION['showFavs'])?"style=\"display: none;\"":""; ?>>
+                                <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Parcour
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Animals
+                                    </th>
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $favs = Parcour_fav::getFavs($_SESSION['user_id']);
+                                while ($data = $favs->fetch()){
+                                    $parcour = Parcour::getParcour($data['parcour_id']);
+                                    $tierzuord = new Tierzuord(null, $parcour->parcour_id);
+                                    $tierzuord->getAktPos();
+                                ?>
+                                <form id="favorites" action="parcour-favourites.php" method="post">
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-xs"><?=$parcour->bez?></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-xs"><?=$tierzuord->pos?></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <input type="hidden" name="parcour_id" value="<?=$parcour->parcour_id?>">
+                                        <button id="deteleParcourFav" type="submit" name="deleteParcour"
+                                                class="btn btn-outline-success">Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                                </form>
+                                <?php
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                            <hr id="tables-hr">
+
+                        <form action="parcour-favourites.php" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-success align-right"
+                                    name="showParcs">Available parcours&nbsp;&nbsp;<i class="<?= !isset($_SESSION['showParcs'])?"ni ni-bold-down":"ni ni-bold-up"; ?>"></i></button>
+                        </form>
+                            <table class="table align-items-center mb-0 responsive" <?= isset($_SESSION['showParcs'])?"style=\"display: none;\"":""; ?>>
+                                <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Parcour</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Animals</th>
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $parcours = Parcour::getAllNotFavs($_SESSION['user_id']);
+                                while($parcour = $parcours->fetch())
+                                {
+                                    $tierzuord = new Tierzuord(null, $parcour['parcour_id']);
+                                    $tierzuord->getAktPos();
+                                ?>
+                                <form id="available" action="parcour-favourites.php" method="post">
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-xs"><?=$parcour['bez']?></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-xs"><?=$tierzuord->pos?></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <input type="hidden" name="parcour_id" value="<?=$parcour['parcour_id']?>">
+                                        <button id="saveParcourFav" type="submit" name="saveParcour"
+                                                class="btn btn-outline-success">Add
+                                        </button>
+                                    </td>
+                                </tr>
+                                </form>
+                                <?php
+                                }
+                                ?>
+                                </tbody>
+                        </table>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0"></div>

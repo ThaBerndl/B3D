@@ -54,6 +54,29 @@ class Parcour extends DB{
         $stmt->execute();
         $error = $stmt->errorInfo();
         $this->parcour_id = $this->pdo->lastInsertId();
+    }
 
+    public static function getParcour($parcour_id){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("select * from Parcour where parcour_id = ?");
+        $stmt->bindParam(1,$parcour_id, PDO::PARAM_INT);
+        $stmt->execute();
+        while($data = $stmt->fetch())
+        {
+            return new Parcour($data['parcour_id'],$data['bez'],$data['ort_id']);
+        }
+    }
+
+    public static function getAllNotFavs($user_id){
+        $db = new DB;
+        $stmt = $db->pdo->prepare("select * 
+                                              from Parcour 
+                                             where parcour_id not in(select parcour_id 
+                                                                       from ParcourFavorit 
+                                                                      where user_id = ?)");
+        $stmt->bindParam(1,$user_id,PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $db->pdo->errorInfo();
+        return $stmt;
     }
 }
