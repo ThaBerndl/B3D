@@ -216,7 +216,9 @@ require "../PHP/body_end.php";
                     $tierzuord->parcour_id = $parcour_ID;
                     $tierzuord->pos = ($i + 1);
                     $tierzuord->updateTier();
+                    echo '<script>alert("im If")</script>';
                 }
+                echo '<script>alert("am Ende")</script>';
             }
     ?>
 </script>
