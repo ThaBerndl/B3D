@@ -17,8 +17,15 @@
     <?php
     session_start();
     include "../PHP/header.php";
+    include "../PHP/getClasses.php";
     ?>
 </head>
+<?php
+if (isset($_POST['points']))
+{
+    Punkte::insertpoints($_SESSION['game_id'],$_POST['userid'], $_SESSION['tz_id'],$_POST['btnradioArrow'], $_POST['btnradioArrow'] != 'M' ? $_POST['btnradioZone'] : 0);
+}
+?>
 
 <body class="g-sidenav-show   bg-gray-100">
 <div class="min-height-300 bg-success position-absolute w-100"></div>
@@ -41,7 +48,15 @@ require_once '../PHP/leftHor_Navbar.php'
             </nav>
             <?php
             require_once "../PHP/header-navbar.php";
+            $dataArr = Punkte_data::getDataAkt(1,1);
+            $_SESSION['game_id'] = $dataArr[1]->game_id;
+            $_SESSION['tz_id'] = $dataArr[1]->tz_id;
             ?>
+            <script>
+                user_id = null;
+                game_id = <?=$dataArr[1]->game_id?>
+                pos = <?=$dataArr[1]->pos?>
+            </script>
         </div>
     </nav>
     <!-- End Navbar -->
@@ -72,7 +87,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 </ul>
                             </nav>
                             <!--End page index-->
-                            <span class="badge badge-lg bg-gradient-success" name="currentAnimal">Hase</span>
+                            <span class="badge badge-lg bg-gradient-success" name="currentAnimal"><?=$dataArr[1]->tier_bez?></span>
                             <hr id="tables-hr">
                             <div class="table-responsive">
                                 <table class="table align-items-center mb-0">
@@ -88,125 +103,140 @@ require_once '../PHP/leftHor_Navbar.php'
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                    foreach ($dataArr as $data)
+                                    {
+                                    ?>
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs" name="archerName">Sponga</h6>
+                                                    <h6 class="mb-0 text-xs" name="archerName"><?=$data->user_vname . ' ' . $data->user_nname?></h6>
                                                     <p class="text-xs text-secondary mb-0"
-                                                       name="archerNickname">@feufeu</p>
+                                                       name="archerNickname"><?=$data->user_nickname?></p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <span class="text-xs font-weight-bold mb-0">69</span>
+                                            <span class="text-xs font-weight-bold mb-0"><?php echo is_null($data->punkte)?"???":$data->punkte?></span>
                                         </td>
                                         <td>
                                             <!--Opens modal element-->
-                                            <span class="badge bg-gradient-success" data-bs-toggle="modal"
+                                            <span class="badge bg-gradient-success" data-bs-toggle="modal" onclick="user_id=<?=$data->user_id?>"
                                                   data-bs-target="#modal-form">Add</span>
                                         </td>
                                     </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
-                            <!--Modal element for entering scores, already outsourced to modal-score.point.php -->
-                            <div class="modal fade" id="modal-form" tabindex="-1" role="dialog"
-                                 aria-labelledby="modal-form" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-body p-0">
-                                            <div class="card card-plain">
-                                                <div class="card-header pb-0 text-left">
-                                                    <h3 class="font-weight-bolder text-success text-gradient">Hase</h3>
-                                                    <p class="mb-0">Enter your arrow number and scoring zone</p>
+                    </div>
+                    </form>
+                    <!--End form-->
+                    <!--Modal element for entering scores, already outsourced to modal-score.point.php -->
+                    <div class="modal fade" id="modal-form" tabindex="-1" role="dialog"
+                         aria-labelledby="modal-form" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="card card-plain">
+                                        <div class="card-header pb-0 text-left">
+                                            <h3 class="font-weight-bolder text-success text-gradient">Hase</h3>
+                                            <p class="mb-0">Enter your arrow number and scoring zone</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form role="form text-left" action="?" method="post" onsubmit="document.getElementById('user').setAttribute('value', user_id);">
+                                                <div class="table-responsive">
+                                                    <table class="table align-items-center mb-0">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Arrow
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group" role="group"
+                                                                     aria-label="Basic radio toggle button group">
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="btnradioArrow" id="btnradio1" value="1"
+                                                                           autocomplete="off"
+                                                                           required="required">
+                                                                    <label class="btn btn-outline-success"
+                                                                           for="btnradio1">1</label>
+
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="btnradioArrow" id="btnradio2" value="2"
+                                                                           autocomplete="off"
+                                                                           required="required">
+                                                                    <label class="btn btn-outline-success"
+                                                                           for="btnradio2">2</label>
+
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="btnradioArrow" id="btnradio3" value="3"
+                                                                           autocomplete="off"
+                                                                           required="required">
+                                                                    <label class="btn btn-outline-success"
+                                                                           for="btnradio3">3</label>
+
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="btnradioArrow" id="btnradio4" value="M"
+                                                                           autocomplete="off"
+                                                                           required="required">
+                                                                    <label class="btn btn-outline-success"
+                                                                           for="btnradio4">Miss</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Scoring Zone
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group" role="group"
+                                                                     aria-label="Basic radio toggle button group">
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="btnradioZone"
+                                                                           id="btnradio5"
+                                                                           value="center"
+                                                                           autocomplete="off">
+                                                                    <label class="btn btn-outline-success"
+                                                                           for="btnradio5">Center</label>
+
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="btnradioZone" id="btnradio6" value="kill"
+                                                                           autocomplete="off">
+                                                                    <label class="btn btn-outline-success"
+                                                                           for="btnradio6">Kill</label>
+
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="btnradioZone" id="btnradio7" value="body"
+                                                                           autocomplete="off">
+                                                                    <label class="btn btn-outline-success"
+                                                                           for="btnradio7">Body</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                                <div class="card-body">
-                                                    <form role="form text-left">
-                                                        <div class="table-responsive">
-                                                            <table class="table align-items-center mb-0">
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                                        Arrow
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="btn-group" role="group"
-                                                                             aria-label="Basic radio toggle button group">
-                                                                            <input type="radio" class="btn-check"
-                                                                                   name="btnradioArrow" id="btnradio1"
-                                                                                   autocomplete="off">
-                                                                            <label class="btn btn-outline-success"
-                                                                                   for="btnradio1"> 1</label>
-
-                                                                            <input type="radio" class="btn-check"
-                                                                                   name="btnradioArrow" id="btnradio2"
-                                                                                   autocomplete="off">
-                                                                            <label class="btn btn-outline-success"
-                                                                                   for="btnradio2">2</label>
-
-                                                                            <input type="radio" class="btn-check"
-                                                                                   name="btnradioArrow" id="btnradio3"
-                                                                                   autocomplete="off">
-                                                                            <label class="btn btn-outline-success"
-                                                                                   for="btnradio3">3</label>
-
-                                                                            <input type="radio" class="btn-check"
-                                                                                   name="btnradioArrow" id="btnradio4"
-                                                                                   autocomplete="off">
-                                                                            <label class="btn btn-outline-success"
-                                                                                   for="btnradio4">Miss</label>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                                        Scoring Zone
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="btn-group" role="group"
-                                                                             aria-label="Basic radio toggle button group">
-                                                                            <input type="radio" class="btn-check"
-                                                                                   name="btnradioZone" id="btnradio5"
-                                                                                   autocomplete="off">
-                                                                            <label class="btn btn-outline-success"
-                                                                                   for="btnradio5">Center</label>
-
-                                                                            <input type="radio" class="btn-check"
-                                                                                   name="btnradioZone" id="btnradio6"
-                                                                                   autocomplete="off">
-                                                                            <label class="btn btn-outline-success"
-                                                                                   for="btnradio6">Kill</label>
-
-                                                                            <input type="radio" class="btn-check"
-                                                                                   name="btnradioZone" id="btnradio7"
-                                                                                   autocomplete="off">
-                                                                            <label class="btn btn-outline-success"
-                                                                                   for="btnradio7">Body</label>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <hr id="tables-hr">
-                                                        <div class="text-center">
-                                                            <button type="button"
-                                                                    class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0">
-                                                                Save
-                                                            </button>
-                                                        </div>
-                                                    </form>
+                                                <hr id="tables-hr">
+                                                <div class="text-center">
+                                                    <input type="hidden" name="userid" id="user">
+                                                    <button type="submit"
+                                                            class="btn btn-round bg-gradient-success btn-lg w-100 mt-4 mb-0"
+                                                            name="points">
+                                                        Save
+                                                    </button>
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- End modal-->
+                        </div>
                     </div>
-                    </form>
-                    <!--End form-->
+                    <!-- End modal-->
                 </div>
             </div>
         </div>
