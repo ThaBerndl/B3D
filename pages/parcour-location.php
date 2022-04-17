@@ -22,7 +22,7 @@ if (!$_SESSION['auth']) {
     ?>
 </head>
 <body class="g-sidenav-show   bg-gray-100">
-<div class="min-height-100 bg-success position-absolute w-100"></div>
+<div class="min-height-300 bg-success position-absolute w-100"></div>
 <?php
 require_once '../PHP/leftHor_Navbar.php';
 require_once '../PHP/getClasses.php';
@@ -65,8 +65,8 @@ if (isset($_GET['saveParcour'])) {
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white"
-                                                           href="javascript:;">Pages</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:">Pages</a>
+                    </li>
                     <li class="breadcrumb-item text-sm text-white active" aria-current="page">Parcour & Location</li>
                 </ol>
                 <h6 class="font-weight-bolder text-white mb-0">Parcour & Location</h6>
@@ -81,10 +81,9 @@ if (isset($_GET['saveParcour'])) {
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
-                    <div class="card-header pb-0">
+                    <div class="card-body p-3">
                         <h6>Parcour & Location</h6>
                         <form id="choose_parcour" action="parcour-location.php" method="get">
-
                             <label for="example-text-input" class="form-control-label">Create or Choose
                                 Parcour</label>
                             <input class="form-control"
@@ -183,7 +182,6 @@ if (isset($_GET['saveParcour'])) {
     <?php
     require_once "../PHP/footer.php";
     ?>
-    </div>
 </main>
 <?php
 require_once "../PHP/rightHor_Navbar.php";
