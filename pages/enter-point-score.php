@@ -75,7 +75,6 @@ require_once '../PHP/leftHor_Navbar.php'
             <script>
                 user_id = null;
                 game_id = <?=$dataArr[1]->game_id?>;
-                pos = <?=$dataArr[1]->pos?>;
             </script>
         </div>
     </nav>
