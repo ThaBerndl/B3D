@@ -69,4 +69,57 @@ class Punkte extends DB
         $stmt->execute();
         $error = $stmt->errorInfo();
     }
+
+    public static function createnextPos($game_id, $pos)
+    {
+        $prevpos = $pos-1;
+        $db = new DB();
+            //if entries already exist then do nothing
+        $check = $db->pdo->prepare("select count(*) 
+                                            from Punktestand p, 
+                                                 tierzuord tz 
+                                           where p.tierzuord_id = tz.tierzuord_id 
+                                             and game_id = ?
+                                             and pos = ?");
+        $check->bindParam(1, $game_id, PDO::PARAM_INT);
+        $check->bindParam(2, $pos, PDO::PARAM_INT);
+        $check->execute();
+        $error = $check->errorInfo();
+        $cnt = $check->fetchAll();
+        if ($cnt[0][0] == 0) {
+            //die User vom aktuellen Spiel raussuchen
+            $users = $db->pdo->prepare("select * 
+                                                from Punktestand p, 
+                                                     tierzuord tz 
+                                               where p.tierzuord_id = tz.tierzuord_id 
+                                                 and game_id = ?
+                                                 and pos = ?");
+            $users->bindParam(1, $game_id, PDO::PARAM_INT);
+            $users->bindParam(2, $prevpos, PDO::PARAM_INT);
+            $users->execute();
+            $error = $users->errorInfo();
+
+
+            $tierzuordstmt = $db->pdo->prepare("select tz.tierzuord_id 
+                                                           from game g,
+                                                                tierzuord tz
+                                                          where g.game_id = ?
+                                                            and tz.parcour_id = g.parcour_id
+                                                            and tz.pos = ?");
+            $tierzuordstmt->bindParam(1, $game_id, PDO::PARAM_INT);
+            $tierzuordstmt->bindParam(2, $pos, PDO::PARAM_INT);
+            $tierzuordstmt->execute();
+            $error = $tierzuordstmt->errorInfo();
+            $tierzuord = $tierzuordstmt->fetchAll();
+
+            while ($data = $users->fetch()) {
+                $insert = $db->pdo->prepare("insert into punktestand (game_id, user_id, tierzuord_id) values(?,?,?)");
+                $insert->bindParam(1, $game_id, PDO::PARAM_INT);
+                $insert->bindParam(2, $data['user_id'], PDO::PARAM_INT);
+                $insert->bindParam(3, $tierzuord[0]['tierzuord_id'], PDO::PARAM_INT);
+                $insert->execute();
+                $error = $insert->errorInfo();
+            }
+        }
+    }
 }

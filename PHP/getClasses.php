@@ -9,3 +9,4 @@ require_once "../PHP/class/Tierzuord.php";
 require_once "../PHP/class/Parcour_fav.php";
 require_once "../PHP/class/Punkte.php";
 require_once "../PHP/class/Punkte_data.php";
+require_once "../PHP/class/Game.php";

@@ -71,4 +71,8 @@ th {
     margin-bottom: 10px;
 }
 
-
+.invbutton {
+    background: none;
+    padding: 0px;
+    border: none;
+}

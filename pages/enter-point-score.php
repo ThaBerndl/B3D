@@ -21,9 +21,29 @@
     ?>
 </head>
 <?php
+if (isset($_POST['finish']))
+{
+    header('location: scoreboard.php');
+}
 if (isset($_POST['points']))
 {
-    Punkte::insertpoints($_SESSION['game_id'],$_POST['userid'], $_SESSION['tz_id'],$_POST['btnradioArrow'], $_POST['btnradioArrow'] != 'M' ? $_POST['btnradioZone'] : 0);
+    Punkte::insertpoints(   $_SESSION['game_id'],
+                            $_POST['userid'],
+                            $_SESSION['tz_id'],
+                            $_POST['btnradioArrow'],
+                       $_POST['btnradioArrow'] != 'M' ? $_POST['btnradioZone'] : 0);
+}
+if (isset($_POST['next'])){
+    $_SESSION['aktpos'] = $_POST['next'];
+    Punkte::createnextPos($_SESSION['game_id'],$_POST['next']);
+}
+elseif (isset($_POST['previous']) && $_POST['previous'] != 0){
+    $_SESSION['aktpos'] = $_POST['previous'];
+}
+elseif (!isset($_POST['previous'])&&!isset($_POST['next'])&&!isset($_POST['points']))
+{
+    $_SESSION['aktpos'] = 1;
+    $_SESSION['Game_id'] = 1;
 }
 ?>
 
@@ -48,7 +68,7 @@ require_once '../PHP/leftHor_Navbar.php'
             </nav>
             <?php
             require_once "../PHP/header-navbar.php";
-            $dataArr = Punkte_data::getDataAkt(1,1);
+            $dataArr = Punkte_data::getDataAkt($_SESSION['game_id'],isset($_SESSION['aktpos'])?$_SESSION['aktpos']:1);
             $_SESSION['game_id'] = $dataArr[1]->game_id;
             $_SESSION['tz_id'] = $dataArr[1]->tz_id;
             ?>
@@ -67,23 +87,22 @@ require_once '../PHP/leftHor_Navbar.php'
                     <div class="card-body p-3">
                         <h6>Point Score</h6>
                         <!--form-->
-                        <form id="choose_parcour" action="results.php" method="get">
+                        <form id="choose_parcour" action="?" method="post">
                             <!--Page index for targets -->
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination pagination-success justify-content-center">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="javascript:;" tabindex="-1">
+                                    <button type="submit" name="previous" value="<?=$dataArr[1]->pos-1?>" class="page-item invbutton">
+                                        <a class="page-link" tabindex="-1" id="prevbutton">
                                             <i class="fa fa-angle-left"></i>
-                                            <span class="sr-only">Previous</span>
                                         </a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="javascript:;">1</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="javascript:;">
+                                    </button>
+
+                                    <li class="page-item active"><a class="page-link" href="javascript:;"><?=$dataArr[1]->pos?></a></li>
+                                    <button type="submit" name="next" value="<?=$dataArr[1]->pos+1?>" class="page-item invbutton">
+                                        <a class="page-link" id="nextbutton">
                                             <i class="fa fa-angle-right"></i>
-                                            <span class="sr-only">Next</span>
                                         </a>
-                                    </li>
+                                    </button>
                                 </ul>
                             </nav>
                             <!--End page index-->
@@ -132,6 +151,8 @@ require_once '../PHP/leftHor_Navbar.php'
                                     </tbody>
                                 </table>
                             </div>
+                            <br>
+                            <input type="submit" name="finish" class="btn bg-gradient-success" value="Finish">
                     </div>
                     </form>
                     <!--End form-->
@@ -250,6 +271,23 @@ require_once '../PHP/leftHor_Navbar.php'
 require_once "../PHP/rightHor_Navbar.php";
 require "../PHP/body_end.php";
 ?>
+<script>
+    //set display if either the next or previous animal does not exist
+    if (<?=$_SESSION['aktpos']?> == 1)
+    {
+        document.getElementById("prevbutton").style.display = "none";
+    }
+    <?php
+        $game = Game::getGame($_SESSION['game_id']);
+        $tierzuord = new Tierzuord();
+        $tierzuord->parcour_id = $game->parcour_id;
+        $tierzuord->getAktPos();
+    ?>
+    if (<?=$_SESSION['aktpos']?> == <?=$tierzuord->pos?>)
+    {
+        document.getElementById("nextbutton").style.display = "none";
+    }
+</script>
 <script>
     var ctx1 = document.getElementById("chart-line").getContext("2d");
 
