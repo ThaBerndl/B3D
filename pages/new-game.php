@@ -127,7 +127,7 @@ require_once '../PHP/leftHor_Navbar.php'
                             </tr>
                         </form>
                         <?php
-                        if($_GET[myDropdown])
+                        if(isset($GET['submit']))
                         {
                             echo '<h1>' . 'test123' . '</h1>';
                         }
