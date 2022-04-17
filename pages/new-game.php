@@ -120,7 +120,7 @@ require_once '../PHP/leftHor_Navbar.php'
                             <hr id="tables-save-hr">
                             <tr>
                                 <td>
-                                    <button type="submit" class="btn bg-gradient-success align-right" name="newGame">
+                                    <button type="submit" class="btn bg-gradient-success align-right" name="submit">
                                         Start
                                     </button>
                                 </td>
