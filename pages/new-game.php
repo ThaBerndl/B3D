@@ -114,7 +114,6 @@ require_once '../PHP/leftHor_Navbar.php'
                                             echo "<option value='".$parcour['parcour_id']."'>" . $parcour['bez'] . "</option>";
                                         }
                                         ?>
-                                        <option value="1">One</option>
                                     </select
                                 </td>
                             </tr>
@@ -128,9 +127,9 @@ require_once '../PHP/leftHor_Navbar.php'
                             </tr>
                         </form>
                         <?php
-                        if($_GET[myDropdown] != '')
+                        if($_GET[myDropdown])
                         {
-                            echo test123;
+                            echo '<h1>' . 'test123' . '</h1>';
                         }
                         ?>
                     </div>
