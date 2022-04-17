@@ -118,18 +118,6 @@ require_once '../PHP/leftHor_Navbar.php'
                                     </select
                                 </td>
                             </tr>
-                            <hr id="tables-hr">
-                            <tr scope="row">
-                                <td colspan="4">
-                                    <label for="example-text-input" class="form-control-label">Scoring
-                                        System</label>
-                                    <select class="form-select" aria-label=".form-select-sm example">
-                                        <option selected>-choose scoring system-</option>
-                                        <option value="Three arrow scoring">One</option>
-                                        <option value="Two arrow scoring">Two</option>
-                                    </select>
-                                </td>
-                            </tr>
                             <hr id="tables-save-hr">
                             <tr>
                                 <td>
