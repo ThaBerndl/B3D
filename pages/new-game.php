@@ -105,7 +105,7 @@ require_once '../PHP/leftHor_Navbar.php'
                             <tr scope="row">
                                 <td colspan="4">
                                     <label for="example-text-input" class="form-control-label">Parcour</label>
-                                    <select class="form-select" aria-label=".form-select-sm example">
+                                    <select name="myDropdown" class="form-select" aria-label=".form-select-sm example">
                                         <option selected>-choose parcour-</option>
                                         <?php
                                         $parcours = Parcour::getAllParcours();
@@ -127,6 +127,12 @@ require_once '../PHP/leftHor_Navbar.php'
                                 </td>
                             </tr>
                         </form>
+                        <?php
+                        if($_GET[myDropdown] != '')
+                        {
+                            echo test123;
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
