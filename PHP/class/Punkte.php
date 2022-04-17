@@ -57,7 +57,7 @@ class Punkte extends DB
             }
         }
         $db = new DB();
-        $stmt = $db->pdo->prepare("update punktestand 
+        $stmt = $db->pdo->prepare("update Punktestand 
                                                set punkte = ?
                                              where game_id = ?
                                                and user_id = ?
@@ -77,7 +77,7 @@ class Punkte extends DB
             //if entries already exist then do nothing
         $check = $db->pdo->prepare("select count(*) 
                                             from Punktestand p, 
-                                                 tierzuord tz 
+                                                 Tierzuord tz 
                                            where p.tierzuord_id = tz.tierzuord_id 
                                              and game_id = ?
                                              and pos = ?");
@@ -90,7 +90,7 @@ class Punkte extends DB
             //die User vom aktuellen Spiel raussuchen
             $users = $db->pdo->prepare("select * 
                                                 from Punktestand p, 
-                                                     tierzuord tz 
+                                                     Tierzuord tz 
                                                where p.tierzuord_id = tz.tierzuord_id 
                                                  and game_id = ?
                                                  and pos = ?");
@@ -101,8 +101,8 @@ class Punkte extends DB
 
 
             $tierzuordstmt = $db->pdo->prepare("select tz.tierzuord_id 
-                                                           from game g,
-                                                                tierzuord tz
+                                                           from Game g,
+                                                                Tierzuord tz
                                                           where g.game_id = ?
                                                             and tz.parcour_id = g.parcour_id
                                                             and tz.pos = ?");
@@ -113,7 +113,7 @@ class Punkte extends DB
             $tierzuord = $tierzuordstmt->fetchAll();
 
             while ($data = $users->fetch()) {
-                $insert = $db->pdo->prepare("insert into punktestand (game_id, user_id, tierzuord_id) values(?,?,?)");
+                $insert = $db->pdo->prepare("insert into Punktestand (game_id, user_id, tierzuord_id) values(?,?,?)");
                 $insert->bindParam(1, $game_id, PDO::PARAM_INT);
                 $insert->bindParam(2, $data['user_id'], PDO::PARAM_INT);
                 $insert->bindParam(3, $tierzuord[0]['tierzuord_id'], PDO::PARAM_INT);

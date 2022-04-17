@@ -14,7 +14,7 @@ class Game extends DB{
 
     public static function getGame($game_id){
         $db = new DB();
-        $stmt = $db->pdo->prepare("select * from game where game_id  = ?");
+        $stmt = $db->pdo->prepare("select * from Game where game_id  = ?");
         $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
         $stmt->execute();
         $error=$stmt->errorInfo();
@@ -28,10 +28,10 @@ class Game extends DB{
                                                    p.bez 'parcour', 
                                                    o.bez 'ort', 
                                                    g.created 'created' 
-                                              from parcour p,
-                                                   ort o,
-                                                   game g,
-                                                   punktestand pu
+                                              from Parcour p,
+                                                   Ort o,
+                                                   Game g,
+                                                   Punktestand pu
                                              where p.ort_id = o.ort_id
                                                and g.parcour_id = p.parcour_id
                                                and pu.game_id = g.game_id
