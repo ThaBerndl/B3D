@@ -1,5 +1,3 @@
-<!--CSS B3D-->
-<link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet"/>
 <?php
 echo "   <aside
         class=\"sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 \"
@@ -77,7 +75,7 @@ echo "   <aside
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-satisfied text-green text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Archer</span>
+                        <span class=\"nav-link-text ms-1\">Friends</span>
                     </a>
                 </li>
                 <li class=\"nav-item\">
@@ -117,6 +115,15 @@ echo "   <aside
                             <i class=\"ni ni-tv-2 text-success text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Scoreboard</span>
+                    </a>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"../pages/test_modal.php\">
+                        <div
+                            class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                            <i class=\"ni ni-tv-2 text-success text-sm opacity-10\"></i>
+                        </div>
+                        <span class=\"nav-link-text ms-1\">Modal Test</span>
                     </a>
                 </li>
             </ul>

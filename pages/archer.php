@@ -9,11 +9,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-        B3D - Skillboard | Archer
+        B3D - Skillboard | Friends
     </title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!--CSS B3D-->
+    <link id="pagestyle" href="../assets/css/b3d-style.css" rel="stylesheet"/>
     <?php
         include "../PHP/header.php";
     ?>
@@ -35,14 +40,16 @@
     ?>
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+             data-scroll="false">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-                        <li class="breadcrumb-item text-sm text-white active" aria-current="page">Archer</li>
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white"
+                                                               href="javascript:;">Pages</a></li>
+                        <li class="breadcrumb-item text-sm text-white active" aria-current="page">Friends</li>
                     </ol>
-                    <h6 class="font-weight-bolder text-white mb-0">Archer</h6>
+                    <h6 class="font-weight-bolder text-white mb-0">Friends</h6>
                 </nav>
                 <?php
                 require_once "../PHP/header-navbar.php";
@@ -55,9 +62,13 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-body pb-3">
-                            <h6>Edit Profile</h6>
+                            <h6>Add friend</h6>
                             <!--form-->
                             <form id="add_friend" action="archer.php" method="post">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Nickname*</label>
+                                    <input class="form-control" type="text" value="" name="nickname">
+                                </div>
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Surname</label>
                                     <input class="form-control" type="text" value="" name="fname">
@@ -65,10 +76,6 @@
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Lastname</label>
                                     <input class="form-control" type="text" value="" name="lname">
-                                </div>
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Nickname</label>
-                                    <input class="form-control" type="text" value="" name="nickname">
                                 </div>
                                 <hr id="tables-hr">
                                 <button type="submit" class="btn bg-gradient-success align-right" name="submit">
@@ -111,7 +118,7 @@
                             ?>
                             <br>
                             <!-- Table content shows friends created in the past-->
-                            <h6>Friendslist</h6>
+                            <h6>Friend list</h6>
                             <div class="table-responsive p-0">
                                 <table class="table align-items-center mb-0">
                                     <thead>

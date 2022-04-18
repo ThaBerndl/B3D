@@ -71,7 +71,7 @@ class Punkte_data extends DB{
     public static function getSum($game_id, $user_id){
         $db = new DB();
         $stmt = $db->pdo->prepare("select sum(punkte) 'summe'
-                                              from punktestand
+                                              from Punktestand
                                              where game_id = ?
                                                and user_id = ?");
         $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
