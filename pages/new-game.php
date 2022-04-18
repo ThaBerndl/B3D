@@ -47,6 +47,7 @@ if (!$_SESSION['auth']) {
         //für den SESSION User Inserten
         Punkte::insertPunkteStand($myGame, $_SESSION['user_id'] , $myTierzuord, $myPunkte);
 
+        $_SESSION['aktpos'] = 1;
         $_SESSION['game_id'] = $myGame;
 
         header("Location: enter-point-score.php");
