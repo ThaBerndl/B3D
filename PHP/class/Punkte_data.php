@@ -102,7 +102,7 @@ class Punkte_data extends DB{
     public static function getMisses($game_id, $user_id){
         $db = new DB();
         $stmt = $db->pdo->prepare("   select count(punkte)  'misses'
-                                                 from punktestand
+                                                 from Punktestand
                                                 where game_id = ?
                                                   and user_id = ?
                                                   and (punkte = 0
@@ -120,9 +120,9 @@ class Punkte_data extends DB{
     {
         $db = new DB();
         $stmt = $db->pdo->prepare("select max(pos) 'maxPos'
-                                              from game g,
-                                                   parcour p,
-                                                   tierzuord tz
+                                              from Game g,
+                                                   Parcour p,
+                                                   Tierzuord tz
                                              where g.game_id = ?
                                                and g.parcour_id = p.parcour_id
                                                and p.parcour_id = tz.parcour_id");
@@ -137,7 +137,7 @@ class Punkte_data extends DB{
     public static function getArrow1($game_id, $user_id){
         $db = new DB();
         $stmt = $db->pdo->prepare("   select count(punkte)  'arrow1'
-                                                 from punktestand
+                                                 from Punktestand
                                                 where game_id = ?
                                                   and user_id = ?
                                                   and punkte in (20,18,16);");
@@ -153,7 +153,7 @@ class Punkte_data extends DB{
     public static function getArrow2($game_id, $user_id){
         $db = new DB();
         $stmt = $db->pdo->prepare("   select count(punkte)  'arrow2'
-                                                 from punktestand
+                                                 from Punktestand
                                                 where game_id = ?
                                                   and user_id = ?
                                                   and punkte in (14,12,10);");
@@ -169,7 +169,7 @@ class Punkte_data extends DB{
     public static function getArrow3($game_id, $user_id){
         $db = new DB();
         $stmt = $db->pdo->prepare("   select count(punkte)  'arrow3'
-                                                 from punktestand
+                                                 from Punktestand
                                                 where game_id = ?
                                                   and user_id = ?
                                                   and punkte in (8,6,4);");
@@ -185,8 +185,8 @@ class Punkte_data extends DB{
     public static function getPunkte($game_id, $user_id, $pos){
         $db = new DB();
         $stmt = $db->pdo->prepare("   select punkte
-                                                 from punktestand p,
-                                                      tierzuord tz
+                                                 from Punktestand p,
+                                                      Tierzuord tz
                                                 where game_id = ?
                                                   and user_id = ?
                                                   and p.tierzuord_id = tz.tierzuord_id
