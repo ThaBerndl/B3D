@@ -56,7 +56,7 @@ require_once '../PHP/leftHor_Navbar.php'
                         <!--form-->
                         <form id="new_game_form" action="new-game.php" method="get">
                             <button type="submit"
-                                    class="btn btn-outline-success align-right" name="saved_parcours">Add Friend&nbsp;&nbsp;<i
+                                    class="btn btn-outline-success align-right" name="saved_parcours">Friend&nbsp;&nbsp;<i
                                         class="ni ni-bold-down"></i></button>
                             <!--Friendlist - select participating archers-->
                             <table class="table-responsive">
@@ -69,6 +69,23 @@ require_once '../PHP/leftHor_Navbar.php'
                                     </thead>
                                     <tbody>
                                     <tr>
+                                        <?php
+                                        $freunde = Freund::getAllFreunde($_SESSION['user_id']);
+                                        foreach ($freunde as $freund)
+                                        {
+                                            $user = USER::getUserwithID($freund->freund_id);
+                                            echo '<h6 class="mb-0 text-xs" name="archerName">asdf asdf</h6>
+                                            <p class="text-xs text-secondary mb-0"
+                                               name="archerNickname">@asdf123</p>' ;
+                                        }
+                                        ?>
+                                        ?>
+                                        <td>
+                                            <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
+                                            <p class="text-xs text-secondary mb-0"
+                                               name="archerNickname">@pata</p>
+                                        </td>
+                                        <!-- oble placeholder - might delete later-->
                                         <td>
                                             <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
                                             <p class="text-xs text-secondary mb-0"
