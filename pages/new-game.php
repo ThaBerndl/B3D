@@ -40,11 +40,14 @@ if (!$_SESSION['auth']) {
 
             if(isset($myArray[$i]))
             {
-                //echo "<h1>" ."UserId= ". "$myArrayVal" ." Drowdownvalue= ".$myDropdownValue. "</h1>";
-                $myTierzuord = Punkte::insertPunkteStand($myGame, $myArrayVal , $myTierzuord, $myPunkte);
+                echo "<h1>" ."Game= ". "$myGame"." MyTierzuord= ". "$myTierzuord"."User_id= "."$myArrayVal"."</h1>";
+                Punkte::insertPunkteStand($myGame, $myArrayVal , $myTierzuord, $myPunkte);
             }
         }
 
+
+        //für den SESSION User Inserten
+        //Punkte::insertPunkteStand($myGame, $_SESSION['user_id'] , $myTierzuord, $myPunkte);
 
 
         //header("Location: enter-point-score.php");
