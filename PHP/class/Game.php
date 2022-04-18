@@ -60,6 +60,8 @@ class Game extends DB{
         $stmt = $db->pdo->prepare("select game_id from Game order by created desc limit 1");
         $stmt->bindParam(1,$parcour_id, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch();
+        $row = $stmt->fetch();
+
+        return $row[0];
     }
 }
