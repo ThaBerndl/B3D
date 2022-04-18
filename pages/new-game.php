@@ -72,15 +72,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                         foreach ($freunde as $freund)
                                         {
                                             $user = USER::getUserwithID($freund->freund_id);
-                                        }
-                                        ?>
-                                        <td>
-                                            <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
-                                            <p class="text-xs text-secondary mb-0"
-                                               name="archerNickname">@pata</p>
-                                        </td>
-                                        <!-- oble placeholder - might delete later-->
-                                        <td>
+                                            echo '<td>
                                             <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
                                             <p class="text-xs text-secondary mb-0"
                                                name="archerNickname">@pata</p>
@@ -90,7 +82,11 @@ require_once '../PHP/leftHor_Navbar.php'
                                                 <input class="form-check-input" type="checkbox" value=""
                                                        name="checkArcher" checked="">
                                             </div>
-                                        </td>
+                                        </td>';
+                                        }
+                                        ?>
+                                        <!-- oble placeholder - might delete later-->
+
                                     </tr>
                                     <!--placeholder - might delete later-->
                                     <tr>
