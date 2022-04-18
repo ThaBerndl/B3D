@@ -39,7 +39,6 @@ if (!$_SESSION['auth']) {
 
             if(isset($myArray[$i]))
             {
-                echo "<h1>" ."Game= ". "$myGame"." MyTierzuord= ". "$myTierzuord"."User_id= "."$myArrayVal"."</h1>";
                 Punkte::insertPunkteStand($myGame, $myArrayVal , $myTierzuord, $myPunkte);
             }
         }
@@ -48,8 +47,9 @@ if (!$_SESSION['auth']) {
         //für den SESSION User Inserten
         Punkte::insertPunkteStand($myGame, $_SESSION['user_id'] , $myTierzuord, $myPunkte);
 
+        $_SESSION['game_id'] = $myGame;
 
-        //header("Location: enter-point-score.php");
+        header("Location: enter-point-score.php");
     }
     ?>
 </head>
