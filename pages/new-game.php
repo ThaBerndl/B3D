@@ -24,6 +24,9 @@ if (!$_SESSION['auth']) {
         $myArray = $_GET['userArr'];
         $myDropdownValue = $_GET['myDropdown'];
 
+        //INSERT INTO GAME
+        Game::insertGame($myDropdownValue);
+
         $myGame = Game::getLastGame();
         $myTierzuord = Punkte::getFirstTierzuord($myDropdownValue);
 
