@@ -24,33 +24,41 @@ if (!$_SESSION['auth']) {
         $myArray = $_GET['userArr'];
         $myDropdownValue = $_GET['myDropdown'];
 
-        //INSERT INTO GAME
-        Game::insertGame($myDropdownValue);
-
-        $myGame = Game::getLastGame();
-        $myTierzuord = Punkte::getFirstTierzuord($myDropdownValue);
-
-
-        $myPunkte = 0;
-
-        for($i = 0; $i < sizeof($myArray); $i++)
+        if($myDropdownValue == 0)
         {
-            $myArrayVal = $myArray[$i];
-
-            if(isset($myArray[$i]))
-            {
-                Punkte::insertPunkteStand($myGame, $myArrayVal , $myTierzuord, $myPunkte);
-            }
+            $message = "Kein Parcour ausgewählt!";
+            echo "<script type='text/javascript'>alert('$message');</script>";
         }
+        else
+        {
+            //INSERT INTO GAME
+            Game::insertGame($myDropdownValue);
+
+            $myGame = Game::getLastGame();
+            $myTierzuord = Punkte::getFirstTierzuord($myDropdownValue);
 
 
-        //für den SESSION User Inserten
-        Punkte::insertPunkteStand($myGame, $_SESSION['user_id'] , $myTierzuord, $myPunkte);
+            $myPunkte = 0;
 
-        $_SESSION['aktpos'] = 1;
-        $_SESSION['game_id'] = $myGame;
+            for($i = 0; $i < sizeof($myArray); $i++)
+            {
+                $myArrayVal = $myArray[$i];
 
-        header("Location: enter-point-score.php");
+                if(isset($myArray[$i]))
+                {
+                    Punkte::insertPunkteStand($myGame, $myArrayVal , $myTierzuord, $myPunkte);
+                }
+            }
+
+
+            //für den SESSION User Inserten
+            Punkte::insertPunkteStand($myGame, $_SESSION['user_id'] , $myTierzuord, $myPunkte);
+
+            $_SESSION['aktpos'] = 1;
+            $_SESSION['game_id'] = $myGame;
+
+            header("Location: enter-point-score.php");
+        }
     }
     ?>
 </head>
@@ -151,7 +159,7 @@ if (isset($_POST['showFriends'])){
                                 <td colspan="4">
                                     <label for="example-text-input" class="form-control-label">Parcour</label>
                                     <select name="myDropdown" class="form-select" aria-label=".form-select-sm example">
-                                        <option selected>-choose parcour-</option>
+                                        <option selected value="0">-choose parcour-</option>
                                         <?php
                                         $parcours = Parcour::getAllParcoursUser();
                                         while($parcour = $parcours->fetch())
