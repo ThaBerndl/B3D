@@ -19273,10 +19273,10 @@ textarea.form-control-lg {
   box-shadow: none;
 }
 .btn-outline-success:hover:not(.active) {
-  background-color: transparent;
+  background-color: #2dce89;
   opacity: 0.75;
   box-shadow: none;
-  color: #2dce89;
+  color: black;
 }
 
 .btn-info:hover,
