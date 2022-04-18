@@ -114,6 +114,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                     </select
                                 </td>
                             </tr>
+                            <br><br>
                             <tr>
                                 <td>
                                     <button type="submit" class="btn bg-gradient-success align-right" name="submit">
