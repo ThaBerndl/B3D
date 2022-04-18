@@ -54,7 +54,7 @@ require_once '../PHP/leftHor_Navbar.php'
                         <!--form-->
                         <form id="new_game_form" action="new-game.php" method="get">
                             <button type="submit"
-                                    class="btn btn-outline-success align-right" name="saved_parcours">Add Friend&nbsp;&nbsp;<i
+                                    class="btn btn-outline-success align-right" name="saved_parcours">Friend&nbsp;&nbsp;<i
                                         class="ni ni-bold-down"></i></button>
                             <!--Friendlist - select participating archers-->
                             <table class="table-responsive">
@@ -66,33 +66,32 @@ require_once '../PHP/leftHor_Navbar.php'
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
-                                            <p class="text-xs text-secondary mb-0"
-                                               name="archerNickname">@pata</p>
-                                        </td>
-                                        <td>
-                                            <div class="form-check centerCheckBox">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       name="checkArcher" checked="">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <!--placeholder - might delete later-->
-                                    <tr>
-                                        <td>
-                                            <h6 class="mb-0 text-xs" name="archerName">Sponga</h6>
-                                            <p class="text-xs text-secondary mb-0"
-                                               name="archerNickname">@feufeu</p>
-                                        </td>
-                                        <td>
-                                            <div class="form-check centerCheckBox">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       name="checkArcher" checked="">
-                                            </div>
-                                        </td>
-                                    </tr>
+
+                                        <?php
+                                        $freunde = Freund::getAllFreunde($_SESSION['user_id']);
+                                        foreach ($freunde as $freund)
+                                        {
+                                            $user = USER::getUserwithID($freund->freund_id);
+                                            $uservName = $user->vName;
+                                            $usernName = $user->nName;
+                                            $userNickName = $user->nickname;
+
+                                            echo '
+                                            <tr> 
+                                                <td>
+                                                    <h6 class="mb-0 text-xs" name="archerName">$uservName.$usernName</h6>
+                                                    <p class="text-xs text-secondary mb-0"
+                                                       name="archerNickname">@.$userNickName</p>
+                                                </td>
+                                                <td>
+                                                    <div class="form-check centerCheckBox">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                               name="checkArcher" checked="">
+                                                    </div>
+                                                </td>
+                                            </tr>';
+                                        }
+                                        ?>
                                     <!--End placeholder-->
                                     </tbody>
                                 </table>
