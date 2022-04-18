@@ -17,6 +17,30 @@ if (!$_SESSION['auth']) {
     <?php
     include "../PHP/header.php";
     include "../PHP/getClasses.php";
+
+
+    if(isset($_GET['submit']))
+    {
+        $myArray = $_GET['userArr'];
+        $myDropdownValue = $_GET['myDropdown'];
+
+        for($i = 0; $i < sizeof($myArray); $i++)
+        {
+            $myArrayVal = $myArray[$i];
+
+            if(isset($myArray[$i]))
+            {
+                //echo "<h1>" ."UserId= ". "$myArrayVal" ." Drowdownvalue= ".$myDropdownValue. "</h1>";
+            }
+        }
+
+
+
+        Game::insertGame($myDropdownValue);
+
+        header("Location: enter-point-score.php");
+        //exit;
+    }
     ?>
 </head>
 
@@ -32,30 +56,6 @@ if (isset($_POST['showFriends'])){
     }else{
         $_SESSION['showFriends'] = true;
     }
-}
-
-
-if(isset($_GET['submit']))
-{
-    $myArray = $_GET['userArr'];
-    $myDropdownValue = $_GET['myDropdown'];
-
-    for($i = 0; $i < sizeof($myArray); $i++)
-    {
-        $myArrayVal = $myArray[$i];
-
-        if(isset($myArray[$i]))
-        {
-            //echo "<h1>" ."UserId= ". "$myArrayVal" ." Drowdownvalue= ".$myDropdownValue. "</h1>";
-        }
-    }
-
-
-
-    Game::insertGame($myDropdownValue);
-
-    header("Location: http://b3d.sytes.net/pages/enter-point-score.php");
-    exit;
 }
 ?>
 <main class="main-content position-relative border-radius-lg ">
