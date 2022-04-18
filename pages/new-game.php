@@ -183,8 +183,8 @@ if (isset($_POST['showFriends'])){
                                     </a>
                                 </td>
                             </tr>
+                            <p class='myDisabledClass' style='color: #ff0000; display: none'> No parcour selected: please select a parcour</p>
                         </form>
-                        <p class='myDisabledClass' style='color: #ff0000; display: none'> No parcour selected: please select a parcour</p>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
