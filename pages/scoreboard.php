@@ -155,10 +155,11 @@ require_once '../PHP/leftHor_Navbar.php'
             </div>
         </div>
         <!--End Total Score-->
+        <!--Ranking Bar Chart-->
         <div class="row mt-4">
-            <div class="col-lg-7 mb-lg-0 mb-4">
-                <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header pb-0 p-3 bg-transparent">
                         <h6 class="text-capitalize">Ranking </h6>
                         <p class="text-sm mb-0">
                             <i class="fa fa-arrow-up text-success"></i>
@@ -174,6 +175,7 @@ require_once '../PHP/leftHor_Navbar.php'
                 </div>
             </div>
         </div>
+        <!--End Ranking-->
         <!--Target Overview-->
         <div class="row mt-4">
             <div class="col-12">
@@ -228,7 +230,7 @@ require_once "../PHP/rightHor_Navbar.php";
 require "../PHP/body_end.php";
 ?>
 <script>
-    var ctx1 = document.getElementById("chart-line").getContext("2d");
+    var ctx1 = document.getElementById("bar-chart-horizontal").getContext("2d");
 
     var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
 
@@ -319,7 +321,6 @@ require "../PHP/body_end.php";
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
 </script>
-<script src="/assets/js/plugins/chartjs.min.js"></script>
 </body>
 
 </html>
