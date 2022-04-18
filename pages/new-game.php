@@ -79,9 +79,9 @@ require_once '../PHP/leftHor_Navbar.php'
                                             echo '
                                             <tr> 
                                                 <td>
-                                                    <h6 class="mb-0 text-xs" name="archerName">$uservName.$usernName</h6>
+                                                    <h6 class="mb-0 text-xs" name="archerName">'.$uservName." ".$usernName.'</h6>
                                                     <p class="text-xs text-secondary mb-0"
-                                                       name="archerNickname">@.$userNickName</p>
+                                                       name="archerNickname">@'.$userNickName.'</p>
                                                 </td>
                                                 <td>
                                                     <div class="form-check centerCheckBox">
@@ -114,7 +114,6 @@ require_once '../PHP/leftHor_Navbar.php'
                                     </select
                                 </td>
                             </tr>
-                            <hr id="tables-save-hr">
                             <tr>
                                 <td>
                                     <button type="submit" class="btn bg-gradient-success align-right" name="submit">
