@@ -140,6 +140,7 @@ if (isset($_POST['showFriends'])){
                         if(isset($_GET['submit']))
                         {
                             $myArray = $_GET['userArr'];
+                            $myDropdownValue = $_GET['myDropdown'];
 
                             for($i = 0; $i < sizeof($myArray); $i++)
                             {
@@ -147,7 +148,7 @@ if (isset($_POST['showFriends'])){
 
                                 if(isset($myArray[$i]))
                                 {
-                                    echo "<h1>" . "$myArrayVal" . "</h1>";
+                                    echo "<h1>" ."UserId= ". "$myArrayVal" ." Drowdownvalue= ".$myDropdownValue. "</h1>";
                                 }
                             }
 
