@@ -17,7 +17,7 @@
   <div class="min-height-300 bg-success position-absolute w-100"></div>
   <!--Left Side Nav Bar -->
   <?php
-    require_once '../PHP/leftHor_Navbar.php'
+  require_once '../PHP/leftHor_Navbar.php'
   ?>
   <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
