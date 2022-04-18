@@ -85,6 +85,7 @@ if (isset($_POST['showFriends'])){
                                             $uservName = $user->vName;
                                             $usernName = $user->nName;
                                             $userNickName = $user->nickname;
+                                            $userId = $user->id;
 
                                             echo '
                                             <tr> 
@@ -95,7 +96,7 @@ if (isset($_POST['showFriends'])){
                                                 </td>
                                                 <td>
                                                     <div class="form-check centerCheckBox">
-                                                        <input class="form-check-input" type="checkbox" value="123"
+                                                        <input class="form-check-input" type="checkbox" value="'.$userId.'"
                                                                name="userArr[]" checked="">
                                                     </div>
                                                 </td>
