@@ -43,7 +43,7 @@ elseif (isset($_POST['previous']) && $_POST['previous'] != 0){
 elseif (!isset($_POST['previous'])&&!isset($_POST['next'])&&!isset($_POST['points']))
 {
     $_SESSION['aktpos'] = 1;
-    $_SESSION['Game_id'] = 1;
+    $_SESSION['game_id'] = 1;
 }
 ?>
 
@@ -74,8 +74,8 @@ require_once '../PHP/leftHor_Navbar.php'
             ?>
             <script>
                 user_id = null;
-                game_id = <?=$dataArr[1]->game_id?>
-                pos = <?=$dataArr[1]->pos?>
+                game_id = <?=$dataArr[1]->game_id?>;
+                pos = <?=$dataArr[1]->pos?>;
             </script>
         </div>
     </nav>

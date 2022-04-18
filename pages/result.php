@@ -17,6 +17,7 @@
     <?php
     session_start();
     include "../PHP/header.php";
+    include "../PHP/getClasses.php";
     ?>
 </head>
 
@@ -51,8 +52,6 @@ require_once '../PHP/leftHor_Navbar.php'
                 <div class="card mb-4">
                     <div class="card-body p-3">
                         <h6>Results</h6>
-                        <!--form-->
-                        <form id="choose_parcour" action="results.php" method="get">
                             <div class="table-responsive">
                                 <!--Table contains game history and links to scoreboard.php-->
                                 <table class="table align-items-center mb-0">
@@ -61,52 +60,40 @@ require_once '../PHP/leftHor_Navbar.php'
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Game
                                         </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Date
                                         </th>
-                                        <th class="text-secondary opacity-7"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <!--form-->
+                                    <?php
+                                    $stmt = Game::getGamesFromUser($_SESSION['user_id']);
+                                    while($data = $stmt->fetch())
+                                    {
+                                    ?>
+                                    <tr onclick="window.location='scoreboard.php?game_id=<?=$data['game_id']?>'">
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs">#123456789</h6>
+                                                    <h6 class="mb-0 text-sm"><?=$data['parcour']?>  |  <?=$data['ort']?></h6>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <span class="text-xs font-weight-bold mb-0">28/02/22</span>
-                                        </td>
-                                        <td>
-                                            <!--Links to scoreboard.php-->
-                                            <span class="badge bg-gradient-success">Scoreboard&nbsp;<i
-                                                        class="ni ni-bold-right"></i></span>
-                                        </td>
-                                    </tr>
-                                    <!--Placeholder - might delete later-->
-                                    <tr>
-                                        <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-xs">#987654321</h6>
+                                                    <h6 class="text-sm mb-0"><?=substr($data['created'],0,10)?></h6>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <span class="text-xs font-weight-bold mb-0">27/02/22</span>
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-gradient-success">Scoreboard&nbsp;<i
-                                                        class="ni ni-bold-right"></i></span>
-                                        </td>
                                     </tr>
-                                    <!--End placeholder-->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
+                                    <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                         <!--End form-->
                     </div>
                 </div>
