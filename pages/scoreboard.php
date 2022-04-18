@@ -108,7 +108,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 foreach ($userArr as $user){
                                     $sum = Punkte_data::getSum($user->game_id, $user->user_id);
                                     $perc = Punkte_data::getPerc($user->game_id, $user->user_id);
-                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".$sum." (".$perc."%)</td>;";
+                                    echo "<td class=\"text-xs font-weight-bold mb-0\">" . $sum . " (" . $perc . "%)</td>";
                                 }
                                 ?>
                             </tr>
