@@ -15,6 +15,11 @@
     <?php
     session_start();
     include "../PHP/header.php";
+    include "../PHP/getClasses.php";
+    $userArr = Punkte_data::getDataAkt($_GET['game_id'],1);
+    $game = Game::getGame($userArr[1]->game_id);
+    $parcour = Parcour::getParcour($game->parcour_id);
+    $ort = Ort::getOrt($parcour->ort_id);
     ?>
 </head>
 
@@ -51,13 +56,14 @@ require_once '../PHP/leftHor_Navbar.php'
                             <div class="col-8">
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold" name="gameDate"><i
-                                                class="ni ni-calendar-grid-58"></i>&nbsp;17.04.2022</p>
+                                                class="ni ni-calendar-grid-58"></i>&nbsp;<?=$game->created?></p>
                                     <h5 class="font-weight-bolder" name="parcourLoc">
-                                        BSV Maria Taferl
+                                        <?=$parcour->bez?>
                                     </h5>
+                                    <h7 class="font-weight-bolder"><?=$ort->bez?></h7>
                                     <p class="mb-0 text-sm">
                                         <span class="text-success text-sm font-weight-bolder" name="gameId">#</span>
-                                        123456789
+                                        <?=$game->game_id?>
                                     </p>
                                 </div>
                             </div>
@@ -81,57 +87,67 @@ require_once '../PHP/leftHor_Navbar.php'
                             <h6 class="mb-2">Total Score</h6>
                         </div>
                     </div>
-                    <div class="table-responsive">
+                    <div>
                         <table class="table align-items-center">
                             <tr>
                                 <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Archer</th>
+                                <?php
+                                foreach ($userArr as $user) {
+                                ?>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                                    scope="row">Stephan
+                                    scope="row"><?=$user->user_nickname?>
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                                    scope="row">Lukas
-                                </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                                    scope="row">Leon
-                                </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                                    scope="row">Lena
-                                </th>
+                                <?php
+                                }
+                                ?>
                             </tr>
                             <tr>
                                 <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Total</th>
-                                <td class="text-xs font-weight-bold mb-0">408</td>
-                                <td class="text-xs font-weight-bold mb-0">246</td>
-                                <td class="text-xs font-weight-bold mb-0">210</td>
-                                <td class="text-xs font-weight-bold mb-0">132</td>
+                                <?php
+
+                                foreach ($userArr as $user){
+                                    $sum = Punkte_data::getSum($user->game_id, $user->user_id);
+                                    $perc = Punkte_data::getPerc($user->game_id, $user->user_id);
+                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".$sum." (".$perc."%)</td>;";
+                                }
+                                ?>
                             </tr>
                             <tr>
                                 <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Hits</th>
-                                <td class="text-xs font-weight-bold mb-0">29/33</td>
-                                <td class="text-xs font-weight-bold mb-0">22/33</td>
-                                <td class="text-xs font-weight-bold mb-0">18/33</td>
-                                <td class="text-xs font-weight-bold mb-0">13/33</td>
+                                <?php
+                                    foreach ($userArr as $user){
+                                        $misses = Punkte_data::getMisses($user->game_id, $user->user_id);
+                                        $maxPos = Punkte_data::getMaxPos($user->game_id);
+                                        echo "<td class=\"text-xs font-weight-bold mb-0\">".($maxPos-$misses)."/".$maxPos."</td>";
+                                    }
+                                ?>
                             </tr>
                             <tr>
                                 <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Arrow 1</th>
-                                <td class="text-xs font-weight-bold mb-0">18</td>
-                                <td class="text-xs font-weight-bold mb-0">11</td>
-                                <td class="text-xs font-weight-bold mb-0">6</td>
-                                <td class="text-xs font-weight-bold mb-0">5</td>
+                                <?php
+                                foreach ($userArr as $user){
+                                    $arrow1 = Punkte_data::getArrow1($user->game_id, $user->user_id);
+                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".$arrow1."</td>";
+                                }
+                                ?>
                             </tr>
                             <tr>
                                 <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Arrow 2</th>
-                                <td class="text-xs font-weight-bold mb-0">9</td>
-                                <td class="text-xs font-weight-bold mb-0">3</td>
-                                <td class="text-xs font-weight-bold mb-0">8</td>
-                                <td class="text-xs font-weight-bold mb-0">2</td>
+                                <?php
+                                foreach ($userArr as $user){
+                                    $arrow2 = Punkte_data::getArrow2($user->game_id, $user->user_id);
+                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".$arrow2."</td>";
+                                }
+                                ?>
                             </tr>
                             <tr>
                                 <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Arrow 3</th>
-                                <td class="text-xs font-weight-bold mb-0">2</td>
-                                <td class="text-xs font-weight-bold mb-0">8</td>
-                                <td class="text-xs font-weight-bold mb-0">4</td>
-                                <td class="text-xs font-weight-bold mb-0">6</td>
+                                <?php
+                                foreach ($userArr as $user){
+                                    $arrow3 = Punkte_data::getArrow3($user->game_id, $user->user_id);
+                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".$arrow3."</td>";
+                                }
+                                ?>
                             </tr>
                         </table>
                     </div>
@@ -172,33 +188,29 @@ require_once '../PHP/leftHor_Navbar.php'
                             <thead>
                             <tr>
                                 <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Target</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder" scope="row">
-                                    Stephan
-                                </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder" scope="row">
-                                    Lukas
-                                </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder" scope="row">Leon
-                                </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder" scope="row">Lena
-                                </th>
+                                <?php
+                                foreach ($userArr as $user) {
+                                    ?>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder" scope="row">
+                                        <?=$user->user_nickname?>
+                                    </th>
+                                    <?php
+                                }
+                                ?>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">#1</td>
-                                <td class="text-xs font-weight-bold mb-0">10</td>
-                                <td class="text-xs font-weight-bold mb-0">4</td>
-                                <td class="text-xs font-weight-bold mb-0">4</td>
-                                <td class="text-xs font-weight-bold mb-0">0</td>
-                            </tr>
-                            <tr>
-                                <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">#2</td>
-                                <td class="text-xs font-weight-bold mb-0">16</td>
-                                <td class="text-xs font-weight-bold mb-0">16</td>
-                                <td class="text-xs font-weight-bold mb-0">0</td>
-                                <td class="text-xs font-weight-bold mb-0">16</td>
-                            </tr>
+                            <?php
+                            for ($i = 1; $i <= $maxPos; $i++){
+                                echo "<tr>";
+                                echo "<td class=\"text-uppercase text-xxs font-weight-bolder mb-0\" scope=\"row\">#$i</td>";
+                                    foreach ($userArr as $user) {
+                                        $punkte = Punkte_data::getPunkte($user->game_id, $user->user_id,$i);
+                                        echo "<td class=\"text-xs font-weight-bold mb-0\">".$punkte."</td>";
+                                    }
+                                echo "</tr>";
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>

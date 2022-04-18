@@ -87,4 +87,15 @@ class Ort extends DB
         return $stmt;
     }
 
+    public static function getOrt($ort_id){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("select * from Ort where ort_id  = ?");
+        $stmt->bindParam(1,$ort_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error=$stmt->errorInfo();
+        $data = $stmt->fetchAll();
+        $ort = new Ort($data[0]['bez']);
+        $ort->id = $ort_id;
+        return $ort;
+    }
 }
