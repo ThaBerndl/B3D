@@ -130,9 +130,11 @@ if (isset($_POST['showFriends'])){
                             <br><br>
                             <tr>
                                 <td>
-                                    <button type="submit" class="btn bg-gradient-success align-right" name="submit">
-                                        Start
-                                    </button>
+                                    <a href="enter-point-score.php.php">
+                                        <button type="submit" class="btn bg-gradient-success align-right" name="submit">
+                                            Start
+                                        </button>
+                                    </a>
                                 </td>
                             </tr>
                         </form>
