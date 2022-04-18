@@ -44,11 +44,11 @@ class Punkte_data extends DB{
                                                     u.nickname 'user_nickname', 
                                                     p.game_id 'game_id', 
                                                     g.created 'game_created' 
-                                                from punktestand p,
-                                                     tierzuord tz,
-                                                     tier t,
-                                                     user u,
-                                                     game g
+                                                from Punktestand p,
+                                                     Tierzuord tz,
+                                                     Tier t,
+                                                     User u,
+                                                     Game g
                                                where p.game_id = ?
                                                  and tz.pos = ?
                                                  and tz.tierzuord_id = p.tierzuord_id

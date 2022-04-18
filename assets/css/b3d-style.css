@@ -1,8 +1,4 @@
 /*general*/
-th {
-    font-size: small;
-}
-
 #tables-hr {
     border-top: 1px solid #2dce89;
     color: #2dce89;
@@ -66,6 +62,7 @@ th {
     box-sizing: border-box;
 }
 
+/*enter-point-score.php*/
 
 #loc-parc-input, #Orte {
     margin-bottom: 10px;
@@ -75,4 +72,38 @@ th {
     background: none;
     padding: 0px;
     border: none;
+}
+
+/*scoreboard.php*/
+
+.tableFixHead {
+    overflow-y: auto;
+    height: 106px;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 8px 16px;
+    font-size: small;
+    width: auto;
+}
+
+th {
+    background: #fff;
+}
+
+
+tr td:last-child {
+    width: 1%;
+    white-space: nowrap;
 }
