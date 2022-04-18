@@ -75,7 +75,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                             echo '
                                             <tr> 
                                                 <td>
-                                                    <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
+                                                    <h6 class="mb-0 text-xs" name="archerName">$user->$vName</h6>
                                                     <p class="text-xs text-secondary mb-0"
                                                        name="archerNickname">@pata</p>
                                                 </td>
@@ -88,23 +88,6 @@ require_once '../PHP/leftHor_Navbar.php'
                                             </tr>';
                                         }
                                         ?>
-                                        <!-- oble placeholder - might delete later-->
-
-
-                                    <!--placeholder - might delete later-->
-                                    <tr>
-                                        <td>
-                                            <h6 class="mb-0 text-xs" name="archerName">Sponga</h6>
-                                            <p class="text-xs text-secondary mb-0"
-                                               name="archerNickname">@feufeu</p>
-                                        </td>
-                                        <td>
-                                            <div class="form-check centerCheckBox">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       name="checkArcher" checked="">
-                                            </div>
-                                        </td>
-                                    </tr>
                                     <!--End placeholder-->
                                     </tbody>
                                 </table>
