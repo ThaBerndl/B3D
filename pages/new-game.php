@@ -30,7 +30,6 @@ if (!$_SESSION['auth']) {
         $myGame = Game::getLastGame();
         $myTierzuord = Punkte::getFirstTierzuord($myDropdownValue);
 
-        echo "<h1>" ."Game= ". "$myGame"." MyTierzuord= ". "$myTierzuord"."</h1>";
 
         $myPunkte = 0;
 
@@ -47,7 +46,7 @@ if (!$_SESSION['auth']) {
 
 
         //für den SESSION User Inserten
-        //Punkte::insertPunkteStand($myGame, $_SESSION['user_id'] , $myTierzuord, $myPunkte);
+        Punkte::insertPunkteStand($myGame, $_SESSION['user_id'] , $myTierzuord, $myPunkte);
 
 
         //header("Location: enter-point-score.php");
