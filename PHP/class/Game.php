@@ -50,7 +50,18 @@ class Game extends DB{
         $stmt = $db->pdo->prepare("insert into Game(created, parcour_id) values(CURRENT_TIME(), ?);");
         $stmt->bindParam(1,$parcour_id, PDO::PARAM_INT);
         $stmt->execute();
-        //$error=$stmt->errorInfo();
-        return $stmt->fetch();
+        $error=$stmt->errorInfo();
+        return $stmt;
+    }
+
+    public static function getLastGame()
+    {
+        $db = new DB();
+        $stmt = $db->pdo->prepare("select game_id from Game order by created desc limit 1");
+        $stmt->bindParam(1,$parcour_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch();
+
+        return $row[0];
     }
 }

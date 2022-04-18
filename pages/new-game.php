@@ -24,9 +24,13 @@ if (!$_SESSION['auth']) {
         $myArray = $_GET['userArr'];
         $myDropdownValue = $_GET['myDropdown'];
 
-        $myGame = Game::insertGame($myDropdownValue);
+        //INSERT INTO GAME
+        Game::insertGame($myDropdownValue);
+
+        $myGame = Game::getLastGame();
         $myTierzuord = Punkte::getFirstTierzuord($myDropdownValue);
-        echo "<h1>" ."MyTierzuord= ". "$myTierzuord"."</h1>";
+
+
         $myPunkte = 0;
 
         for($i = 0; $i < sizeof($myArray); $i++)
@@ -35,14 +39,18 @@ if (!$_SESSION['auth']) {
 
             if(isset($myArray[$i]))
             {
-                //echo "<h1>" ."UserId= ". "$myArrayVal" ." Drowdownvalue= ".$myDropdownValue. "</h1>";
-                $myTierzuord = Punkte::insertPunkteStand($myGame, $myArrayVal , $myTierzuord, $myPunkte);
+                Punkte::insertPunkteStand($myGame, $myArrayVal , $myTierzuord, $myPunkte);
             }
         }
 
 
+        //für den SESSION User Inserten
+        Punkte::insertPunkteStand($myGame, $_SESSION['user_id'] , $myTierzuord, $myPunkte);
 
-        //header("Location: enter-point-score.php");
+        $_SESSION['aktpos'] = 1;
+        $_SESSION['game_id'] = $myGame;
+
+        header("Location: enter-point-score.php");
     }
     ?>
 </head>
