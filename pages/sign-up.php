@@ -77,20 +77,21 @@
 </head>
 
 <body class="">
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
     <div class="container">
-      <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="../pages/dashboard.php">
-        B3D - Skillboard
-      </a>      
+        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="../pages/sign-in.php">
+            B3D - Skillboard
+        </a>
     </div>
-  </nav>
-  <!-- End Navbar -->
-  <main class="main-content  mt-0">
-    <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('https://github.com/ThaBerndl/B3D/blob/main/assets/img/main_theme_forest.jpg?raw=true'); background-position: center;">
-      <span class="mask bg-gradient-success opacity-4"></span>
-      <div class="container">
-        <div class="row justify-content-center">
+</nav>
+<!-- End Navbar -->
+<main class="main-content  mt-0">
+    <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
+         style="background-image: url('https://github.com/ThaBerndl/B3D/blob/main/assets/img/main_theme_forest.jpg?raw=true'); background-position: center;">
+        <span class="mask bg-gradient-success opacity-4"></span>
+        <div class="container">
+            <div class="row justify-content-center">
           <div class="col-lg-5 text-center mx-auto">
             <h1 class="text-white mb-2 mt-5">Welcome!</h1>
             <p class="text-lead text-white">Create your B3D - Skillboard account for free.</p>
