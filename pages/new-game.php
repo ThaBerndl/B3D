@@ -24,9 +24,11 @@ if (!$_SESSION['auth']) {
         $myArray = $_GET['userArr'];
         $myDropdownValue = $_GET['myDropdown'];
 
-        $myGame = Game::insertGame($myDropdownValue);
+        $myGame = Game::getLastGame();
         $myTierzuord = Punkte::getFirstTierzuord($myDropdownValue);
+
         echo "<h1>" ."Game= ". "$myGame"." MyTierzuord= ". "$myTierzuord"."</h1>";
+
         $myPunkte = 0;
 
         for($i = 0; $i < sizeof($myArray); $i++)
