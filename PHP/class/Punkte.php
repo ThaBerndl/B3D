@@ -35,8 +35,9 @@ class Punkte extends DB
         $stmt = $db->pdo->prepare("select tierzuord_id from Tierzuord where parcour_id = ? and pos = 1");
         $stmt->bindParam(1,$parcour_id,PDO::PARAM_INT);
         $stmt->execute();
+        $row = $stmt->fetch();
 
-        return $stmt->fetch();
+        return $row[0];
     }
 
     public static function insertpoints($game_id, $user_id,$tz_id, $arrow, $zone, $zaehlweise = 3){
