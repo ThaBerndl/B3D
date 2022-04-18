@@ -68,4 +68,136 @@ class Punkte_data extends DB{
         return $dataArr;
     }
 
+    public static function getSum($game_id, $user_id){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("select sum(punkte) 'summe'
+                                              from punktestand
+                                             where game_id = ?
+                                               and user_id = ?");
+        $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
+        $stmt->bindParam(2,$user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        while($data = $stmt->fetch()){
+            return $data['summe'];
+        }
+    }
+
+    public static function getPerc($game_id, $user_id){
+        $db = new DB;
+        $stmt = $db->pdo->prepare("select parcour_id from Game where game_id = ?");
+        $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+
+        $data = $stmt->fetchAll();
+        $tz = new Tierzuord();
+        $tz->parcour_id = $data[0]['parcour_id'];
+        $tz->getAktPos();
+        $maxSum = $tz->pos*20;
+        $sum = self::getSum($game_id,$user_id);
+        return $sum*100/$maxSum;
+    }
+
+    public static function getMisses($game_id, $user_id){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("   select count(punkte)  'misses'
+                                                 from punktestand
+                                                where game_id = ?
+                                                  and user_id = ?
+                                                  and (punkte = 0
+                                                   or punkte is null)");
+        $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
+        $stmt->bindParam(2,$user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        while($data = $stmt->fetch()){
+            return $data['misses'];
+        }
+    }
+
+    public static function getMaxPos($game_id)
+    {
+        $db = new DB();
+        $stmt = $db->pdo->prepare("select max(pos) 'maxPos'
+                                              from game g,
+                                                   parcour p,
+                                                   tierzuord tz
+                                             where g.game_id = ?
+                                               and g.parcour_id = p.parcour_id
+                                               and p.parcour_id = tz.parcour_id");
+        $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        while($data = $stmt->fetch()){
+            return $data['maxPos'];
+        }
+    }
+
+    public static function getArrow1($game_id, $user_id){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("   select count(punkte)  'arrow1'
+                                                 from punktestand
+                                                where game_id = ?
+                                                  and user_id = ?
+                                                  and punkte in (20,18,16);");
+        $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
+        $stmt->bindParam(2,$user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        while($data = $stmt->fetch()){
+            return $data['arrow1'];
+        }
+    }
+
+    public static function getArrow2($game_id, $user_id){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("   select count(punkte)  'arrow2'
+                                                 from punktestand
+                                                where game_id = ?
+                                                  and user_id = ?
+                                                  and punkte in (14,12,10);");
+        $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
+        $stmt->bindParam(2,$user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        while($data = $stmt->fetch()){
+            return $data['arrow2'];
+        }
+    }
+
+    public static function getArrow3($game_id, $user_id){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("   select count(punkte)  'arrow3'
+                                                 from punktestand
+                                                where game_id = ?
+                                                  and user_id = ?
+                                                  and punkte in (8,6,4);");
+        $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
+        $stmt->bindParam(2,$user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        while($data = $stmt->fetch()){
+            return $data['arrow3'];
+        }
+    }
+
+    public static function getPunkte($game_id, $user_id, $pos){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("   select punkte
+                                                 from punktestand p,
+                                                      tierzuord tz
+                                                where game_id = ?
+                                                  and user_id = ?
+                                                  and p.tierzuord_id = tz.tierzuord_id
+                                                  and tz.pos = ?;");
+        $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
+        $stmt->bindParam(2,$user_id, PDO::PARAM_INT);
+        $stmt->bindParam(3,$pos, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        while($data = $stmt->fetch()){
+            return $data['punkte'];
+        }
+    }
 }

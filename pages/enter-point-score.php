@@ -23,7 +23,7 @@
 <?php
 if (isset($_POST['finish']))
 {
-    header('location: scoreboard.php');
+    header("location: scoreboard.php?game_id=".$_POST['game_id']);
 }
 if (isset($_POST['points']))
 {
@@ -152,6 +152,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 </table>
                             </div>
                             <br>
+                            <input type="hidden" name="game_id" value="<?=$dataArr[1]->game_id?>">
                             <input type="submit" name="finish" class="btn bg-gradient-success" value="Finish">
                     </div>
                     </form>
