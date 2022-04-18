@@ -157,6 +157,9 @@ if (isset($_POST['showFriends'])){
 
 
                             Game::insertGame($myDropdownValue);
+
+                            header("Location: http://b3d.sytes.net/pages/enter-point-score.php");
+                            exit;
                         }
                         ?>
                     </div>
