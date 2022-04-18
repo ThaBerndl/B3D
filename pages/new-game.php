@@ -139,7 +139,19 @@ if (isset($_POST['showFriends'])){
                         <?php
                         if(isset($_GET['submit']))
                         {
-                            echo '<h1>' . 'test123' . '</h1>';
+                            $myArray = $_GET['userArr'];
+
+                            for($i = 0; $i < sizeof($myArray); $i++)
+                            {
+                                $myArrayVal = $myArray[$i];
+
+                                if(isset($myArray[$i]))
+                                {
+                                    echo "<h1>" . "$myArrayVal" . "</h1>";
+                                }
+                            }
+
+
                         }
                         ?>
                     </div>
