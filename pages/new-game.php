@@ -67,7 +67,7 @@ if (isset($_POST['showFriends'])){
                                     name="showFriends">Friends&nbsp;&nbsp;<i class="<?= !isset($_SESSION['showFriends'])?"ni ni-bold-down":"ni ni-bold-up"; ?>"></i></button>
                         </form>
 
-                        <form id="new_game_form" action="new-game.php" method="get">
+                        <form id="new_game_form" action="enter-point-score.php.php" method="get">
                             <!--Friendlist - select participating archers-->
                             <table class="table-responsive">
                                 <table class="table align-items-center justify-content-center mb-0" <?= isset($_SESSION['showFriends'])?"style=\"display: none;\"":""; ?>>
@@ -157,9 +157,6 @@ if (isset($_POST['showFriends'])){
 
 
                             Game::insertGame($myDropdownValue);
-
-                            header("Location: http://b3d.sytes.net/pages/enter-point-score.php");
-                            exit;
                         }
                         ?>
                     </div>
