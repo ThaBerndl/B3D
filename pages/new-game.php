@@ -60,12 +60,14 @@ if (isset($_POST['showFriends'])){
                     <div class="card-body p-3">
                         <h6>Start a new game</h6>
                         <!--form-->
+
+                        <form action="new-game.php" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-success align-right"
+                                    name="showFriends">Friends&nbsp;&nbsp;<i class="<?= !isset($_SESSION['showFriends'])?"ni ni-bold-down":"ni ni-bold-up"; ?>"></i></button>
+                        </form>
+
                         <form id="new_game_form" action="new-game.php" method="get">
-                            <form action="new-game.php" method="post">
-                                <button type="submit"
-                                        class="btn btn-outline-success align-right"
-                                        name="showFriends">Friends&nbsp;&nbsp;<i class="<?= !isset($_SESSION['showFriends'])?"ni ni-bold-down":"ni ni-bold-up"; ?>"></i></button>
-                            </form>
                             <!--Friendlist - select participating archers-->
                             <table class="table-responsive">
                                 <table class="table align-items-center justify-content-center mb-0" <?= isset($_SESSION['showFriends'])?"style=\"display: none;\"":""; ?>>
