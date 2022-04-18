@@ -26,8 +26,7 @@ if (!$_SESSION['auth']) {
 
         if($myDropdownValue == 0)
         {
-            $message = "Kein Parcour ausgewählt!";
-            echo "<script type='text/javascript'>alert('$message');</script>";
+            echo "<p style='color: #ff0000'> No parcour selected: please select a parcour</p>";
         }
         else
         {
@@ -142,7 +141,7 @@ if (isset($_POST['showFriends'])){
                                                 <td>
                                                     <div class="form-check centerCheckBox">
                                                         <input class="form-check-input" type="checkbox" value="'.$userId.'"
-                                                               name="userArr[]" checked="">
+                                                               name="userArr[]">
                                                     </div>
                                                 </td>
                                             </tr>';
