@@ -41,11 +41,6 @@ if (isset($_POST['next'])){
 elseif (isset($_POST['previous']) && $_POST['previous'] != 0){
     $_SESSION['aktpos'] = $_POST['previous'];
 }
-elseif (!isset($_POST['previous'])&&!isset($_POST['next'])&&!isset($_POST['points']))
-{
-    $_SESSION['aktpos'] = 1;
-    $_SESSION['game_id'] = 1;
-}
 ?>
 
 <body class="g-sidenav-show   bg-gray-100">
