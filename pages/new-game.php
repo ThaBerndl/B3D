@@ -66,28 +66,31 @@ require_once '../PHP/leftHor_Navbar.php'
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+
                                         <?php
                                         $freunde = Freund::getAllFreunde($_SESSION['user_id']);
                                         foreach ($freunde as $freund)
                                         {
                                             $user = USER::getUserwithID($freund->freund_id);
-                                            echo '<td>
-                                            <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
-                                            <p class="text-xs text-secondary mb-0"
-                                               name="archerNickname">@pata</p>
-                                        </td>
-                                        <td>
-                                            <div class="form-check centerCheckBox">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       name="checkArcher" checked="">
-                                            </div>
-                                        </td>';
+                                            echo '
+                                            <tr> 
+                                                <td>
+                                                    <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
+                                                    <p class="text-xs text-secondary mb-0"
+                                                       name="archerNickname">@pata</p>
+                                                </td>
+                                                <td>
+                                                    <div class="form-check centerCheckBox">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                               name="checkArcher" checked="">
+                                                    </div>
+                                                </td>
+                                            </tr>';
                                         }
                                         ?>
                                         <!-- oble placeholder - might delete later-->
 
-                                    </tr>
+
                                     <!--placeholder - might delete later-->
                                     <tr>
                                         <td>
