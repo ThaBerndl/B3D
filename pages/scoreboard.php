@@ -7,8 +7,6 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
         B3D - Skillboard | Scoreboard
     </title>
@@ -141,6 +139,25 @@ require_once '../PHP/leftHor_Navbar.php'
             </div>
         </div>
         <!--End Total Score-->
+        <div class="row mt-4">
+            <div class="col-lg-7 mb-lg-0 mb-4">
+                <div class="card z-index-2 h-100">
+                    <div class="card-header pb-0 pt-3 bg-transparent">
+                        <h6 class="text-capitalize">Ranking </h6>
+                        <p class="text-sm mb-0">
+                            <i class="fa fa-arrow-up text-success"></i>
+                        </p>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="bar-chart-horizontal" class="chart-canvas" height="300px"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--Target Overview-->
         <div class="row mt-4">
             <div class="col-12">
