@@ -60,12 +60,14 @@ if (isset($_POST['showFriends'])){
                     <div class="card-body p-3">
                         <h6>Start a new game</h6>
                         <!--form-->
+
+                        <form action="new-game.php" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-success align-right"
+                                    name="showFriends">Friends&nbsp;&nbsp;<i class="<?= !isset($_SESSION['showFriends'])?"ni ni-bold-down":"ni ni-bold-up"; ?>"></i></button>
+                        </form>
+
                         <form id="new_game_form" action="new-game.php" method="get">
-                            <form action="new-game.php" method="post">
-                                <button type="submit"
-                                        class="btn btn-outline-success align-right"
-                                        name="showFriends">Friends&nbsp;&nbsp;<i class="<?= !isset($_SESSION['showFriends'])?"ni ni-bold-down":"ni ni-bold-up"; ?>"></i></button>
-                            </form>
                             <!--Friendlist - select participating archers-->
                             <table class="table-responsive">
                                 <table class="table align-items-center justify-content-center mb-0" <?= isset($_SESSION['showFriends'])?"style=\"display: none;\"":""; ?>>
@@ -85,6 +87,7 @@ if (isset($_POST['showFriends'])){
                                             $uservName = $user->vName;
                                             $usernName = $user->nName;
                                             $userNickName = $user->nickname;
+                                            $userId = $user->id;
 
                                             echo '
                                             <tr> 
@@ -95,8 +98,8 @@ if (isset($_POST['showFriends'])){
                                                 </td>
                                                 <td>
                                                     <div class="form-check centerCheckBox">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                               name="checkArcher" checked="">
+                                                        <input class="form-check-input" type="checkbox" value="'.$userId.'"
+                                                               name="userArr[]" checked="">
                                                     </div>
                                                 </td>
                                             </tr>';
@@ -134,9 +137,21 @@ if (isset($_POST['showFriends'])){
                             </tr>
                         </form>
                         <?php
-                        if(isset($GET['submit']))
+                        if(isset($_GET['submit']))
                         {
-                            echo '<h1>' . 'test123' . '</h1>';
+                            $myArray = $_GET['userArr'];
+
+                            for($i = 0; $i < sizeof($myArray); $i++)
+                            {
+                                $myArrayVal = $myArray[$i];
+
+                                if(isset($myArray[$i]))
+                                {
+                                    echo "<h1>" . "$myArrayVal" . "</h1>";
+                                }
+                            }
+
+
                         }
                         ?>
                     </div>
