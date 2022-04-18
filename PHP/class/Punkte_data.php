@@ -200,4 +200,20 @@ class Punkte_data extends DB{
             return $data['punkte'];
         }
     }
+
+    public static function getAvg($game_id, $user_id){
+        $db = new DB();
+        $stmt = $db->pdo->prepare("select round(avg(punkte),1) 'avg'
+                                              from Punktestand
+                                             where game_id = ?
+                                               and user_id = ?");
+        $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
+        $stmt->bindParam(2,$user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        while($data = $stmt->fetch()){
+            return $data['avg'];
+        }
+    }
+
 }
