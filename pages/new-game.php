@@ -153,7 +153,7 @@ if (isset($_POST['showFriends'])){
                                     <select name="myDropdown" class="form-select" aria-label=".form-select-sm example">
                                         <option selected>-choose parcour-</option>
                                         <?php
-                                        $parcours = Parcour::getAllParcours();
+                                        $parcours = Parcour::getAllParcoursUser();
                                         while($parcour = $parcours->fetch())
                                         {
                                             echo "<option value='".$parcour['parcour_id']."'>" . $parcour['bez'] . "</option>";
