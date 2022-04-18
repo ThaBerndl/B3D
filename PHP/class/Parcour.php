@@ -22,6 +22,15 @@ class Parcour extends DB{
         return $stmt;
     }
 
+    public static function getAllParcoursUser()
+    {
+        $db = new DB();
+        $stmt = $db->pdo->prepare("select * from Parcour where parcour_id in (select parcour_id from ParcourFavorit where user_id = ?)");
+        $stmt->bindParam(1,$_SESSION['user_id'], PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt;
+    }
+
     public static function getAllParcoursWithOrt($ortbez)
     {
         $db = new DB();
