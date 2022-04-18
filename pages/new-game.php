@@ -95,8 +95,8 @@ if (isset($_POST['showFriends'])){
                                                 </td>
                                                 <td>
                                                     <div class="form-check centerCheckBox">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                               name="checkArcher" checked="">
+                                                        <input class="form-check-input" type="checkbox" value="123"
+                                                               name="userArr[]" checked="">
                                                     </div>
                                                 </td>
                                             </tr>';
