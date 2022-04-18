@@ -33,6 +33,30 @@ if (isset($_POST['showFriends'])){
         $_SESSION['showFriends'] = true;
     }
 }
+
+
+if(isset($_GET['submit']))
+{
+    $myArray = $_GET['userArr'];
+    $myDropdownValue = $_GET['myDropdown'];
+
+    for($i = 0; $i < sizeof($myArray); $i++)
+    {
+        $myArrayVal = $myArray[$i];
+
+        if(isset($myArray[$i]))
+        {
+            //echo "<h1>" ."UserId= ". "$myArrayVal" ." Drowdownvalue= ".$myDropdownValue. "</h1>";
+        }
+    }
+
+
+
+    Game::insertGame($myDropdownValue);
+
+    header("Location: http://b3d.sytes.net/pages/enter-point-score.php");
+    exit;
+}
 ?>
 <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
@@ -67,7 +91,7 @@ if (isset($_POST['showFriends'])){
                                     name="showFriends">Friends&nbsp;&nbsp;<i class="<?= !isset($_SESSION['showFriends'])?"ni ni-bold-down":"ni ni-bold-up"; ?>"></i></button>
                         </form>
 
-                        <form id="new_game_form" action="enter-point-score.php.php" method="get">
+                        <form id="new_game_form" action="new-game.php" method="get">
                             <!--Friendlist - select participating archers-->
                             <table class="table-responsive">
                                 <table class="table align-items-center justify-content-center mb-0" <?= isset($_SESSION['showFriends'])?"style=\"display: none;\"":""; ?>>
@@ -138,27 +162,6 @@ if (isset($_POST['showFriends'])){
                                 </td>
                             </tr>
                         </form>
-                        <?php
-                        if(isset($_GET['submit']))
-                        {
-                            $myArray = $_GET['userArr'];
-                            $myDropdownValue = $_GET['myDropdown'];
-
-                            for($i = 0; $i < sizeof($myArray); $i++)
-                            {
-                                $myArrayVal = $myArray[$i];
-
-                                if(isset($myArray[$i]))
-                                {
-                                    //echo "<h1>" ."UserId= ". "$myArrayVal" ." Drowdownvalue= ".$myDropdownValue. "</h1>";
-                                }
-                            }
-
-
-
-                            Game::insertGame($myDropdownValue);
-                        }
-                        ?>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
