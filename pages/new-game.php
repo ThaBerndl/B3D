@@ -148,11 +148,13 @@ if (isset($_POST['showFriends'])){
 
                                 if(isset($myArray[$i]))
                                 {
-                                    echo "<h1>" ."UserId= ". "$myArrayVal" ." Drowdownvalue= ".$myDropdownValue. "</h1>";
+                                    //echo "<h1>" ."UserId= ". "$myArrayVal" ." Drowdownvalue= ".$myDropdownValue. "</h1>";
                                 }
                             }
 
 
+
+                            Game::insertGame($myDropdownValue);
                         }
                         ?>
                     </div>
