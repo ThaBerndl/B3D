@@ -99,19 +99,19 @@ if(isset($_POST['submit'])) //verarbeitung Forms
                   {
                       if (empty($_POST['nickname']))
                       {
-                          echo "<a style='color: red; margin-left: 3%'> Nickname Required</a>";
+                          echo "<a style='color: #d63384; margin-left: 3%'> Nickname Required</a>";
                           return false;
                       }
                       if (empty($_POST['password']))
                       {
-                          echo "<a style='color: red; margin-left: 3%'> Password Required</a>";
+                          echo "<a style='color: #d63384; margin-left: 3%'> Password Required</a>";
                           return false;
                       }
                       $user = new User();
                       $user->nickname = $_POST['nickname'];
                       $user->passwort = $_POST['password'];
                       if (!$user->checkLogin()){
-                          echo "<a style='color: red; margin-left: 3%'> Nickname/Password Wrong, Check Spelling</a>";
+                          echo "<a style='color: #d63384; margin-left: 3%'> Nickname/Password Wrong, Check Spelling</a>";
                           return false;
                       }
                   }
@@ -121,7 +121,6 @@ if(isset($_POST['submit'])) //verarbeitung Forms
       </div>
     </section>
   </main>
-
   <?php
     require "../PHP/body_end.php";
   ?>
