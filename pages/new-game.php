@@ -24,6 +24,10 @@ if (!$_SESSION['auth']) {
         $myArray = $_GET['userArr'];
         $myDropdownValue = $_GET['myDropdown'];
 
+        $myGame = Game::insertGame($myDropdownValue);
+        $myTierzuord = Punkte::getFirstTierzuord($myDropdownValue);
+        $myPunkte = 0;
+
         for($i = 0; $i < sizeof($myArray); $i++)
         {
             $myArrayVal = $myArray[$i];
@@ -31,12 +35,11 @@ if (!$_SESSION['auth']) {
             if(isset($myArray[$i]))
             {
                 //echo "<h1>" ."UserId= ". "$myArrayVal" ." Drowdownvalue= ".$myDropdownValue. "</h1>";
+                $myTierzuord = Punkte::insertPunkteStand($myGame, $myArrayVal , $myTierzuord, $myPunkte);
             }
         }
 
 
-
-        Game::insertGame($myDropdownValue);
 
         header("Location: enter-point-score.php");
     }
