@@ -57,21 +57,18 @@
                         <div class="card-body pb-3">
                             <h6>Edit Profile</h6>
                             <!--form-->
-                            <form id="add_friend" action="archer.php" method="POST">
+                            <form id="add_friend" action="archer.php" method="post">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label"
-                                           name="fname">Surname</label>
-                                    <input class="form-control" type="text" value="">
+                                    <label for="example-text-input" class="form-control-label">Surname</label>
+                                    <input class="form-control" type="text" value="" name="fname">
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label"
-                                           name="lname">Lastname</label>
-                                    <input class="form-control" type="text" value="">
+                                    <label for="example-text-input" class="form-control-label">Lastname</label>
+                                    <input class="form-control" type="text" value="" name="lname">
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label"
-                                           name="nickname">Nickname</label>
-                                    <input class="form-control" type="text" value="">
+                                    <label for="example-text-input" class="form-control-label">Nickname</label>
+                                    <input class="form-control" type="text" value="" name="nickname">
                                 </div>
                                 <hr id="tables-hr">
                                 <button type="submit" class="btn bg-gradient-success align-right" name="submit">
@@ -89,7 +86,7 @@
                 {
                     if(empty($_POST['nickname']) || empty($_POST['fname']) || empty($_POST['lname']))
                     {
-                        echo "<p style='color: red'> Nickname not existing: to create please enter first and last name</p>";
+                        echo "<p style='color: #ff0000'> Nickname not existing: to create please enter first and last name</p>";
                     }
                     else {
                         $user->insertUser();
@@ -147,8 +144,8 @@
                                                     </div>
                                                 </td>
                                                 <td class=\"align-items-start\">
-                                                    <span class=\"badge bg-gradient-success\" name=\"delete\">Delete&nbsp;<i
-                                                            class=\"ni ni-fat-remove\"></i></span>
+                                                    <button class=\"btn bg-gradient-success\" name=\"delete\">Delete&nbsp;<i
+                                                            class=\"ni ni-fat-remove\"></i></button>
                                                     <input type='text' style='display: none' name='user' value='$freund->user_id'>
                                                     <input type='text' style='display: none' name='freund' value='$freund->freund_id'>
                                                </td>
