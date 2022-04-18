@@ -6,8 +6,8 @@ echo "<div class=\"collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-\" id=\"n
           <ul class=\"navbar-nav  justify-content-end\">
             <li class=\"nav-item d-flex align-items-center\">
               <li class=\"nav-item px-3 d-flex align-items-center\">
-                  <a href=\"../pages/sign-in.php\" class=\"nav-link text-white p-0\">
-                      <i class=\"fa fa-user\">
+                  <a href=\"../pages/profile.php\" class=\"nav-link text-white p-0\">
+                      <i class=\"fa fa-user\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"View profile\">
                       </i>
                       <span class=\"d-sm-inline d-none\">";
 /*Show nickname*/
@@ -22,7 +22,7 @@ echo "            </span>
                 </li>
                 <li class=\"nav-item px-3 d-flex align-items-center\">
                     <a href=\"../pages/sign-in.php\" class=\"nav-link text-white p-0\">
-                        <i class=\"fa fa-sign-out fixed-plugin-button-nav cursor-pointer\"></i>
+                        <i class=\"fa fa-sign-out fixed-plugin-button-nav cursor-pointer\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Sign out\"></i>
                     </a>
                 </li>
                 <li class=\"nav-item d-xl-none ps-3 d-flex align-items-center\">
