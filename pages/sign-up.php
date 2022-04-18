@@ -37,22 +37,22 @@
                         }
                         else
                         {
-                            $errormsg = "please enter your last name!";
+                            $errormsg = "Please enter your last name!";
                         }
                     }
                     else
                     {
-                        $errormsg = "please enter your first name!";
+                        $errormsg = "Please enter your first name!";
                     }
                 }
                 else
                 {
-                    $errormsg = "please enter a password!";
+                    $errormsg = "Please enter a password!";
                 }
             }
             else
             {
-                $errormsg = "please enter a username!";
+                $errormsg = "Please enter a username!";
             }
         }
         else
