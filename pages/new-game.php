@@ -28,9 +28,9 @@ require_once '../PHP/leftHor_Navbar.php';
 
 if (isset($_POST['showFriends'])){
     if (isset($_SESSION['showFriends'])){
-        $_SESSION['showFriends'] = true;
-    }else{
         unset($_SESSION['showFriends']);
+    }else{
+        $_SESSION['showFriends'] = true;
     }
 }
 ?>
