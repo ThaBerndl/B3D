@@ -26,15 +26,15 @@ if (!$_SESSION['auth']) {
 <?php
 require_once '../PHP/leftHor_Navbar.php';
 require_once '../PHP/getClasses.php';
-if (isset($_GET['addParcour'])){
+if (isset($_GET['addParcour'])) {
     $ort = Ort::getOrtwithBez($_GET['ort']);
-    if (empty($ort)){
+    if (empty($ort)) {
         $ort = new Ort($_GET['ort']);
         $ort->insertOrt();
     }
-    $parcour = Parcour::getIDWithNames($_GET['parcour'],$ort->bez);
-    if (empty($parcour)){
-        $parcour = new Parcour(null,$_GET['parcour'],$ort->id);
+    $parcour = Parcour::getIDWithNames($_GET['parcour'], $ort->bez);
+    if (empty($parcour)) {
+        $parcour = new Parcour(null, $_GET['parcour'], $ort->id);
         $parcour->create();
         $tierzuord = new Tierzuord();
         $tierzuord->parcour_id = $parcour->parcour_id;
@@ -45,7 +45,7 @@ if (isset($_GET['addParcour'])){
 
 if (isset($_GET['addAnimal'])) {
     $parcour_ID = Parcour::getIDWithNames($_GET['parcour'], $_GET['ort']);
-    if (!empty($_GET['Tiere'])){
+    if (!empty($_GET['Tiere'])) {
         saveParcour($parcour_ID);
     }
     $tierzuord = new Tierzuord();
@@ -110,17 +110,17 @@ if (isset($_GET['saveParcour'])) {
                                        name="parcour"
                                        value="<?php echo isset($_GET['parcour']) ? $_GET['parcour'] : "" ?>">
                                 <datalist id="parcours">
-                                        <?php
-                                        if (isset($_GET['ort'])) {
-                                            $parcours = Parcour::getAllParcoursWithOrt($_GET['ort']);
-                                        } else {
-                                            $parcours = Parcour::getAllParcours();
-                                        }
-                                        while ($parcour = $parcours->fetch()) {
-                                            echo "<option>" . $parcour['bez'] . "</option>";
-                                        }
-                                        echo "</datalist>";
-                                        ?>
+                                    <?php
+                                    if (isset($_GET['ort'])) {
+                                        $parcours = Parcour::getAllParcoursWithOrt($_GET['ort']);
+                                    } else {
+                                        $parcours = Parcour::getAllParcours();
+                                    }
+                                    while ($parcour = $parcours->fetch()) {
+                                        echo "<option>" . $parcour['bez'] . "</option>";
+                                    }
+                                    echo "</datalist>";
+                                    ?>
                                     <hr id="tables-hr">
                                     <button type="submit" name="addParcour"
                                             class="btn btn-outline-success align-right" id=addParcourBtn>Add/Edit
@@ -128,51 +128,51 @@ if (isset($_GET['saveParcour'])) {
                                     </button>
                         </form>
                         <form action="parcour-location.php" method="get">
-                            <input type="hidden" name="ort" value="<?=$_GET['ort']?>">
-                            <input type="hidden" name="parcour" value="<?=$_GET['parcour']?>">
-                                    <div class="table-responsive">
-                                        <table class="table align-items-center justify-content-center mb-0">
-                                            <tbody>
-                                            <?php
-                                            if (isset($_GET['parcour'])){
-                                            $parcour_ID = Parcour::getIDWithNames($_GET['parcour'], $_GET['ort']);
-                                            $stmt = Tierzuord::getAllTiereFromParcour($parcour_ID);
-                                            while ($data = $stmt->fetch()) { ?>
-                                            <tr>
-                                                <td>
-                                                <th scope="row">#<?= $data['pos'] ?></th>
-                                                </td>
-                                                <td>
-                                                    <input type='text' list='tiere' class="form-control"
-                                                           name="Tiere[]"
-                                                           value='<?= $data['tier'] ?>'
-                                                           required>
-                                                    <datalist id="tiere">
-                                                        <?php
-                                                        $tiere = Tier::getAllTiere();
-                                                        while ($tier = $tiere->fetch()) {
-                                                            echo "<option>" . $tier['bez'] . "</option>";
-                                                        }
-                                                        echo "</datalist>";
-                                                        }
-                                                        ?>
-                                                </td>
+                            <input type="hidden" name="ort" value="<?= $_GET['ort'] ?>">
+                            <input type="hidden" name="parcour" value="<?= $_GET['parcour'] ?>">
+                            <div class="table-responsive">
+                                <table class="table align-items-center justify-content-center mb-0">
+                                    <tbody>
+                                    <?php
+                                    if (isset($_GET['parcour'])){
+                                    $parcour_ID = Parcour::getIDWithNames($_GET['parcour'], $_GET['ort']);
+                                    $stmt = Tierzuord::getAllTiereFromParcour($parcour_ID);
+                                    while ($data = $stmt->fetch()) { ?>
+                                    <tr>
+                                        <td>
+                                        <th scope="row">#<?= $data['pos'] ?></th>
+                                        </td>
+                                        <td>
+                                            <input type='text' list='tiere' class="form-control"
+                                                   name="Tiere[]"
+                                                   value='<?= $data['tier'] ?>'
+                                                   required>
+                                            <datalist id="tiere">
                                                 <?php
+                                                $tiere = Tier::getAllTiere();
+                                                while ($tier = $tiere->fetch()) {
+                                                    echo "<option>" . $tier['bez'] . "</option>";
+                                                }
+                                                echo "</datalist>";
                                                 }
                                                 ?>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <hr id="invisible-hr">
-                                    <button type="submit"
-                                            class="btn btn-outline-success align-right"
-                                            name="addAnimal" id=addAnimalBtn>Add Animal
-                                    </button>
-                                    <hr id="tables-save-hr">
-                                    <button id="saveParcour" type="submit" name="saveParcour"
-                                            class="btn bg-gradient-success">Save
-                                    </button>
+                                        </td>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <hr id="invisible-hr">
+                            <button type="submit"
+                                    class="btn btn-outline-success align-right"
+                                    name="addAnimal" id=addAnimalBtn>Add Animal
+                            </button>
+                            <hr id="tables-save-hr">
+                            <button id="saveParcour" type="submit" name="saveParcour"
+                                    class="btn bg-gradient-success">Save
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -201,21 +201,21 @@ require "../PHP/body_end.php";
         self.location = 'parcour-location.php?ort=' + ort.value;
     }
     <?php
-            function saveParcour($parcour_ID)
-            {
-                $tierArr = $_GET['Tiere'];
-                for ($i = 0; $i < count($tierArr); $i++) {
-                    $tier = Tier::getTierfromBez($tierArr[$i]);
-                    if ($tier == null) {
-                        $tier = Tier::createTier($tierArr[$i]);
-                    }
-                    $tierzuord = new Tierzuord();
-                    $tierzuord->tier_id = $tier->tier_id;
-                    $tierzuord->parcour_id = $parcour_ID;
-                    $tierzuord->pos = ($i + 1);
-                    $tierzuord->updateTier();
-                }
+    function saveParcour($parcour_ID)
+    {
+        $tierArr = $_GET['Tiere'];
+        for ($i = 0; $i < count($tierArr); $i++) {
+            $tier = Tier::getTierfromBez($tierArr[$i]);
+            if ($tier == null) {
+                $tier = Tier::createTier($tierArr[$i]);
             }
+            $tierzuord = new Tierzuord();
+            $tierzuord->tier_id = $tier->tier_id;
+            $tierzuord->parcour_id = $parcour_ID;
+            $tierzuord->pos = ($i + 1);
+            $tierzuord->updateTier();
+        }
+    }
     ?>
 </script>
 </body>
