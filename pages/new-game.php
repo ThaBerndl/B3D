@@ -137,7 +137,7 @@ if (isset($_POST['showFriends'])){
                             </tr>
                         </form>
                         <?php
-                        if(isset($GET['submit']))
+                        if(isset($_GET['submit']))
                         {
                             echo '<h1>' . 'test123' . '</h1>';
                         }
