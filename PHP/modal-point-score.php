@@ -38,11 +38,11 @@ echo "<div class=\"modal fade\" id=\"modal-form\" tabindex=\"-1\" role=\"dialog\
                                                                                    </div>
                                                                                    <div class=\"form-check\">
                                                                                        <input class=\"form-check-input\" type=\"radio\" name=\"flexRadioDefault\" id=\"customRadio3\">
-                                                                                       <label class=\"custom-control-label\" for=\customRadio2\">Arrow 3</label>
+                                                                                       <label class=\"custom-control-label\" for=\customRadio3\">Arrow 3</label>
                                                                                    </div>
                                                                                    <div class=\"form-check\">
                                                                                        <input class=\"form-check-input\" type=\"radio\" name=\"flexRadioDefault\" id=\"customRadio4\">
-                                                                                       <label class=\"custom-control-label\" for=\"customRadio2\">Miss</label>
+                                                                                       <label class=\"custom-control-label\" for=\"customRadio4\">Miss</label>
                                                                                    </div>
                                                                                </div>
                                                                            </div>
@@ -52,15 +52,15 @@ echo "<div class=\"modal fade\" id=\"modal-form\" tabindex=\"-1\" role=\"dialog\
                                                                                <div class=\"d-flex flex-column justify-content-center\">
                                                                                    <div class=\"form-check\">
                                                                                        <input class=\"form-check-input\" type=\"radio\" name=\"flexRadioDefault\" id=\"customRadio5\">
-                                                                                       <label class=\"custom-control-label\" for=\"customRadio1\">Center</label>
+                                                                                       <label class=\"custom-control-label\" for=\"customRadio5\">Center</label>
                                                                                    </div>
                                                                                    <div class=\"form-check\">
                                                                                        <input class=\"form-check-input\" type=\"radio\" name=\"flexRadioDefault\" id=\"customRadio6\">
-                                                                                       <label class=\"custom-control-label\" for=\"customRadio2\">Kill</label>
+                                                                                       <label class=\"custom-control-label\" for=\"customRadio6\">Kill</label>
                                                                                    </div>
                                                                                    <div class=\"form-check\">
                                                                                        <input class=\"form-check-input\" type=\"radio\" name=\"flexRadioDefault\" id=\"customRadio7\">
-                                                                                       <label class=\"custom-control-label\" for=\"customRadio2\">Body</label>
+                                                                                       <label class=\"custom-control-label\" for=\"customRadio7\">Body</label>
                                                                                    </div>
                                                                                </div>
                                                                            </div>
