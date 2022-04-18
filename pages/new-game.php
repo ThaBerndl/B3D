@@ -26,11 +26,7 @@ if (!$_SESSION['auth']) {
 
         if($myDropdownValue == 0)
         {
-            echo "<script type='text/javascript'>
-                    .myDisabledClass{
-                        display: block;
-                    }
-                  </script>";
+            $_SESSION['$displayError'] = 1;
         }
         else
         {
@@ -183,7 +179,13 @@ if (isset($_POST['showFriends'])){
                                     </a>
                                 </td>
                             </tr>
-                            <p class='myDisabledClass' style='color: #ff0000; display: none'> No parcour selected: please select a parcour</p>
+                            <?php
+                                if($_SESSION['$displayError'] == 1)
+                                {
+                                    echo "<p style='color: #ff0000'> No parcour selected: please select a parcour</p>";
+                                    $_SESSION['$displayError'] = 0;
+                                }
+                            ?>
                         </form>
                     </div>
                 </div>
