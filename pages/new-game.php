@@ -26,6 +26,7 @@ if (!$_SESSION['auth']) {
 
         $myGame = Game::insertGame($myDropdownValue);
         $myTierzuord = Punkte::getFirstTierzuord($myDropdownValue);
+        echo "<h1>" ."MyTierzuord= ". "$myTierzuord"."</h1>";
         $myPunkte = 0;
 
         for($i = 0; $i < sizeof($myArray); $i++)
@@ -41,7 +42,7 @@ if (!$_SESSION['auth']) {
 
 
 
-        header("Location: enter-point-score.php");
+        //header("Location: enter-point-score.php");
     }
     ?>
 </head>
