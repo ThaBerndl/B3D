@@ -72,11 +72,10 @@ require_once '../PHP/leftHor_Navbar.php'
                                         foreach ($freunde as $freund)
                                         {
                                             $user = USER::getUserwithID($freund->freund_id);
-                                            echo '<h6 class="mb-0 text-xs" name="archerName">asdf asdf</h6>
-                                            <p class="text-xs text-secondary mb-0"
-                                               name="archerNickname">@asdf123</p>' ;
+                                            echo '<h6 class="mb-0 text-xs" name="archerName">asdf asdf</h6>'
+                                            echo '<p class="text-xs text-secondary mb-0"
+                                               name="archerNickname">@asdf123</p>';
                                         }
-                                        ?>
                                         ?>
                                         <td>
                                             <h6 class="mb-0 text-xs" name="archerName">Bunga Bunga</h6>
