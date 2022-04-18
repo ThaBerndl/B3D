@@ -43,4 +43,14 @@ class Game extends DB{
         $error=$stmt->errorInfo();
         return $stmt;
     }
+
+    public static function insertGame($parcour_id)
+    {
+        $db = new DB();
+        $stmt = $db->pdo->prepare("insert into Game(created, parcour_id) values(CURRENT_TIME(), ?);");
+        $stmt->bindParam(1,$parcour_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error=$stmt->errorInfo();
+        return $stmt;
+    }
 }
