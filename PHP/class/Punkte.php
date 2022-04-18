@@ -17,6 +17,28 @@ class Punkte extends DB
         $this->punkte = $punkte;
     }
 
+    public static function insertPunkteStand($game_id, $user_id, $tz_id, $punkte)
+    {
+        $db = new DB();
+        $stmt = $db->pdo->prepare("insert into Punktestand(game_id, user_id, tierzuord_id, punkte) values(?, ?, ?, ?)");
+        $stmt->bindParam(1,$game_id,PDO::PARAM_INT);
+        $stmt->bindParam(2,$user_id,PDO::PARAM_INT);
+        $stmt->bindParam(3,$tz_id,PDO::PARAM_INT);
+        $stmt->bindParam(4,$punkte,PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+    }
+
+    public static function getFirstTierzuord($parcour_id)
+    {
+        $db = new DB();
+        $stmt = $db->pdo->prepare("select tierzuord_id from Tierzuord where parcour_id = ? and pos = 1");
+        $stmt->bindParam(1,$parcour_id,PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
     public static function insertpoints($game_id, $user_id,$tz_id, $arrow, $zone, $zaehlweise = 3){
         $points = 0;
         if ($arrow == 1){

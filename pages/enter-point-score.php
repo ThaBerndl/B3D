@@ -18,9 +18,15 @@
     session_start();
     include "../PHP/header.php";
     include "../PHP/getClasses.php";
+    include "new-game.php";
     ?>
 </head>
 <?php
+
+echo "<h1>" ."UserId= ". "$myArray[0]". "</h1>";
+
+$test = Punkte::getFirstTierzuord();
+
 if (isset($_POST['finish']))
 {
     header("location: scoreboard.php?game_id=".$_POST['game_id']);

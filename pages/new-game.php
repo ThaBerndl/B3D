@@ -39,7 +39,6 @@ if (!$_SESSION['auth']) {
         Game::insertGame($myDropdownValue);
 
         header("Location: enter-point-score.php");
-        //exit;
     }
     ?>
 </head>
