@@ -24,7 +24,15 @@ if (!$_SESSION['auth']) {
 <div class="min-height-300 bg-success position-absolute w-100"></div>
 <!--Left Side Nav Bar -->
 <?php
-require_once '../PHP/leftHor_Navbar.php'
+require_once '../PHP/leftHor_Navbar.php';
+
+if (isset($_POST['showFriends'])){
+    if (isset($_SESSION['showFriends'])){
+        unset($_SESSION['showFriends']);
+    }else{
+        $_SESSION['showFriends'] = true;
+    }
+}
 ?>
 <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
@@ -53,12 +61,14 @@ require_once '../PHP/leftHor_Navbar.php'
                         <h6>Start a new game</h6>
                         <!--form-->
                         <form id="new_game_form" action="new-game.php" method="get">
-                            <button type="submit"
-                                    class="btn btn-outline-success align-right" name="saved_parcours">Friend&nbsp;&nbsp;<i
-                                        class="ni ni-bold-down"></i></button>
+                            <form action="new-game.php" method="post">
+                                <button type="submit"
+                                        class="btn btn-outline-success align-right"
+                                        name="showFriends">Friends&nbsp;&nbsp;<i class="<?= !isset($_SESSION['showFriends'])?"ni ni-bold-down":"ni ni-bold-up"; ?>"></i></button>
+                            </form>
                             <!--Friendlist - select participating archers-->
                             <table class="table-responsive">
-                                <table class="table align-items-center justify-content-center mb-0">
+                                <table class="table align-items-center justify-content-center mb-0" <?= isset($_SESSION['showFriends'])?"style=\"display: none;\"":""; ?>>
                                     <thead>
                                     <tr>
                                         <th scope="row">Friend</th>
