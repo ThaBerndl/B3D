@@ -142,7 +142,7 @@ if (isset($_POST['showFriends'])){
                                                 <td>
                                                     <div class="form-check centerCheckBox">
                                                         <input class="form-check-input" type="checkbox" value="'.$userId.'"
-                                                               name="userArr[]" checked="">
+                                                               name="userArr[]">
                                                     </div>
                                                 </td>
                                             </tr>';
