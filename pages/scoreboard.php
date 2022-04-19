@@ -170,7 +170,7 @@ require_once '../PHP/leftHor_Navbar.php'
                     <div class="card-body">
                         <h6 class="mb-2">Targets</h6>
                         <div class="table-responsive">
-                            <table>
+                            <table class="table align-items-center">
                                 <thead>
                                 <tr>
                                     <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Target</th>
