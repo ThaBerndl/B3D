@@ -131,7 +131,7 @@ if (isset($_GET['saveParcour'])) {
                             <input type="hidden" name="ort" value="<?= $_GET['ort'] ?>">
                             <input type="hidden" name="parcour" value="<?= $_GET['parcour'] ?>">
                             <div class="table-responsive">
-                                <table class="table align-items-left justify-content-center mb-0">
+                                <table class="table align-items-center">
                                     <tbody>
                                     <?php
                                     if (isset($_GET['parcour'])){
