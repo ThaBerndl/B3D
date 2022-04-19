@@ -141,9 +141,10 @@ if (isset($_GET['saveParcour'])) {
                                     <tr>
                                         <th scope="row">#<?= $data['pos'] ?></th>
                                         <td>
-                                            <input type='text' list='tiere' class="form-control"
-                                                   name="Tiere[]"
-                                                   value='<?= $data['tier'] ?>'
+                                        <input type='text' list='tiere' class="form-control"
+                                               name="Tiere[]"
+                                               id="example-text-input"
+                                               value='<?= $data['tier'] ?>'
                                                    required>
                                             <datalist id="tiere">
                                                 <?php
