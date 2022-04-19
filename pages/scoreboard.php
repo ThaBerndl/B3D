@@ -185,10 +185,6 @@ require_once '../PHP/leftHor_Navbar.php'
                                 ?>
                             </tr>
                             </thead>
-                        </table>
-                    </div>
-                    <div class="table-responsive">
-                        <table>
                             <tbody>
                             <?php
                             for ($i = 1; $i <= $maxPos; $i++){
