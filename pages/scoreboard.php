@@ -111,6 +111,15 @@ require_once '../PHP/leftHor_Navbar.php'
                                 ?>
                             </tr>
                             <tr>
+                                <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Played</td>
+                                <?php
+                                foreach ($userArr as $user){
+                                    $maxPos = Punkte_data::getMaxPos($user->game_id);
+                                    $played = Punkte_data::getPlayedPOS($user->game_id, $user->user_id);
+                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".$played."/".$maxPos."</td>";
+                                }
+                                ?>
+                            </tr><tr>
                                 <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Hits</td>
                                 <?php
                                 foreach ($userArr as $user){
@@ -118,7 +127,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                     $maxPos = Punkte_data::getMaxPos($user->game_id);
                                     $played = Punkte_data::getPlayedPOS($user->game_id, $user->user_id);
                                     $notplayed = $maxPos-$played;
-                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".($maxPos-$misses-$notplayed)."/".($maxPos)."</td>";
+                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".($maxPos-$misses-$notplayed)."/".($maxPos-$notplayed)."</td>";
                                 }
                                 ?>
                             </tr>
