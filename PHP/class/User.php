@@ -46,6 +46,7 @@ class User extends DB
                 $stmt->bindParam(3, $this->nickname, PDO::PARAM_STR);
                 $stmt->bindParam(4, $this->passwort, PDO::PARAM_STR);
                 $stmt->execute();
+                $this->id = $this->pdo->lastInsertId();
 
                 return true;
             }
