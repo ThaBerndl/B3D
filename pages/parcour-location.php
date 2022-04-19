@@ -138,18 +138,18 @@ if (isset($_GET['saveParcour'])) {
                                     $parcour_ID = Parcour::getIDWithNames($_GET['parcour'], $_GET['ort']);
                                     $stmt = Tierzuord::getAllTiereFromParcour($parcour_ID);
                                     while ($data = $stmt->fetch()) { ?>
-                                    <tr>
-                                        <th scope="row">#<?= $data['pos'] ?></th>
+                                        <tr>
+                                        <th id="parLocTh" scope="row">#<?= $data['pos'] ?></th>
                                         <td>
                                         <input type='text' list='tiere' class="form-control"
                                                name="Tiere[]"
                                                id="example-text-input"
                                                value='<?= $data['tier'] ?>'
-                                                   required>
-                                            <datalist id="tiere">
-                                                <?php
-                                                $tiere = Tier::getAllTiere();
-                                                while ($tier = $tiere->fetch()) {
+                                               required>
+                                        <datalist id="tiere">
+                                        <?php
+                                        $tiere = Tier::getAllTiere();
+                                        while ($tier = $tiere->fetch()) {
                                                     echo "<option>" . $tier['bez'] . "</option>";
                                                 }
                                                 echo "</datalist>";
