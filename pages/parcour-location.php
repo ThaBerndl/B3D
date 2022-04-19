@@ -142,8 +142,8 @@ if (isset($_GET['saveParcour'])) {
                                         <th id="parLocTh" scope="row">#<?= $data['pos'] ?></th>
                                         <td class="align-middle">
                                         <input type='text' list='tiere' class="form-control"
-                                               name="Tiere[]" style="width: 200px;"
-                                               placeholder=" enter animal"
+                                               name="Tiere[]"
+                                               placeholder="enter animal.."
                                                id="example-text-input"
                                                value='<?= $data['tier'] ?>'
                                                required>
