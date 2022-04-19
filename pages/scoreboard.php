@@ -116,7 +116,9 @@ require_once '../PHP/leftHor_Navbar.php'
                                 foreach ($userArr as $user){
                                     $misses = Punkte_data::getMisses($user->game_id, $user->user_id);
                                     $maxPos = Punkte_data::getMaxPos($user->game_id);
-                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".($maxPos-$misses)."/".$maxPos."</td>";
+                                    $played = Punkte_data::getPlayedPOS($user->game_id, $user->user_id);
+                                    $notplayed = $maxPos-$played;
+                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".($maxPos-$misses-$notplayed)."/".($maxPos)."</td>";
                                 }
                                 ?>
                             </tr>

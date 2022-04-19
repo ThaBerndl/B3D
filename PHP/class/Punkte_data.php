@@ -216,4 +216,20 @@ class Punkte_data extends DB{
         }
     }
 
+    public static function getPlayedPOS($game_id, $user_id)
+    {
+        $db = new DB();
+        $stmt = $db->pdo->prepare("select count(*) 'playedPos' 
+                                                from Punktestand 
+                                               where game_id = ? 
+                                                 and user_id = ?");
+        $stmt->bindParam(1,$game_id, PDO::PARAM_INT);
+        $stmt->bindParam(2,$user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        while($data = $stmt->fetch()){
+            return $data['playedPos'];
+        }
+    }
+
 }
