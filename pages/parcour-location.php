@@ -143,6 +143,7 @@ if (isset($_GET['saveParcour'])) {
                                         <td>
                                         <input type='text' list='tiere' class="form-control"
                                                name="Tiere[]"
+                                               placeholder="enter animal"
                                                id="example-text-input"
                                                value='<?= $data['tier'] ?>'
                                                required>
