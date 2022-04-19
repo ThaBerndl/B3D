@@ -167,13 +167,9 @@ require_once '../PHP/leftHor_Navbar.php'
         <!--Target Overview-->
         <div class="row mt-4">
             <div class="col-12">
-                <div class="card ">
-                    <div class="card-header pb-0 p-3">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="mb-2">Targets</h6>
-                        </div>
-                    </div>
-                    <div class="table-responsive tableFixHead">
+                <div class="card">
+                    <h6 class="mb-2">Targets</h6>
+                    <div class="table-responsive">
                         <table>
                             <thead>
                             <tr>
@@ -189,15 +185,19 @@ require_once '../PHP/leftHor_Navbar.php'
                                 ?>
                             </tr>
                             </thead>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
                             <tbody>
                             <?php
                             for ($i = 1; $i <= $maxPos; $i++){
                                 echo "<tr>";
                                 echo "<td class=\"text-uppercase text-xxs font-weight-bolder mb-0\" scope=\"row\">#$i</td>";
-                                    foreach ($userArr as $user) {
-                                        $punkte = Punkte_data::getPunkte($user->game_id, $user->user_id,$i);
-                                        echo "<td class=\"text-xs font-weight-bold mb-0\">".$punkte."</td>";
-                                    }
+                                foreach ($userArr as $user) {
+                                    $punkte = Punkte_data::getPunkte($user->game_id, $user->user_id,$i);
+                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".$punkte."</td>";
+                                }
                                 echo "</tr>";
                             }
                             ?>
@@ -207,8 +207,9 @@ require_once '../PHP/leftHor_Navbar.php'
                 </div>
             </div>
         </div>
-        <!-- End Target Overview-->
-        <?php
+    </div>
+    <!-- End Target Overview-->
+    <?php
         require_once "../PHP/footer.php";
         ?>
     </div>
