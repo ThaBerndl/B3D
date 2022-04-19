@@ -155,10 +155,10 @@ if (isset($_GET['saveParcour'])) {
                                                 }
                                                 ?>
                                         </td>
+                                        </tr>
                                         <?php
                                         }
                                         ?>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
