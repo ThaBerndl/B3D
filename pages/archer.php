@@ -67,15 +67,18 @@
                             <form id="add_friend" action="archer.php" method="post">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Nickname*</label>
-                                    <input class="form-control" type="text" value="" name="nickname">
+                                    <input class="form-control" placeholder="search or create new friend.." type="text"
+                                           value="" name="nickname">
                                 </div>
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Surname</label>
-                                    <input class="form-control" type="text" value="" name="fname">
+                                    <input class="form-control" placeholder="new surname.." type="text" value=""
+                                           name="fname">
                                 </div>
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Lastname</label>
-                                    <input class="form-control" type="text" value="" name="lname">
+                                    <input class="form-control" placeholder="new lastname.." type="text" value=""
+                                           name="lname">
                                 </div>
                                 <hr id="tables-hr">
                                 <button type="submit" class="btn bg-gradient-success align-right" name="submit">

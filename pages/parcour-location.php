@@ -131,7 +131,7 @@ if (isset($_GET['saveParcour'])) {
                             <input type="hidden" name="ort" value="<?= $_GET['ort'] ?>">
                             <input type="hidden" name="parcour" value="<?= $_GET['parcour'] ?>">
                             <div class="table-responsive">
-                                <table class="table align-items-center justify-content-center mb-0">
+                                <table class="table align-items-center">
                                     <tbody>
                                     <?php
                                     if (isset($_GET['parcour'])){
@@ -140,9 +140,10 @@ if (isset($_GET['saveParcour'])) {
                                     while ($data = $stmt->fetch()) { ?>
                                         <tr>
                                         <th id="parLocTh" scope="row">#<?= $data['pos'] ?></th>
-                                        <td>
+                                        <td class="align-middle">
                                         <input type='text' list='tiere' class="form-control"
-                                               name="Tiere[]"
+                                               name="Tiere[]" style="width: 200px;"
+                                               placeholder="enter animal.."
                                                id="example-text-input"
                                                value='<?= $data['tier'] ?>'
                                                required>
@@ -165,7 +166,7 @@ if (isset($_GET['saveParcour'])) {
                             </div>
                             <hr id="invisible-hr">
                             <button type="submit"
-                                    class="btn btn-outline-success align-right"
+                                    class="btn btn-success align-right"
                                     name="addAnimal" id=addAnimalBtn>Add Animal
                             </button>
                             <hr id="tables-save-hr">

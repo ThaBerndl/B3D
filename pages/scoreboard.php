@@ -82,12 +82,10 @@ require_once '../PHP/leftHor_Navbar.php'
         <div class="row mt-4">
             <div class="col-12">
                 <div class="card ">
-                    <div class="card-header pb-0 p-3">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="mb-2">Total Score</h6>
-                        </div>
+                    <div class="card-body">
+                        <h6 class="mb-2">Total Score</h6>
                     </div>
-                    <div>
+                    <div class="table-responsive">
                         <table class="table align-items-center">
                             <tr>
                                 <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Archer</th>
@@ -158,6 +156,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 }
                                 ?>
                             </tr>
+                            <hr id="tables-hr">
                         </table>
                     </div>
                 </div>
@@ -167,50 +166,50 @@ require_once '../PHP/leftHor_Navbar.php'
         <!--Target Overview-->
         <div class="row mt-4">
             <div class="col-12">
-                <div class="card ">
-                    <div class="card-header pb-0 p-3">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="mb-2">Targets</h6>
-                        </div>
-                    </div>
-                    <div class="table-responsive tableFixHead">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Target</th>
-                                <?php
-                                foreach ($userArr as $user) {
-                                    ?>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder" scope="row">
-                                        <?=$user->user_nickname?>
-                                    </th>
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="mb-2">Targets</h6>
+                        <div class="table-responsive">
+                            <table class="table align-items-center">
+                                <thead>
+                                <tr>
+                                    <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Target</th>
                                     <?php
+                                    foreach ($userArr as $user) {
+                                        ?>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder"
+                                            scope="row">
+                                            <?= $user->user_nickname ?>
+                                        </th>
+                                        <?php
+                                    }
+                                    ?>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                for ($i = 1; $i <= $maxPos; $i++) {
+                                    echo "<tr>";
+                                    echo "<td class=\"text-uppercase text-xxs font-weight-bolder mb-0\" scope=\"row\">#$i</td>";
+                                    foreach ($userArr as $user) {
+                                        $punkte = Punkte_data::getPunkte($user->game_id, $user->user_id, $i);
+                                        echo "<td class=\"text-xs font-weight-bold mb-0\">" . $punkte . "</td>";
+                                    }
+                                    echo "</tr>";
                                 }
                                 ?>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            for ($i = 1; $i <= $maxPos; $i++){
-                                echo "<tr>";
-                                echo "<td class=\"text-uppercase text-xxs font-weight-bolder mb-0\" scope=\"row\">#$i</td>";
-                                    foreach ($userArr as $user) {
-                                        $punkte = Punkte_data::getPunkte($user->game_id, $user->user_id,$i);
-                                        echo "<td class=\"text-xs font-weight-bold mb-0\">".$punkte."</td>";
-                                    }
-                                echo "</tr>";
-                            }
-                            ?>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Target Overview-->
-        <?php
-        require_once "../PHP/footer.php";
-        ?>
+    </div>
+    <!-- End Target Overview-->
+    <?php
+    require_once "../PHP/footer.php";
+    ?>
     </div>
 </main>
 <?php
