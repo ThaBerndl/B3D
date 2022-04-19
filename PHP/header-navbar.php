@@ -6,7 +6,7 @@ echo "<div class=\"collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-\" id=\"n
           <ul class=\"navbar-nav  justify-content-end\">
             <li class=\"nav-item d-flex align-items-center\">
               <li class=\"nav-item px-3 d-flex align-items-center\">
-                      <span class=\"d-sm-inline d-none\" style='color: white'>";
+                      <span style='color: white'>";
 /*Show nickname*/
 if ($_SESSION['auth'] == true) {
     echo $_SESSION['nickname'];
