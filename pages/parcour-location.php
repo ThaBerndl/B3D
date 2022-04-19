@@ -139,9 +139,7 @@ if (isset($_GET['saveParcour'])) {
                                     $stmt = Tierzuord::getAllTiereFromParcour($parcour_ID);
                                     while ($data = $stmt->fetch()) { ?>
                                     <tr>
-                                        <td>
                                         <th scope="row">#<?= $data['pos'] ?></th>
-                                        </td>
                                         <td>
                                             <input type='text' list='tiere' class="form-control"
                                                    name="Tiere[]"
@@ -157,10 +155,10 @@ if (isset($_GET['saveParcour'])) {
                                                 }
                                                 ?>
                                         </td>
+                                        </tr>
                                         <?php
                                         }
                                         ?>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
