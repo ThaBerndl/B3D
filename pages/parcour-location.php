@@ -170,6 +170,9 @@ if (isset($_GET['saveParcour'])) {
                                     </tbody>
                                 </table>
                             </div>
+                            <?php
+                                if(isset($_GET['addParcour'])){
+                            ?>
                             <hr id="invisible-hr">
                             <button type="submit"
                                     class="btn btn-success align-left"
@@ -184,6 +187,9 @@ if (isset($_GET['saveParcour'])) {
                             <button id="saveParcour" type="submit" name="saveParcour"
                                     class="btn bg-gradient-success">Save
                             </button>
+                                <?php
+                                }
+                                ?>
                         </form>
                     </div>
                 </div>
