@@ -59,6 +59,9 @@ if (!$_SESSION['auth']) {
             header("Location: enter-point-score.php");
         }
     }
+    if (isset($_GET['showFriends'])){
+
+    }
     ?>
 </head>
 
@@ -68,13 +71,14 @@ if (!$_SESSION['auth']) {
 <?php
 require_once '../PHP/leftHor_Navbar.php';
 
-if (isset($_POST['showFriends'])){
+if (isset($_GET['showFriends'])){
     if (isset($_SESSION['showFriends'])){
         unset($_SESSION['showFriends']);
     }else{
         $_SESSION['showFriends'] = true;
+
     }
-}
+    $myArray = $_GET['userArr'];}
 ?>
 <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
@@ -103,13 +107,12 @@ if (isset($_POST['showFriends'])){
                         <h6>Start a new game</h6>
                         <!--form-->
 
-                        <form action="new-game.php" method="post">
+                         <form id="new_game_form" action="new-game.php" method="get">
                             <button type="submit"
                                     class="btn btn-outline-success align-right"
                                     name="showFriends">Friends&nbsp;&nbsp;<i class="<?= !isset($_SESSION['showFriends'])?"ni ni-bold-down":"ni ni-bold-up"; ?>"></i></button>
-                        </form>
 
-                        <form id="new_game_form" action="new-game.php" method="get">
+
                             <!--Friendlist - select participating archers-->
                             <table class="table-responsive">
                                 <table class="table align-items-center justify-content-center mb-0" <?= isset($_SESSION['showFriends'])?"style=\"display: none;\"":""; ?>>
@@ -131,20 +134,21 @@ if (isset($_POST['showFriends'])){
                                             $userNickName = $user->nickname;
                                             $userId = $user->id;
 
-                                            echo '
-                                            <tr> 
-                                                <td>
-                                                    <h6 class="mb-0 text-xs" name="archerName">'.$uservName." ".$usernName.'</h6>
-                                                    <p class="text-xs text-secondary mb-0"
-                                                       name="archerNickname">@'.$userNickName.'</p>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check centerCheckBox">
-                                                        <input class="form-check-input" type="checkbox" value="'.$userId.'"
-                                                               name="userArr[]">
-                                                    </div>
-                                                </td>
-                                            </tr>';
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <h6 class="mb-0 text-xs" name="archerName"><?=$uservName?> <?=$usernName?></h6>
+                                                <p class="text-xs text-secondary mb-0"
+                                                   name="archerNickname">@<?=$userNickName?></p>
+                                            </td>
+                                            <td>
+                                                <div class="form-check centerCheckBox">
+                                                    <input class="form-check-input" type="checkbox" value="<?=$userId?>"
+                                                           name="userArr[]"<?php if(in_array($userId,$myArray)){ echo 'checked="checked"';}?>>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php
                                         }
                                         ?>
                                     <!--End placeholder-->
