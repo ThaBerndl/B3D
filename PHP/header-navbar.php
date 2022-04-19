@@ -6,10 +6,7 @@ echo "<div class=\"collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-\" id=\"n
           <ul class=\"navbar-nav  justify-content-end\">
             <li class=\"nav-item d-flex align-items-center\">
               <li class=\"nav-item px-3 d-flex align-items-center\">
-                  <a href=\"../pages/profile.php\" class=\"nav-link text-white p-0\">
-                      <i class=\"fa fa-user\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"View profile\">
-                      </i>
-                      <span class=\"d-sm-inline d-none\">";
+                      <span class=\"d-sm-inline d-none\" style='color: white'>";
 /*Show nickname*/
 if ($_SESSION['auth'] == true) {
     echo $_SESSION['nickname'];
@@ -17,7 +14,6 @@ if ($_SESSION['auth'] == true) {
     echo "Sign in";
 }
 echo "            </span>
-                  </a>
                 </li>
                 </li>
                 <li class=\"nav-item px-3 d-flex align-items-center\">
