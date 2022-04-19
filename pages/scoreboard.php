@@ -168,37 +168,40 @@ require_once '../PHP/leftHor_Navbar.php'
         <div class="row mt-4">
             <div class="col-12">
                 <div class="card">
-                    <h6 class="mb-2">Targets</h6>
-                    <div class="table-responsive">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Target</th>
-                                <?php
-                                foreach ($userArr as $user) {
-                                    ?>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder" scope="row">
-                                        <?=$user->user_nickname?>
-                                    </th>
+                    <div class="card-body">
+                        <h6 class="mb-2">Targets</h6>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Target</th>
                                     <?php
+                                    foreach ($userArr as $user) {
+                                        ?>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder"
+                                            scope="row">
+                                            <?= $user->user_nickname ?>
+                                        </th>
+                                        <?php
+                                    }
+                                    ?>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                for ($i = 1; $i <= $maxPos; $i++) {
+                                    echo "<tr>";
+                                    echo "<td class=\"text-uppercase text-xxs font-weight-bolder mb-0\" scope=\"row\">#$i</td>";
+                                    foreach ($userArr as $user) {
+                                        $punkte = Punkte_data::getPunkte($user->game_id, $user->user_id, $i);
+                                        echo "<td class=\"text-xs font-weight-bold mb-0\">" . $punkte . "</td>";
+                                    }
+                                    echo "</tr>";
                                 }
                                 ?>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            for ($i = 1; $i <= $maxPos; $i++){
-                                echo "<tr>";
-                                echo "<td class=\"text-uppercase text-xxs font-weight-bolder mb-0\" scope=\"row\">#$i</td>";
-                                foreach ($userArr as $user) {
-                                    $punkte = Punkte_data::getPunkte($user->game_id, $user->user_id,$i);
-                                    echo "<td class=\"text-xs font-weight-bold mb-0\">".$punkte."</td>";
-                                }
-                                echo "</tr>";
-                            }
-                            ?>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -206,8 +209,8 @@ require_once '../PHP/leftHor_Navbar.php'
     </div>
     <!-- End Target Overview-->
     <?php
-        require_once "../PHP/footer.php";
-        ?>
+    require_once "../PHP/footer.php";
+    ?>
     </div>
 </main>
 <?php
