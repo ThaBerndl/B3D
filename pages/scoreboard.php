@@ -158,6 +158,10 @@ require_once '../PHP/leftHor_Navbar.php'
                                 }
                                 ?>
                             </tr>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <td>&nbsp;</td>
+                            </tr>
                         </table>
                     </div>
                 </div>
