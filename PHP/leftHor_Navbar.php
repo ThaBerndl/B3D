@@ -25,7 +25,7 @@ echo "<aside
                     <a class=\"nav-link\" href=\"../pages/archer.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-satisfied text-green text-sm opacity-10\"></i>
+                            <i class=\"ni ni-satisfied text-purple text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Friends</span>
                     </a>
@@ -34,7 +34,7 @@ echo "<aside
                     <a class=\"nav-link\" href=\"../pages/result.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-chart-bar-32 text-orange text-sm opacity-10\"></i>
+                            <i class=\"ni ni-chart-bar-32 text-pink text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Results</span>
                     </a>
@@ -46,7 +46,7 @@ echo "<aside
                     <a class=\"nav-link\" href=\" ../pages/parcour-location.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-pin-3 text-pink text-sm opacity-10\"></i>
+                            <i class=\"ni ni-pin-3 text-red text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Create/Edit Parcour</span>
                     </a>
@@ -55,7 +55,7 @@ echo "<aside
                     <a class=\"nav-link \" href=\"../pages/parcour-favourites.php\">
                         <div
                             class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-favourite-28 text-red text-sm opacity-10\"></i>
+                            <i class=\"ni ni-favourite-28 text-orange text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Parcour Favourites</span>
                     </a>
