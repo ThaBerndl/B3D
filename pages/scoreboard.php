@@ -88,7 +88,7 @@ require_once '../PHP/leftHor_Navbar.php'
                     <div class="table-responsive">
                         <table class="table align-items-center">
                             <tr>
-                                <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Archer</th>
+                                <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Archer</td>
                                 <?php
                                 foreach ($userArr as $user) {
                                 ?>
@@ -100,7 +100,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 ?>
                             </tr>
                             <tr>
-                                <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Total</th>
+                                <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Total</td>
                                 <?php
 
                                 foreach ($userArr as $user){
@@ -111,7 +111,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 ?>
                             </tr>
                             <tr>
-                                <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Hits</th>
+                                <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Hits</td>
                                 <?php
                                 foreach ($userArr as $user){
                                     $misses = Punkte_data::getMisses($user->game_id, $user->user_id);
@@ -121,7 +121,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 ?>
                             </tr>
                             <tr>
-                                <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">DPS</th>
+                                <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">DPS</td>
                                 <?php
                                 foreach ($userArr as $user){
                                     $avg = Punkte_data::getAvg($user->game_id, $user->user_id);
@@ -130,7 +130,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 ?>
                             </tr>
                             <tr>
-                                <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Arrow 1</th>
+                                <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Arrow 1</td>
                                 <?php
                                 foreach ($userArr as $user){
                                     $arrow1 = Punkte_data::getArrow1($user->game_id, $user->user_id);
@@ -139,7 +139,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 ?>
                             </tr>
                             <tr>
-                                <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Arrow 2</th>
+                                <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Arrow 2</td>
                                 <?php
                                 foreach ($userArr as $user){
                                     $arrow2 = Punkte_data::getArrow2($user->game_id, $user->user_id);
@@ -148,7 +148,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 ?>
                             </tr>
                             <tr>
-                                <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Arrow 3</th>
+                                <td class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Arrow 3</td>
                                 <?php
                                 foreach ($userArr as $user){
                                     $arrow3 = Punkte_data::getArrow3($user->game_id, $user->user_id);

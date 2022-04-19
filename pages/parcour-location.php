@@ -132,7 +132,7 @@ if (isset($_GET['saveParcour'])) {
                             <input type="hidden" name="parcour" value="<?= $_GET['parcour'] ?>">
                             <div class="table-responsive">
                                 <table class="table align-items-center">
-                                    <tbody>
+                                    <tbody >
                                     <?php
                                     if (isset($_GET['parcour'])){
                                     $parcour_ID = Parcour::getIDWithNames($_GET['parcour'], $_GET['ort']);
@@ -140,9 +140,9 @@ if (isset($_GET['saveParcour'])) {
                                     while ($data = $stmt->fetch()) { ?>
                                         <tr>
                                         <th id="parLocTh" scope="row">#<?= $data['pos'] ?></th>
-                                        <td class="align-middle">
+                                        <td class="align-middle" style="width: auto; border: none">
                                         <input type='text' list='tiere' class="form-control"
-                                               name="Tiere[]" style="width: 200px;"
+                                               name="Tiere[]"
                                                placeholder="enter animal.."
                                                id="example-text-input"
                                                value='<?= $data['tier'] ?>'
