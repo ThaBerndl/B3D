@@ -165,7 +165,7 @@ if (isset($_GET['saveParcour'])) {
                             </div>
                             <hr id="invisible-hr">
                             <button type="submit"
-                                    class="btn btn-outline-success align-right"
+                                    class="btn btn-success align-right"
                                     name="addAnimal" id=addAnimalBtn>Add Animal
                             </button>
                             <hr id="tables-save-hr">
