@@ -68,4 +68,11 @@ class Tierzuord extends DB{
         $stmt->bindParam(3,$this->pos,PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    public function delAnimal()
+    {
+        $stmt = $this->pdo->prepare("delete from Tierzuord where parcour_id = ? order by pos desc limit 1");
+        $stmt->bindParam(1,$this->parcour_id,PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

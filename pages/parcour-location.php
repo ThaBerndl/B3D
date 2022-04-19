@@ -53,6 +53,12 @@ if (isset($_GET['addAnimal'])) {
     $tierzuord->getnextPos();
     $tierzuord->insertTierZuord();
 }
+if (isset($_GET['delAnimal'])){
+    $parcour_ID = Parcour::getIDWithNames($_GET['parcour'], $_GET['ort']);
+    $tierzuord = new Tierzuord();
+    $tierzuord->parcour_id = $parcour_ID;
+    $tierzuord->delAnimal();
+}
 if (isset($_GET['saveParcour'])) {
     $parcour_ID = Parcour::getIDWithNames($_GET['parcour'], $_GET['ort']);
     saveParcour($parcour_ID);
@@ -166,8 +172,13 @@ if (isset($_GET['saveParcour'])) {
                             </div>
                             <hr id="invisible-hr">
                             <button type="submit"
-                                    class="btn btn-success align-right"
+                                    class="btn btn-success align-left"
                                     name="addAnimal" id=addAnimalBtn>Add Animal
+                            </button>
+                            <div>
+                            <button type="submit"
+                                             class="btn btn-outline-success align-right"
+                                             name="delAnimal" id=delAnimalBtn>Delete Animal
                             </button>
                             <hr id="tables-save-hr">
                             <button id="saveParcour" type="submit" name="saveParcour"
