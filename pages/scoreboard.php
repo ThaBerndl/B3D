@@ -158,8 +158,7 @@ require_once '../PHP/leftHor_Navbar.php'
                                 }
                                 ?>
                             </tr>
-                            <tr>
-                            </tr>
+                            <hr id="tables-hr">
                         </table>
                     </div>
                 </div>
