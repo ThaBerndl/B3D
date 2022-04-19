@@ -154,7 +154,7 @@
                                                     </div>
                                                 </td>
                                                 <td class=\"align-items-start\">
-                                                    <button class=\"btn bg-success\" name=\"delete\">Delete&nbsp;<i
+                                                    <button class=\"btn bg-gradient-success\" name=\"delete\">Delete&nbsp;<i
                                                             class=\"ni ni-fat-remove\"></i></button>
                                                     <input type='text' style='display: none' name='user' value='$freund->user_id'>
                                                     <input type='text' style='display: none' name='freund' value='$freund->freund_id'>
