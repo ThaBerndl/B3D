@@ -82,12 +82,10 @@ require_once '../PHP/leftHor_Navbar.php'
         <div class="row mt-4">
             <div class="col-12">
                 <div class="card ">
-                    <div class="card-header pb-0 p-3">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="mb-2">Total Score</h6>
-                        </div>
+                    <div class="card-body">
+                        <h6 class="mb-2">Total Score</h6>
                     </div>
-                    <div>
+                    <div class="table-responsive">
                         <table class="table align-items-center">
                             <tr>
                                 <th class="text-uppercase text-xxs font-weight-bolder mb-0" scope="row">Archer</th>
