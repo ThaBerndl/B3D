@@ -178,7 +178,6 @@ if (isset($_GET['saveParcour'])) {
                                     class="btn btn-success align-left"
                                     name="addAnimal" id=addAnimalBtn>Add Animal
                             </button>
-                            <div>
                             <button type="submit"
                                              class="btn btn-outline-success align-right"
                                              name="delAnimal" id=delAnimalBtn>Delete Animal
@@ -187,9 +186,9 @@ if (isset($_GET['saveParcour'])) {
                             <button id="saveParcour" type="submit" name="saveParcour"
                                     class="btn bg-gradient-success">Save
                             </button>
-                                <?php
-                                }
-                                ?>
+                            <?php
+                            }
+                            ?>
                         </form>
                     </div>
                 </div>

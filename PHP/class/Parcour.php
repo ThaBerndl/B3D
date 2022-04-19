@@ -56,6 +56,20 @@ class Parcour extends DB{
             return $data['parcour_id'];
         }
     }
+
+    public static function delParcour($parcour_ID)
+    {
+        $db = new DB();
+        $stmt = $db->pdo->prepare("delete from Tierzuord where parcour_id = ?");
+        $stmt->bindParam(1,$parcour_ID, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+        $stmt = $db->pdo->prepare("delete from Parcour where parcour_id = ?");
+        $stmt->bindParam(1,$parcour_ID, PDO::PARAM_INT);
+        $stmt->execute();
+        $error = $stmt->errorInfo();
+    }
+
     public function create(){
         $stmt = $this->pdo->prepare("Insert into Parcour (bez, ort_id) values(?,?)");
         $stmt->bindParam(1,$this->bez,PDO::PARAM_STR);
